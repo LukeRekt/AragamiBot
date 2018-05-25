@@ -5,8 +5,8 @@ const request = require('request');
 const async = require('async');
 const URL = require('url');
 const bot = new Discord.Client();
-var express require("express");
-var app express();
+var express = require("express");
+var app = express();
 var port = process.env.PORT || 3000;
 
 const localPath = path.join(__dirname, 'local');
