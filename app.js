@@ -5,6 +5,9 @@ const request = require('request');
 const async = require('async');
 const URL = require('url');
 const bot = new Discord.Client();
+var express require("express");
+var app express();
+var port = process.env.PORT || 3000;
 
 const localPath = path.join(__dirname, 'local');
 const playlistPath = path.join(__dirname, 'playlist');
@@ -1631,6 +1634,7 @@ bot.on('voiceStateUpdate', (oldMember, newMember) =>{
 			currentVoiceChannel.leave();
 		}
 	}
-}).listen(process.env.PORT || 5000);
+});
 
 bot.login(botLogin.token);
+app.listen(port);
