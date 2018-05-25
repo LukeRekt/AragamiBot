@@ -15,7 +15,7 @@ const modulesPath = path.join(__dirname, 'modules');
 
 const botLogin = require(path.join(configPath, 'botLogin.js'));
 const yt = require(path.join(modulesPath, 'youtube.js'));
-const botPreferenceFile = path.join(configPath, 'preference.json');.
+const botPreferenceFile = path.join(configPath, 'preference.json');
 
 var port = process.env.PORT || 3000;
 app.listen(port, "0.0.0.0", function() {
