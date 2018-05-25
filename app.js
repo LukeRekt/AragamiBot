@@ -15,12 +15,9 @@ const modulesPath = path.join(__dirname, 'modules');
 
 const botLogin = require(path.join(configPath, 'botLogin.js'));
 const yt = require(path.join(modulesPath, 'youtube.js'));
-const botPreferenceFile = path.join(configPath, 'preference.json');
+const botPreferenceFile = path.join(configPath, 'preference.json');.
 
-var port = process.env.PORT || 3000;
-bot.listen(port, "0.0.0.0", function() {
-console.log("Listening on Port 3000");
-});
+
 
 try{
 	var botVersion = require(path.join(__dirname, 'package.json')).version;
@@ -1634,6 +1631,6 @@ bot.on('voiceStateUpdate', (oldMember, newMember) =>{
 			currentVoiceChannel.leave();
 		}
 	}
-});
+}).listen(process.env.PORT || 5000);
 
 bot.login(botLogin.token);
