@@ -18,7 +18,7 @@ const yt = require(path.join(modulesPath, 'youtube.js'));
 const botPreferenceFile = path.join(configPath, 'preference.json');
 
 var port = process.env.PORT || 3000;
-app.listen(port, "0.0.0.0", function() {
+bot.listen(port, "0.0.0.0", function() {
 console.log("Listening on Port 3000");
 });
 
