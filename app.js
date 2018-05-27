@@ -1637,7 +1637,7 @@ bot.on('voiceStateUpdate', (oldMember, newMember) =>{
 });
 
 bot.on('message', (message) => {
-	if(message.content == 'mamaeu'){
+	if(message.content == '-mamaeu'){
 		message.reply('Glub-Glub ');
 	}
 });
