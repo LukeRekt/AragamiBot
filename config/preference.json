@@ -1,4 +1,4 @@
 {
 	"initcmd" : "-",
-	"admingroups" : ["admin"]
+	"admingroups" : ["admin", ":trident::coffee:Dono do Café:coffee::trident:"]
 }
