@@ -1644,7 +1644,7 @@ bot.on('message', (message) => {
 
 bot.on('message', (message) => {
 	if(message.content == '-pmara'){
-		message.author.sendMessage('Se tiver mais de 20 cm é gratis ');
+		message.author.sendMessage('Estou fazendo doação anal e oral gratis para quem tiver mais de 20 cm ');
 	}
 });
 
