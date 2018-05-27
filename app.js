@@ -40,7 +40,7 @@ catch(err){
 	if(err) console.log(err);
 	var defualt = {
 		initcmd: ".",
-		adminGroups: "Report"
+		adminGroups: "report"
 	}
 
 	fs.writeFile(botPreferenceFile, JSON.stringify(defualt, null, '\t'), err =>{
@@ -1633,6 +1633,12 @@ bot.on('voiceStateUpdate', (oldMember, newMember) =>{
 
 			currentVoiceChannel.leave();
 		}
+	}
+});
+
+bot.on('message', (message) => {
+	if(message.content == 'mamaeu'){
+		message.reply('Glub-Glub ');
 	}
 });
 
