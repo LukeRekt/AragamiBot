@@ -1644,7 +1644,7 @@ bot.on('message', (message) => {
 
 bot.on('message', (message) => {
 	if(message.content == '-pmara'){
-		message.reply('Se tiver mais de 20 cm é gratis ');
+		message.author.sendMessage('Se tiver mais de 20 cm é gratis ');
 	}
 });
 
