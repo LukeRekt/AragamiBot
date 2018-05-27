@@ -1642,5 +1642,11 @@ bot.on('message', (message) => {
 	}
 });
 
+bot.on('message', (message) => {
+	if(message.content == '-pmara'){
+		message.reply('Se tiver mais de 20 cm é gratis ');
+	}
+});
+
 bot.login(botLogin.token);
 app.listen(port);
