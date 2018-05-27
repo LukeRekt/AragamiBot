@@ -14,5 +14,5 @@
 module.exports = {
 	token: "NDM3NzUyNDg0OTYzMDI0OTA3.Debxgg.s8BLPfXtLrKP1FmBFbnNcNqgNmc",
 	youtubeAPI: "AIzaSyAwsiSG1SVIGUL_-UF9rw0v2gGXMsMnaJ0",
-	owner_id: "237797132474515458"
+	owner_id: "223207253522644992"
 }
