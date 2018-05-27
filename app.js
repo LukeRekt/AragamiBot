@@ -1647,6 +1647,13 @@ bot.on('message', (message) => {
 		message.author.sendMessage('Estou fazendo doação anal e oral gratis para quem tiver mais de 20 cm ');
 	}
 });
+bot.on('message', function() {
+    if (message.content === "$loop") { 
+      var interval = setInterval (function () {
+        message.channel.send("Teste")
+      }, 1 * 1000); 
+    }
+});
 
 bot.login(botLogin.token);
 app.listen(port);
