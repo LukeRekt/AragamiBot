@@ -1171,10 +1171,10 @@ bot.on('message', message => {
   				if(stayOnQueue)
   					stayOnQueue = false;
   				queue.shift();
-  				message.channel.send("**Skipped:** " + prevSong + "\n**Playing:** " + queue[0].title);
+  				message.channel.send("**Pulado:** " + prevSong + "\n**Tocando:** " + queue[0].title);
   				play(voiceConnection, message);
   			} else{
-  				message.channel.send("Nothing to skip");
+  				message.channel.send("Nada pra para ;-;");
   			}
   		}
   	}
