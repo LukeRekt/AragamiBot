@@ -271,7 +271,7 @@ function isYTLink(input){
 	return YT_REG.test(input);
 }
 
-bot.on('ready', function(message) => {
+bot.on('ready', function(message) {
 	console.log("HathorBot V" + botVersion)
 	console.log(bot.user.username + " (" + bot.user.id + ")");
 
