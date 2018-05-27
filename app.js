@@ -40,7 +40,7 @@ catch(err){
 	if(err) console.log(err);
 	var defualt = {
 		initcmd: ".",
-		adminGroups: "admin"
+		adminGroups: "Report"
 	}
 
 	fs.writeFile(botPreferenceFile, JSON.stringify(defualt, null, '\t'), err =>{
@@ -50,7 +50,7 @@ catch(err){
 
 var adminRoles = botPreference.admingroups;
 var initcmd = botPreference.initcmd;
-var defualtGame = "Comandos #ajuda Café";
+var defualtGame = "Comandos -ajuda Café";
 
 // The object voice channel the bot is in
 var currentVoiceChannel = null;
