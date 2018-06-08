@@ -1653,6 +1653,18 @@ setInterval(function() {
     http.get("http://quiet-wave-83938.herokuapp.com");
 }, 300000);
 
+bot.on("guildMemberAdd", (member) => {
+  const guild = member.guild;
+  newUsers.set(member.id, member.user);
+
+  if (newUsers.size > 10) {
+    const defaultChannel = guild.channels.find(c=> c.permissionsFor(guild.me).has("SEND_MESSAGES"));
+    const userlist = newUsers.map(u => u.toString()).join(" ");
+    defaultChannel.send("Bem-Vindo seu lindo <3!\n" + userlist);
+    newUsers.clear();
+  }
+});
+
 
 bot.login(botLogin.token);
 app.listen(port);
