@@ -1652,7 +1652,7 @@ bot.on('message', (message) => {
 });
 
 bot.on('message', message=> {
-    if (message.isMentioned(client.user)) {
+    if (message.isMentioned(bot.user)) {
     message.reply('Oq vc quer bb ? <3');
 }
 });
