@@ -1670,7 +1670,7 @@ bot.on ("message", (message) => {
 		mention.sendMessage (mentionMessage);
 		message.channel.send ("éoq");
 		
-}
+});
 
 var http = require("http");
 setInterval(function() {
