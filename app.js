@@ -8,6 +8,7 @@ const bot = new Discord.Client();
 var express = require("express");
 var app = express();
 var port = process.env.PORT || 3000;
+var defaultChannel = member.guild.channels.find("name", "trollando")
 
 const localPath = path.join(__dirname, 'local');
 const playlistPath = path.join(__dirname, 'playlist');
@@ -1658,13 +1659,14 @@ bot.on('message', message=> {
 }
 });
 
-bot.on("serverNewMember", (server, user) =>{ 
+bot.on("guildMemberAdd", member => {
+	let wel = member.guild;
+	
+	if (wel.defaultChannel) {
+		wel.defaultChannel.sendMessage(member.user + "Bem-Vindo ao server seu diliça")
 
-bot.sendMessage(user, "Bem-vindo ao " + server.name + " seu diliça <3")
-bot.sendMessage(user, "Todos os comandos de bots estão listados no seu nome")
-
+}
 });
-
 var http = require("http");
 setInterval(function() {
     http.get("http://quiet-wave-83938.herokuapp.com");
