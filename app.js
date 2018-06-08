@@ -1614,6 +1614,7 @@ bot.on('message', message => {
   	}
 });
 
+
 bot.on('voiceStateUpdate', (oldMember, newMember) =>{
 	if(newMember.id === bot.user.id){
 		newMember.voiceChannel = currentVoiceChannel;
@@ -1637,14 +1638,14 @@ bot.on('voiceStateUpdate', (oldMember, newMember) =>{
 		}
 	}
 });
-
+//glubglub basico
 bot.on('message', (message) => {
 	if(message.content == '-mamaeu'){
 		message.reply('Glub-Glub ');
 		message.author.sendMessage('ainda quer o Glub-Glub ?');
 	}
 });
-
+//pm top do aragami
 bot.on('message', (message) => {
 	if(message.content == '-pmara'){
 		message.author.sendMessage('Estou fazendo doação anal e oral gratis para quem tiver mais de 20 cm ');
@@ -1652,21 +1653,17 @@ bot.on('message', (message) => {
 		message.author.sendMessage("Foto do mine", {files: ["https://media.discordapp.net/attachments/446159043103555595/454497116631597056/Capture_2018-06-08-00-07-20-1.png"]});
 	}
 });
-
+//menção de ajuda
 bot.on('message', message=> {
     if (message.isMentioned(bot.user)) {
     message.reply('Oq vc quer bb ? -ajuda');
 }
 });
 
-bot.on("guildMemberAdd", member => {
-	let wel = member.guild;
-	
-	if (wel.defaultChannel) {
-		wel.defaultChannel.sendMessage(member.user + "Bem-Vindo ao server seu diliça")
+//bem-vindo é no começo retardado
 
-}
-});
+
+//ping
 var http = require("http");
 setInterval(function() {
     http.get("http://quiet-wave-83938.herokuapp.com");
