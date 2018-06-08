@@ -1657,7 +1657,7 @@ bot.on('message', message=> {
 }
 });
 
-bot.on ("message, (message) => {
+bot.on ("message", (message) => {
 	msg = message.content.toLowerCase();
 	
 	if (message.author.bot) return;
