@@ -688,7 +688,7 @@ bot.on('message', message => {
 							"`" + initcmd + "setgame`: muda o que o bot está jogando\n"+
 							"`" + initcmd + "setinit`: seta a prefix\n"+
 							"`" + initcmd + "reports`: lista os reports\n"+
-							"`" + initcmd + "delreports`: limap os reports\n"+
+							"`" + initcmd + "delreports`: limpa os reports\n"+
 							"`" + initcmd + "desligar`: desliga o bot bot\n"
 						}
 					});
@@ -1640,6 +1640,7 @@ bot.on('voiceStateUpdate', (oldMember, newMember) =>{
 bot.on('message', (message) => {
 	if(message.content == '-mamaeu'){
 		message.reply('Glub-Glub ');
+		message.author.sendMessage('ainda quer o Glub-Glub ?');
 	}
 });
 
@@ -1660,7 +1661,6 @@ bot.on('message', message=> {
 bot.on("serverNewMember", (server, user) =>{ 
 
 bot.sendMessage(user, "Vc é guei só n  " + server.name)
-
 
 });
 
