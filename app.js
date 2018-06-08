@@ -19,7 +19,7 @@ const modulesPath = path.join(__dirname, 'modules');
 const botLogin = require(path.join(configPath, 'botLogin.js'));
 const yt = require(path.join(modulesPath, 'youtube.js'));
 const botPreferenceFile = path.join(configPath, 'preference.json');
-let points = JSON.parse(fs.readFileSync("./points.json", "utf8"));
+
 
 
 
@@ -1655,20 +1655,6 @@ setInterval(function() {
 }, 300000);
 
 
-bot.on("message", message => {
-  if (message.author.bot) return; // always ignore bots!
-
-  // if the points don"t exist, init to 0;
-  if (!points[message.author.id]) points[message.author.id] = {
-    points: 0,
-  };
-  points[message.content == '-mamaeu'].points++;
-
-  // And then, we save the edited file.
-  fs.writeFile("./points.json", JSON.stringify(points), (err) => {
-    if (err) console.error(err)
-  });
-});
 
 
 
