@@ -8,7 +8,6 @@ const bot = new Discord.Client();
 var express = require("express");
 var app = express();
 var port = process.env.PORT || 3000;
-var defaultChannel = member.guild.channels.find("name", "trollando")
 
 const localPath = path.join(__dirname, 'local');
 const playlistPath = path.join(__dirname, 'playlist');
