@@ -1653,17 +1653,67 @@ setInterval(function() {
     http.get("http://quiet-wave-83938.herokuapp.com");
 }, 300000);
 
-bot.on("guildMemberAdd", (member) => {
-  const guild = member.guild;
-  newUsers.set(member.id, member.user);
+  	if(isCommand(message.content, 'mamaaq')){
+  		if(message.content.indexOf(' ') !== -1){
+  			var user = message.member.user.username;
+  			var msg = message.content.split(' ');
+  			var report;
+  			var reportFile = path.join(logsPath, message.guild.id + '_mamadas');
 
-  if (newUsers.size > 10) {
-    const defaultChannel = guild.channels.find(c=> c.permissionsFor(guild.me).has("SEND_MESSAGES"));
-    const userlist = newUsers.map(u => u.toString()).join(" ");
-    defaultChannel.send("Bem-Vindo seu lindo <3!\n" + userlist);
-    newUsers.clear();
-  }
-});
+  			msg.splice(0,1);
+  			msg = msg.join(' ');
+  			report = getDateTime() + " " + user + "@"+ message.guild.name + ": " + msg;
+
+  			if(fs.existsSync(reportFile)){
+  				fs.readFile(reportFile, 'utf-8', (error, file)=>{
+  					if(error) return sendError("Reading Report File", error, message.channel);
+  					file = file.split('\n');
+  					file.push(report);
+  					fs.writeFile(reportFile, file.join('\n'), error=>{
+  						if(error) return sendError("Writing Report File", error, message.channel);
+  						message.reply('Glub-Glub ');
+  					});
+  				});
+  			}else{
+  				fs.writeFile(reportFile, report, error =>{
+  					if(error) return sendError("Writing Report File", error, message.channel);
+  					message.reply('Glub-Glub ');
+  				});
+  			}
+  			console.log("REPORT: " + user + " from " + message.guild.name + " submitted a report.");
+  		} else{
+  			message.channel.send("Q?");
+  		}
+  	}
+
+		if(isCommand(message.content, 'mamadas')){
+			if(isOwner(message) || isAdmin(message)){
+				fs.readdir(logsPath, (error, files)=>{
+					if(error) return sendError("Reading Logs Path", error, message.channel);
+
+					for(var i = 0; i < files.length; i++){
+						if(files[i].split('_')[0] === message.guild.id){
+							fs.readFile(path.join(logsPath, files[i]),'utf-8', (error, file)=>{
+								if(error) return sendError("Reading Report File", error, message.channel);
+
+								// Clear the report once it's been read
+								if(file === "") return message.channel.send("nenhum report");
+
+								message.channel.send("Mamadas", {
+									embed: {
+										color: 0xee3239,
+										description: file
+									}
+								});
+							});
+							return;
+						}
+					}
+					message.channel.send("Report não disponiveis");
+				});
+			} else message.channel.send("sem permissão batola.");
+		});
+
 
 
 bot.login(botLogin.token);
