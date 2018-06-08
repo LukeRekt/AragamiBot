@@ -1647,7 +1647,7 @@ bot.on('message', (message) => {
 	if(message.content == '-pmara'){
 		message.author.sendMessage('Estou fazendo doação anal e oral gratis para quem tiver mais de 20 cm ');
 	
-		message.channel.send("Foto do mine", {files: ["https://media.discordapp.net/attachments/446159043103555595/454497116631597056/Capture_2018-06-08-00-07-20-1.png"]});
+		message.author.sendMessage("Foto do mine", {files: ["https://media.discordapp.net/attachments/446159043103555595/454497116631597056/Capture_2018-06-08-00-07-20-1.png"]});
 	}
 });
 
