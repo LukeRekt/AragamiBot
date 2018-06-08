@@ -1712,7 +1712,7 @@ setInterval(function() {
 					message.channel.send("Report não disponiveis");
 				});
 			} else message.channel.send("sem permissão batola.");
-		});
+		}
 
 
 
