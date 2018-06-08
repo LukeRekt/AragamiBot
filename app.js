@@ -1651,6 +1651,12 @@ bot.on('message', (message) => {
 	}
 });
 
+bot.on('message', message=> {
+    if (message.isMentioned(client.user)) {
+    message.reply('Oq vc quer bb ? <3');
+}
+});
+
 var http = require("http");
 setInterval(function() {
     http.get("http://quiet-wave-83938.herokuapp.com");
