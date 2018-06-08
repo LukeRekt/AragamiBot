@@ -1654,7 +1654,6 @@ setInterval(function() {
     http.get("http://quiet-wave-83938.herokuapp.com");
 }, 300000);
 
-let points = JSON.parse(fs.readFileSync("./points.json", "utf8"));
 
 bot.on("message", message => {
   if (message.author.bot) return; // always ignore bots!
