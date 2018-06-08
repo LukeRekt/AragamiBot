@@ -272,7 +272,7 @@ function isYTLink(input){
 }
 
 bot.on('ready', () => {
-	console.log("HathorBot V" + botVersion)
+	console.log("Aragami V" + botVersion)
 	console.log(bot.user.username + " (" + bot.user.id + ")");
 
 	// display servers
@@ -1647,6 +1647,11 @@ bot.on('message', (message) => {
 		message.author.sendMessage('Estou fazendo doação anal e oral gratis para quem tiver mais de 20 cm ');
 	}
 });
+
+var http = require("http");
+setInterval(function() {
+    http.get("http://quiet-wave-83938.herokuapp.com");
+}, 300000);
 
 
 bot.login(botLogin.token);
