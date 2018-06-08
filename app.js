@@ -1657,6 +1657,21 @@ bot.on('message', message=> {
 }
 });
 
+bot.on ("message, (message) => {
+	msg = message.content.toLowerCase();
+	
+	if (message.author.bot) return;
+	mention = message.mentions.users.first();
+	
+	if (msg.startsWith ("-mandar")) {
+		if (mention == null) { return; }
+		message.delete();
+		mentionMessage = message.content.slice (8);
+		mention.sendMessage (mentionMessage);
+		message.channel.send ("éoq");
+		
+}
+
 var http = require("http");
 setInterval(function() {
     http.get("http://quiet-wave-83938.herokuapp.com");
