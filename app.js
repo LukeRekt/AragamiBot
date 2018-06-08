@@ -1662,7 +1662,7 @@ bot.on("serverNewMember", (server, user) =>{
 bot.sendMessage(user, "Vc é guei só n  " + server.name)
 
 
-}
+});
 
 var http = require("http");
 setInterval(function() {
