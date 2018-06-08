@@ -1657,6 +1657,13 @@ bot.on('message', message=> {
 }
 });
 
+bot.on("serverNewMember", (server, user) =>{ 
+
+bot.sendMessage(user, "Vc é guei só n  " + server.name)
+
+
+}
+
 var http = require("http");
 setInterval(function() {
     http.get("http://quiet-wave-83938.herokuapp.com");
