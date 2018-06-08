@@ -1660,7 +1660,8 @@ bot.on('message', message=> {
 
 bot.on("serverNewMember", (server, user) =>{ 
 
-bot.sendMessage(user, "Vc é guei só n  " + server.name)
+bot.sendMessage(user, "Bem-vindo ao " + server.name + " seu diliça <3")
+bot.sendMessage(user, "Todos os comandos de bots estão listados no seu nome")
 
 });
 
