@@ -1665,6 +1665,45 @@ bot.on('message', message=> {
 }
 });
 
+bot.on('guildMemberAdd', member => {
+    let channel = member.guild.channels.find('name', 'teste');
+    let memberavatar = member.user.avatarURL
+        if (!channel) return;
+        let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(memberavatar)
+        .addField('nome : ', `${member}`)
+        .addField(':coffee: | Bem-vindo!', `Bem-vindo ao server amiguinho <3, ${member}`)
+		member.user.send("Olá amiguinho")
+        .setTimestamp()
+
+        channel.sendEmbed(embed);
+});
+
+bot.on('guildMemberAdd', member => {
+
+    console.log(`${member}`, "Entrou" + `${member.guild.name}`)
+
+});
+
+bot.on('guildMemberRemove', member => {
+    let channel = member.guild.channels.find('name', 'teste');
+        if (!channel) return;
+        let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .addField('Nome:', `${member}`)
+        .addField('Saiu do server', ';(')
+        .addField('Adeus amiguinho :(', 'nunca te esqueceremos!')
+        .setTimestamp()
+
+        channel.sendEmbed(embed);
+});
+
+bot.on('guildMemberRemove', member => {
+    console.log(`${member}` + "saiu" + `${member.guild.name}` + "mandando msg de sair")
+    console.log("MSG de saiu")
+});
+
 //bem-vindo é no começo retardado
 
 
