@@ -1671,11 +1671,10 @@ bot.on('guildMemberAdd', member => {
         if (!channel) return;
         let embed = new Discord.RichEmbed()
         .setColor('RANDOM')
-        .setThumbnail(memberavatar)
         .addField('nome : ', `${member}`)
         .addField(':coffee: | Bem-vindo!', `Bem-vindo ao server amiguinho <3, ${member}`)
-		member.user.send("Olá amiguinho")
-        .setTimestamp()
+		member.send("Olá amiguinho")
+        
 
         channel.sendEmbed(embed);
 });
@@ -1694,7 +1693,7 @@ bot.on('guildMemberRemove', member => {
         .addField('Nome:', `${member}`)
         .addField('Saiu do server', ';(')
         .addField('Adeus amiguinho :(', 'nunca te esqueceremos!')
-        .setTimestamp()
+        
 
         channel.sendEmbed(embed);
 });
