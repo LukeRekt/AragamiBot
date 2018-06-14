@@ -5,6 +5,7 @@ const request = require('request');
 const async = require('async');
 const URL = require('url');
 const bot = new Discord.Client();
+const Command = require('/structures/Command');
 var express = require("express");
 var app = express();
 var port = process.env.PORT || 3000;
@@ -1702,6 +1703,32 @@ bot.on('guildMemberRemove', member => {
     console.log(`${member}` + "saiu" + `${member.guild.name}` + "mandando msg de sair")
     console.log("MSG de saiu")
 });
+
+module.exports = class HugCommand extends Command {
+	constructor(client) {
+		super(client, {
+			name: 'hug',
+			group: 'roleplay',
+			memberName: 'hug',
+			description: 'aaa.',
+			args: [
+				{
+					key: 'user',
+					prompt: 'What user do you want to roleplay with?',
+					type: 'user'
+				}
+			]
+		});
+	}
+
+	async run(msg, { user }) {
+		try {
+			return msg.say(`_**${msg.author.username}** hugs **${user.username}**._`);
+		} catch (err) {
+			return msg.reply(`Erro: \`${err.message}\`. erro!`);
+		}
+	}
+};
 
 //bem-vindo é no começo retardado
 
