@@ -5,7 +5,7 @@ const request = require('request');
 const async = require('async');
 const URL = require('url');
 const bot = new Discord.Client();
-const Command = require('Command');
+const { Command } = require('discord.js-commando');
 var express = require("express");
 var app = express();
 var port = process.env.PORT || 3000;
@@ -1704,6 +1704,7 @@ bot.on('guildMemberRemove', member => {
     console.log("MSG de saiu")
 });
 
+
 module.exports = class HugCommand extends Command {
 	constructor(client) {
 		super(client, {
@@ -1739,8 +1740,18 @@ setInterval(function() {
     http.get("http://quiet-wave-83938.herokuapp.com");
 }, 300000);
 
+class XiaoCommand extends Command {
+	constructor(client) {
+		super(client, {
+			argsPromptLimit: 1,
+			argsSingleQuotes: false
+		});
+	}
+}
 
 
+
+module.exports = XiaoCommand;
 
 
 bot.login(botLogin.token);
