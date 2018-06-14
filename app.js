@@ -1652,7 +1652,7 @@ bot.on('message', (message) => {
 		message.author.sendMessage("Foto do mine", {files: ["https://media.discordapp.net/attachments/446159043103555595/454497116631597056/Capture_2018-06-08-00-07-20-1.png"]});
 	}
 });
-//menção de ajuda
+//menção de ajuda não ajuda em nada
 bot.on('message', message=> {
     if (message.isMentioned(bot.user)) {
     message.reply('Oq vc quer bb ? -ajuda');
@@ -1666,14 +1666,15 @@ bot.on('message', message=> {
 });
 
 bot.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', 'teste');
+    let channel = member.guild.channels.find('name', 'bem-vindo');
     let memberavatar = member.user.avatarURL
         if (!channel) return;
         let embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .addField('nome : ', `${member}`)
         .addField(':coffee: | Bem-vindo!', `Bem-vindo ao server amiguinho <3, ${member}`)
-		member.send("Olá amiguinho")
+		member.send("Bem-vindo ao Café <3, aconselho que de uma olhada no #quadro-de-regras para que não seja banido")
+		member.send("use o canal #registro-do-cliente para conhecermos mais sobre vc amiguinho")
         
 
         channel.sendEmbed(embed);
