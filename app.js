@@ -1660,8 +1660,8 @@ bot.on('message', message=> {
 });
 
 bot.on('message', member=> {
-    if (message.isMentioned(bot.user)) {
-    message.reply('fala o que vc quer de uma vez caralho ? -ajuda');
+    if (member.isMentioned(bot.user)) {
+    member.reply('fala o que vc quer de uma vez caralho ? -ajuda');
 	let embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .addField('nome : ', `${member}`)
