@@ -1672,7 +1672,7 @@ bot.on('guildMemberAdd', member => {
         let embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .addField('nome : ', `${member}`)
-        .addField(':coffee: | Bem-vindo!', `Bem-vindo ao server amiguinho <3, ${member}`)
+        .addField(':coffee: | Bem-vindo!', `Bem-vindo ao server amiguinho <3")
 		.addField("use o canal #registro-do-cliente para conhecermos mais sobre vc amiguinho")
 		.addField("aconselho que dê uma olhada no #quadro-de-regras para que não seja banido")
         
