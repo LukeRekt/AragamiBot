@@ -1673,8 +1673,8 @@ bot.on('guildMemberAdd', member => {
         .setColor('RANDOM')
         .addField('nome : ', `${member}`)
         .addField(':coffee: | Bem-vindo!', `Bem-vindo ao server amiguinho <3, ${member}`)
-		member.send("Bem-vindo ao Café <3, aconselho que de uma olhada no #quadro-de-regras para que não seja banido")
-		member.send("use o canal #registro-do-cliente para conhecermos mais sobre vc amiguinho")
+		.addField("use o canal #registro-do-cliente para conhecermos mais sobre vc amiguinho")
+		.addField("aconselho que dê uma olhada no #quadro-de-regras para que não seja banido")
         
 
         channel.sendEmbed(embed);
@@ -1684,24 +1684,6 @@ bot.on('guildMemberAdd', member => {
 
     console.log(`${member}`, "Entrou" + `${member.guild.name}`)
 
-});
-
-bot.on('guildMemberRemove', member => {
-    let channel = member.guild.channels.find('name', 'bem-vindo');
-        if (!channel) return;
-        let embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .addField('Nome:', `${member}`)
-        .addField('Saiu do server', ';(')
-        .addField('Adeus amiguinho :(', 'nunca te esqueceremos!')
-        
-
-        channel.sendEmbed(embed);
-});
-
-bot.on('guildMemberRemove', member => {
-    console.log(`${member}` + "saiu" + `${member.guild.name}` + "mandando msg de sair")
-    console.log("MSG de saiu")
 });
 
 //bem-vindo é no começo retardado
