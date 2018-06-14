@@ -1687,7 +1687,7 @@ bot.on('guildMemberAdd', member => {
 });
 
 bot.on('guildMemberRemove', member => {
-    let channel = member.guild.channels.find('name', 'teste');
+    let channel = member.guild.channels.find('name', 'bem-vindo');
         if (!channel) return;
         let embed = new Discord.RichEmbed()
         .setColor('RANDOM')
