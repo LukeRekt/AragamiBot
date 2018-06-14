@@ -1665,6 +1665,8 @@ bot.on('message', message=> {
 }
 });
 
+//bem-vindo é no começo
+
 bot.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', 'bem-vindo');
     let memberavatar = member.user.avatarURL
@@ -1672,9 +1674,9 @@ bot.on('guildMemberAdd', member => {
         let embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .addField('nome : ', `${member}`)
-        .addField(':coffee: | Bem-vindo!', `Bem-vindo ao server amiguinho <3`)
-		.addField("use o canal #registro-do-cliente para conhecermos mais sobre vc amiguinho")
-		.addField("aconselho que dê uma olhada no #quadro-de-regras para que não seja banido")
+        .addField(`:coffee: | Bem-vindo!`, `Bem-vindo ao server amiguinho <3`)
+		.addField(`use o canal #registro-do-cliente para conhecermos mais sobre vc amiguinho`)
+		.addField(`aconselho que dê uma olhada no #quadro-de-regras para que não seja banido`)
         
 
         channel.sendEmbed(embed);
@@ -1686,7 +1688,7 @@ bot.on('guildMemberAdd', member => {
 
 });
 
-//bem-vindo é no começo retardado
+
 
 
 //ping
