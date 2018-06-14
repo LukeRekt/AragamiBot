@@ -1703,33 +1703,6 @@ bot.on('guildMemberRemove', member => {
     console.log("MSG de saiu")
 });
 
-
-module.exports = class HugCommand extends Command {
-	constructor(client) {
-		super(client, {
-			name: 'hug',
-			group: 'roleplay',
-			memberName: 'hug',
-			description: 'aaa.',
-			args: [
-				{
-					key: 'user',
-					prompt: 'What user do you want to roleplay with?',
-					type: 'user'
-				}
-			]
-		});
-	}
-
-	async run(msg, { user }) {
-		try {
-			return msg.say(`_**${msg.author.username}** hugs **${user.username}**._`);
-		} catch (err) {
-			return msg.reply(`Erro: \`${err.message}\`. erro!`);
-		}
-	}
-};
-
 //bem-vindo é no começo retardado
 
 
@@ -1739,18 +1712,8 @@ setInterval(function() {
     http.get("http://quiet-wave-83938.herokuapp.com");
 }, 300000);
 
-class XiaoCommand extends Command {
-	constructor(client) {
-		super(client, {
-			argsPromptLimit: 1,
-			argsSingleQuotes: false
-		});
-	}
-}
 
 
-
-module.exports = XiaoCommand;
 
 
 bot.login(botLogin.token);
