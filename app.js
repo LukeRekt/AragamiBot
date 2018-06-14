@@ -1659,7 +1659,7 @@ bot.on('message', message=> {
 }
 });
 
-bot.on('message', message=> {
+bot.on('message', member=> {
     if (message.isMentioned(bot.user)) {
     message.reply('fala o que vc quer de uma vez caralho ? -ajuda');
 	let embed = new Discord.RichEmbed()
