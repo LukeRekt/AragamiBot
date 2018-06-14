@@ -1659,15 +1659,10 @@ bot.on('message', message=> {
 }
 });
 
-bot.on('message', member=> {
-    if (member.isMentioned(bot.user)) {
-    member.reply('fala o que vc quer de uma vez caralho ? -ajuda');
-	let embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .addField('nome : ', `${member}`)
-        .addField(`:coffee: | Bem-vindo!`, `Bem-vindo ao server amiguinho <3`)
-		.addField(`use o canal #registro-do-cliente para conhecermos mais sobre vc amiguinho`)
-		.addField(`aconselho que dê uma olhada no #quadro-de-regras para que não seja banido`)
+bot.on('message', message=> {
+    if (message.isMentioned(bot.user)) {
+    message.reply('fala o que vc quer de uma vez caralho ? -ajuda');
+
 }
 });
 
@@ -1680,9 +1675,9 @@ bot.on('guildMemberAdd', member => {
         let embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .addField('nome : ', `${member}`)
-        .addField(`:coffee: | Bem-vindo!`, `Bem-vindo ao server amiguinho <3`)
-		.addField(`use o canal #registro-do-cliente para conhecermos mais sobre vc amiguinho`)
-		.addField(`aconselho que dê uma olhada no #quadro-de-regras para que não seja banido`)
+        .addField(':coffee: | Bem-vindo!', `Bem-vindo ao server amiguinho <3`)
+		.addField('use o canal #registro-do-cliente para conhecermos mais sobre vc amiguinho', ':P')
+		.addField('aconselho que dê uma olhada no #quadro-de-regras para que não seja banido', ':P')
         
 
         channel.sendEmbed(embed);
