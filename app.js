@@ -1722,6 +1722,7 @@ bot.on("message", async message => {
 
     return;
   }
+  });
 
 
 //bem-vindo é no começo
