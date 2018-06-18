@@ -1659,6 +1659,12 @@ bot.on('message', message=> {
 }
 });
 
+bot.on('message', (message) => {
+	if(message.content == '-pmara'){
+		message.reply('sou esse guei aq ó <@262034503969669121>');
+	}
+});
+
 //bem-vindo é no começo
 
 bot.on('guildMemberAdd', member => {
