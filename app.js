@@ -1655,7 +1655,7 @@ bot.on('message', (message) => {
 });
 bot.on('message', message=> {
     if (message.isMentioned(bot.user)) {
-    message.reply('fala o que vc quer de uma vez caralho ? -ajuda', message.createdAt);
+    message.reply('fala o que vc quer de uma vez caralho ? -ajuda');
 
 }
 });
@@ -1683,7 +1683,7 @@ bot.on("message", async message => {
     .setColor("#e56b00")
     .addField("Kickado", `${kUser}`)
     .addField("Kickado por", `<@${message.author.id}>`)
-	.addField("Time", message.createdAt)
+	.addField("Hora", message.createdAt)
     .addField("Motivo", kReason);
 
     let kickChannel = message.guild.channels.find(`name`, "punidos");
@@ -1708,7 +1708,7 @@ bot.on("message", async message => {
     .setColor("#bc0000")
     .addField("Banido", `${bUser}`)
     .addField("Banido por", `<@${message.author.id}>`)
-	.addField("Time", message.createdAt)
+	.addField("Hora", message.createdAt)
     .addField("Motivo", bReason);
 
     let incidentchannel = message.guild.channels.find(`name`, "punidos");
