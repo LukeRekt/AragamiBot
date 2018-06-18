@@ -1644,12 +1644,14 @@ bot.on('message', (message) => {
 		message.author.sendMessage('ainda quer o Glub-Glub ?');
 	}
 });
-bot.on('message', (message) => {
+bot.on('message', (message,client,args) => {
+	if(args[0]){
 	if(message.content == '-slap'){
     var tagged = message.mentions.members.first() || message.guild.members.get(args[0]);
     var user = message.author.username
     var member = tagged.user.username
     message.channel.send(`${user} Cumeu ${member}`)
+	}
 	}
 });
 //pm top do aragami
