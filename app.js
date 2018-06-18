@@ -1659,11 +1659,24 @@ bot.on('message', message=> {
 }
 });
 
-bot.on('message', (message) => {
-	if(message.content == '-eu'){
-		message.reply('sou esse guei aq ó <@262034503969669121>');
-	}
-});
+module.exports.run = async (client,message,args) => {
+	if(args[0]){
+    var kissed = message.mentions.members.first() || message.guild.members.get(args[0]);
+    var user = message.author.username
+    var member = kissed.user.username
+    if(!kissed)message.channel.send("quem você quer beijar??")
+    else{
+    let {body} = await superagent
+    .get(`https://nekos.life/api/v2/img/kiss`);
+    message.channel.send(`${user} Beijou ${member}`, {file: body.url})
+    }
+  }
+  else message.channel.send("quem você quer beijar?");
+}
+
+module.exports.help = {
+    name: "beijar"
+}
 
 //bem-vindo é no começo
 
