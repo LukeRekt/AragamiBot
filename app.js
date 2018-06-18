@@ -1652,13 +1652,6 @@ bot.on('message', (message) => {
 		message.author.sendMessage("Foto do mine", {files: ["https://media.discordapp.net/attachments/446159043103555595/454497116631597056/Capture_2018-06-08-00-07-20-1.png"]});
 	}
 });
-//menção de ajuda não ajuda em nada
-bot.on('message', message=> {
-    if (message.isMentioned(bot.user)) {
-    message.reply('Oq vc quer bb ? -ajuda');
-}
-});
-
 bot.on('message', message=> {
     if (message.isMentioned(bot.user)) {
     message.reply('fala o que vc quer de uma vez caralho ? -ajuda');
