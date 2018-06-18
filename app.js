@@ -1675,8 +1675,8 @@ bot.on("message", async message => {
     let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!kUser) return message.channel.send("não achei o fiato!");
     let kReason = args.join(" ").slice(22);
-    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No can do pal!");
-    if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
+    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Sem permissão fiato! >:C");
+    if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("você não pode kickar esse fiato! >:C");
 
     let kickEmbed = new Discord.RichEmbed()
     .setDescription("---Kickado---")
