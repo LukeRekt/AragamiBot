@@ -1684,8 +1684,7 @@ bot.on("message", async message => {
     .addField("Kickado", `${kUser}`)
     .addField("Kickado por", `<@${message.author.id}>`)
     .addField("Kickado em", message.channel)
-    .addField("Hora", message.createdAt)
-    .addField("Reason", kReason);
+    .addField("Motivo", kReason);
 
     let kickChannel = message.guild.channels.find(`name`, "punidos");
     if(!kickChannel) return message.channel.send("não achei o canal ;-;.");
@@ -1710,7 +1709,6 @@ bot.on("message", async message => {
     .addField("Banido", `${bUser}`)
     .addField("Banido por", `<@${message.author.id}>`)
     .addField("Banido em", message.channel)
-    .addField("Hora", message.createdAt)
     .addField("Motivo", bReason);
 
     let incidentchannel = message.guild.channels.find(`name`, "punidos");
