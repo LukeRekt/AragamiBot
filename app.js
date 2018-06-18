@@ -5,6 +5,7 @@ const request = require('request');
 const async = require('async');
 const URL = require('url');
 const bot = new Discord.Client();
+const superagent = require("superagent");
 var express = require("express");
 var app = express();
 var port = process.env.PORT || 3000;
