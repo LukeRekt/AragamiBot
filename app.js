@@ -5,7 +5,6 @@ const request = require('request');
 const async = require('async');
 const URL = require('url');
 const bot = new Discord.Client();
-const superagent = require("superagent");
 var express = require("express");
 var app = express();
 var port = process.env.PORT || 3000;
@@ -1659,25 +1658,6 @@ bot.on('message', message=> {
 
 }
 });
-
-module.exports.run = async (client,message,args) => {
-	if(args[0]){
-    var kissed = message.mentions.members.first() || message.guild.members.get(args[0]);
-    var user = message.author.username
-    var member = kissed.user.username
-    if(!kissed)message.channel.send("quem você quer beijar??")
-    else{
-    let {body} = await superagent
-    .get(`https://nekos.life/api/v2/img/kiss`);
-    message.channel.send(`${user} Beijou ${member}`, {file: body.url})
-    }
-  }
-  else message.channel.send("quem você quer beijar?");
-}
-
-module.exports.help = {
-    name: "beijar"
-}
 
 //bem-vindo é no começo
 
