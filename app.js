@@ -1673,22 +1673,22 @@ bot.on("message", async message => {
     //!kick @daeshan askin for it
 
     let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!kUser) return message.channel.send("Can't find user!");
+    if(!kUser) return message.channel.send("não achei o fiato!");
     let kReason = args.join(" ").slice(22);
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No can do pal!");
     if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
 
     let kickEmbed = new Discord.RichEmbed()
-    .setDescription("~Kick~")
+    .setDescription("---Kickado---")
     .setColor("#e56b00")
-    .addField("Kicked User", `${kUser} with ID ${kUser.id}`)
-    .addField("Kicked By", `<@${message.author.id}> with ID ${message.author.id}`)
-    .addField("Kicked In", message.channel)
-    .addField("Tiime", message.createdAt)
+    .addField("Kickado", `${kUser}`)
+    .addField("Kickado por", `<@${message.author.id}>`)
+    .addField("Kickado em", message.channel)
+    .addField("Hora", message.createdAt)
     .addField("Reason", kReason);
 
-    let kickChannel = message.guild.channels.find(`name`, "incidents");
-    if(!kickChannel) return message.channel.send("Can't find incidents channel.");
+    let kickChannel = message.guild.channels.find(`name`, "punidos");
+    if(!kickChannel) return message.channel.send("não achei o canal ;-;.");
 
     message.guild.member(kUser).kick(kReason);
     kickChannel.send(kickEmbed);
@@ -1699,22 +1699,22 @@ bot.on("message", async message => {
   if(cmd === `${initcmd}ban`){
 
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!bUser) return message.channel.send("Can't find user!");
+    if(!bUser) return message.channel.send("Não achei o fiato!");
     let bReason = args.join(" ").slice(22);
-    if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send("No can do pal!");
-    if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
+    if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
+    if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("você não pode kickar esse fiato! >:C");
 
     let banEmbed = new Discord.RichEmbed()
-    .setDescription("~Ban~")
+    .setDescription("---Banido---")
     .setColor("#bc0000")
-    .addField("Banned User", `${bUser} with ID ${bUser.id}`)
-    .addField("Banned By", `<@${message.author.id}> with ID ${message.author.id}`)
-    .addField("Banned In", message.channel)
-    .addField("Time", message.createdAt)
-    .addField("Reason", bReason);
+    .addField("Banido", `${bUser}`)
+    .addField("Banido por", `<@${message.author.id}>`)
+    .addField("Banido em", message.channel)
+    .addField("Hora", message.createdAt)
+    .addField("Motivo", bReason);
 
-    let incidentchannel = message.guild.channels.find(`name`, "incidents");
-    if(!incidentchannel) return message.channel.send("Can't find incidents channel.");
+    let incidentchannel = message.guild.channels.find(`name`, "punidos");
+    if(!incidentchannel) return message.channel.send("não achei o canal ;-;.");
 
     message.guild.member(bUser).ban(bReason);
     incidentchannel.send(banEmbed);
