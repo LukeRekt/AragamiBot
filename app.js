@@ -1683,7 +1683,8 @@ bot.on("message", async message => {
     .setColor("#e56b00")
     .addField("Kickado", `${kUser}`)
     .addField("Kickado por", `<@${message.author.id}>`)
-    .addField("Reason", kReason);
+	.addField("Time", message.createdAt)
+    .addField("Motivo", kReason);
 
     let kickChannel = message.guild.channels.find(`name`, "punidos");
     if(!kickChannel) return message.channel.send("não achei o canal ;-;.");
@@ -1707,6 +1708,7 @@ bot.on("message", async message => {
     .setColor("#bc0000")
     .addField("Banido", `${bUser}`)
     .addField("Banido por", `<@${message.author.id}>`)
+	.addField("Time", message.createdAt)
     .addField("Motivo", bReason);
 
     let incidentchannel = message.guild.channels.find(`name`, "punidos");
