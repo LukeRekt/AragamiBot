@@ -1660,7 +1660,7 @@ bot.on('message', message=> {
 });
 
 bot.on('message', (message) => {
-	if(message.content == '-pmara'){
+	if(message.content == '-eu'){
 		message.reply('sou esse guei aq ó <@262034503969669121>');
 	}
 });
