@@ -1660,7 +1660,11 @@ bot.on('message', message=> {
 }
 });
 
- if(cmd === `-kick`){
+  let messageArray = message.content.split(" ");
+  let cmd = messageArray[0];
+  let args = messageArray.slice(1);
+
+  if(cmd === `${initcmd}kick`){
 
     //!kick @daeshan askin for it
 
@@ -1688,7 +1692,7 @@ bot.on('message', message=> {
     return;
   }
 
-  if(cmd === `-ban`){
+  if(cmd === `${initcmd}ban`){
 
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Can't find user!");
@@ -1699,11 +1703,11 @@ bot.on('message', message=> {
     let banEmbed = new Discord.RichEmbed()
     .setDescription("~Ban~")
     .setColor("#bc0000")
-    .addField("Usuario banido", `${bUser} ID ${bUser.id}`)
-    .addField("Banido por", `<@${message.author.id}> ID ${message.author.id}`)
-    .addField("Banido em", message.channel)
-    .addField("Hora", message.createdAt)
-    .addField("Motivo", bReason);
+    .addField("Banned User", `${bUser} with ID ${bUser.id}`)
+    .addField("Banned By", `<@${message.author.id}> with ID ${message.author.id}`)
+    .addField("Banned In", message.channel)
+    .addField("Time", message.createdAt)
+    .addField("Reason", bReason);
 
     let incidentchannel = message.guild.channels.find(`name`, "incidents");
     if(!incidentchannel) return message.channel.send("Can't find incidents channel.");
