@@ -1673,7 +1673,7 @@ bot.on("message", async message => {
     //!kick @daeshan askin for it
 
     let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!kUser) return message.channel.send("não achei o fiato!");
+    if(!kUser) return message.channel.send("Não achei o fiato!");
     let kReason = args.join(" ").slice(22);
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Sem permissão fiato! >:C");
     if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("você não pode kickar esse fiato! >:C");
@@ -1684,7 +1684,8 @@ bot.on("message", async message => {
     .addField("Kickado", `${kUser}`)
     .addField("Kickado por", `<@${message.author.id}>`)
     .addField("Kickado em", message.channel)
-    .addField("Motivo", kReason);
+    .addField("Hora", message.createdAt)
+    .addField("Reason", kReason);
 
     let kickChannel = message.guild.channels.find(`name`, "punidos");
     if(!kickChannel) return message.channel.send("não achei o canal ;-;.");
@@ -1709,6 +1710,7 @@ bot.on("message", async message => {
     .addField("Banido", `${bUser}`)
     .addField("Banido por", `<@${message.author.id}>`)
     .addField("Banido em", message.channel)
+    .addField("Hora", message.createdAt)
     .addField("Motivo", bReason);
 
     let incidentchannel = message.guild.channels.find(`name`, "punidos");
