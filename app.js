@@ -1710,10 +1710,10 @@ bot.on("message", async message => {
     .addField("Banido por", `<@${message.author.id}>`)
 	.addField("Hora", message.createdAt)
     .addField("Motivo", bReason);
-    message.guild.member(bUser).sendMessage("Banido Otaro >:D", bReason);
     let incidentchannel = message.guild.channels.find(`name`, "punidos");
     if(!incidentchannel) return message.channel.send("não achei o canal ;-;.");
 
+	message.guild.member(bUser).sendMessage("Banido do café Otaro >:D", bReason);
     message.guild.member(bUser).ban(bReason);
     incidentchannel.send(banEmbed);
 
