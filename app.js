@@ -1649,7 +1649,7 @@ bot.on('message', (message) => {
 bot.on('message', (message) => {
 	if(message.content == '-pmara'){
 		message.author.sendMessage('Estou fazendo doação anal e oral gratis para quem tiver mais de 20 cm ');
-	
+
 		message.author.sendMessage("Foto do mine", {files: ["https://media.discordapp.net/attachments/446159043103555595/454497116631597056/Capture_2018-06-08-00-07-20-1.png"]});
 	}
 });
@@ -1663,7 +1663,7 @@ bot.on('message', message=> {
 bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
-  
+
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
@@ -1675,15 +1675,15 @@ bot.on("message", async message => {
     let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!kUser) return message.channel.send("Não achei o fiato!");
     let kReason = args.join(" ").slice(22);
-    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Sem permissão fiato! >:C");
-    if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("você não pode kickar esse fiato! >:C");
+    if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
+    if(kUser.hasPermission("KICK_MEMBERS")) return message.channel.send("você não pode kickar esse fiato! >:C");
 
     let kickEmbed = new Discord.RichEmbed()
     .setDescription("---Kickado---")
     .setColor("#e56b00")
     .addField("Kickado", `${kUser}`)
     .addField("Kickado por", `<@${message.author.id}>`)
-	.addField("Hora", message.createdAt)
+	  .addField("Hora", message.createdAt)
     .addField("Motivo", kReason);
 
     let kickChannel = message.guild.channels.find(`name`, "punidos");
@@ -1700,8 +1700,8 @@ bot.on("message", async message => {
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Não achei o fiato!");
     let bReason = args.join(" ").slice(22);
-    if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
-    if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("você não pode kickar esse fiato! >:C");
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
+    if(bUser.hasPermission("BAN_MEMBERS")) return message.channel.send("você não pode kickar esse fiato! >:C");
 
     let banEmbed = new Discord.RichEmbed()
     .setDescription("---Banido---")
@@ -1736,7 +1736,7 @@ bot.on('guildMemberAdd', member => {
         .addField(':coffee: | Bem-vindo!', `Bem-vindo ao server amiguinho <3`)
 		.addField('use o canal #registro-do-cliente para conhecermos mais sobre vc amiguinho', ':P')
 		.addField('aconselho que dê uma olhada no #quadro-de-regras para que não seja banido', ':P')
-        
+
 
         channel.sendEmbed(embed);
 });
