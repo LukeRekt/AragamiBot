@@ -1700,8 +1700,8 @@ bot.on("message", async message => {
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Não achei o fiato!");
     let bReason = args.join(" ").slice(22);
-    if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
-    if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("você não pode kickar esse fiato! >:C");
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
+    if(bUser.hasPermission("BAN_MEMBERS")) return message.channel.send("você não pode kickar esse fiato! >:C");
 
     let banEmbed = new Discord.RichEmbed()
     .setDescription("---Banido---")
