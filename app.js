@@ -1768,11 +1768,11 @@ bot.on("message", async message => {
 		if(!time) return message.reply('sem preguiça');
 
 		member.addRole(rankmute.id);
-		message.channel.send(`Voce foi mutado por ${ms(ms(time), {long: true})} ${member.user.tag}`);
+		message.channel.send(` ${member.user.tag} foi mutado por ${ms(ms(time), {long: true})}`);
 
 		setTimeout(function() {
 		member.removeRole(rankmute.id);
-		message.channel.send(`${member.user.tag} Você foi desmutado ${ms(ms(time), {long: true})}`);
+		message.channel.send(`${member.user.tag} Você foi desmutado`);
 	}, ms(time));
 
   }
