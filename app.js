@@ -1750,8 +1750,11 @@ bot.on('guildMemberAdd', member => {
 
 //Comando de mutar por tempo
 
-bot.on('message', (message) => {
-	if(message.content == '-mutar'){
+bot.on("message", async message => {
+  if(message.author.bot) return;
+  if(message.channel.type === "dm") return;
+
+	if(cmd === `${initcmd}mutar`){
 
 		let member = message.mentions.members.first();
 		if(!member) return message.reply("Você precisa mencionar alguem");
