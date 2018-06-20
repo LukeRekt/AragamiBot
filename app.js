@@ -1751,6 +1751,7 @@ bot.on('guildMemberAdd', member => {
 //Comando de mutar por tempo
 
 bot.on("message", async message => {
+	let cmd = messageArray[0];
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
 
