@@ -1750,9 +1750,8 @@ bot.on('guildMemberAdd', member => {
 
 //Comando de mutar por tempo
 
-bot.on("message", async message => {
-
-  if(cmd === `${initcmd}mute`){
+bot.on('message', (message) => {
+	if(message.content == '-mute'){
 
 		let member = message.mentions.members.first();
 		if(!member) return message.reply("Você precisa mencionar alguem");
@@ -1770,7 +1769,9 @@ bot.on("message", async message => {
 		message.channel.send("Voce foi desmutado");
 	}, ms(tempo));
 
+  }
 
+};
 
 
 
