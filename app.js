@@ -1755,7 +1755,7 @@ bot.on("message", async message => {
   if(cmd === `${initcmd}mute`){
 
 		let member = message.mentions.members.first();
-		if(!member) return message.reply("Você precisa mencionar alguem")
+		if(!member) return message.reply("Você precisa mencionar alguem");
 		let rankmute = message.guild.roles.find("name", "Mutado");
 		if(!rankmute) return message.guild.reply("não existe um cargo com nome de Mutado");
 		let params = message.content.split(" ").slice("1");
