@@ -1771,7 +1771,7 @@ bot.on('message', (message) => {
 
   }
 
-};
+});
 
 
 
