@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const fs = require('fs');
 const path = require('path');
+const ms = require('ms');
 const request = require('request');
 const async = require('async');
 const URL = require('url');
@@ -1746,6 +1747,29 @@ bot.on('guildMemberAdd', member => {
     console.log(`${member}`, "Entrou" + `${member.guild.name}`)
 
 });
+
+//Comando de mutar por tempo
+
+bot.on("message", async message => {
+
+  if(cmd === `${initcmd}mute`){
+
+		let member = message.mentions.members.first();
+		if(!member) return message.reply("Você precisa mencionar alguem")
+		let rankmute = message.guild.roles.find("name", "Mutado");
+		if(!rankmute) return message.guild.reply("não existe um cargo com nome de Mutado");
+		let params = message.content.split(" ").slice("1");
+		let tempo = params[1];
+		if(!tempo) return message.reply('sem preguiça');
+
+		member.addRole(rankmute.id);
+		message.channel.send('${member.user.tag} Voce foi mutado por ${ms(ms(tempo), {long: true})) ${member.user.tag}');
+
+		setTimeout(function()) {
+		member.removeRole(mute.id);
+		message.channel.send("Voce foi desmutado")
+	}, ms(time));
+
 
 
 
