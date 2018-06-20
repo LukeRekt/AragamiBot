@@ -1753,20 +1753,20 @@ bot.on('guildMemberAdd', member => {
 bot.on('message', (message) => {
 	if(message.content == '-mutar'){
 
-		let member = message.mentions.members.first();
-		if(!member) return message.reply("Você precisa mencionar alguem");
-		let rankmute = message.guild.roles.find("name", "Mutado");
-		if(!rankmute) return message.guild.reply("não existe um cargo com nome de Mutado");
-		let params = message.content.split(" ").slice("1");
+		let member = msg.mentions.members.first();
+		if(!member) return msg.reply("Você precisa mencionar alguem");
+		let rankmute = msg.guild.roles.find("name", "Mutado");
+		if(!rankmute) return msg.guild.reply("não existe um cargo com nome de Mutado");
+		let params = msg.content.split(" ").slice("1");
 		let tempo = params[1];
-		if(!tempo) return message.reply('sem preguiça');
+		if(!tempo) return msg.reply('sem preguiça');
 
 		member.addRole(rankmute.id);
-		message.channel.send('${member.user.tag} Voce foi mutado por ${ms(ms(tempo), {long: true})) ${member.user.tag}');
+		msg.channel.send('${member.user.tag} Voce foi mutado por ${ms(ms(tempo), {long: true})) ${member.user.tag}');
 
 		setTimeout(function() {
 		member.removeRole(rankmute.id);
-		message.channel.send("Voce foi desmutado");
+		msg.channel.send("Voce foi desmutado");
 	}, ms(tempo));
 
   }
