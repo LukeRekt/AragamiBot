@@ -1765,7 +1765,7 @@ bot.on("message", async message => {
 		if(!rankmute) return message.guild.reply("não existe um cargo com nome de Mutado");
 		let params = message.content.split(" ").slice("1");
 		let time = params[1];
-		if(!time) return message.reply('sem preguiça');
+		if(!time) return message.reply('Coloca um tempo fiato >:C');
 
 		member.addRole(rankmute.id);
 		message.channel.send(` ${member.user.tag} foi mutado por ${ms(ms(time), {long: true})}`);
