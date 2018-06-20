@@ -1768,7 +1768,7 @@ bot.on("message", async message => {
 		setTimeout(function() {
 		member.removeRole(rankmute.id);
 		message.channel.send("Voce foi desmutado")
-	}, ms(time));
+	}, ms(tempo)};
 
 
 
