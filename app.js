@@ -1751,7 +1751,7 @@ bot.on('guildMemberAdd', member => {
 //Comando de mutar por tempo
 
 bot.on('message', (message) => {
-	if(message.content == '-mute'){
+	if(message.content == '-mutar'){
 
 		let member = message.mentions.members.first();
 		if(!member) return message.reply("Você precisa mencionar alguem");
