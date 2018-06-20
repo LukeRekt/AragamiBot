@@ -1773,7 +1773,7 @@ bot.on("message", async message => {
 
 		setTimeout(function() {
 		member.removeRole(rankmute.id);
-		message.channel.send(`${member.user.tag} Você foi desmutado`);
+		message.channel.send(`${member.user.tag} pode falar denovo fiatinho`);
 	}, ms(time));
 
   }
