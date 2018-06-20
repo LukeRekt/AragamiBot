@@ -1766,7 +1766,7 @@ bot.on("message", async message => {
 		message.channel.send('${member.user.tag} Voce foi mutado por ${ms(ms(tempo), {long: true})) ${member.user.tag}');
 
 		setTimeout(function()) {
-		member.removeRole(mute.id);
+		member.removeRole(rankmute.id);
 		message.channel.send("Voce foi desmutado")
 	}, ms(time));
 
