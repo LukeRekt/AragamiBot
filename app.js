@@ -1792,9 +1792,11 @@ bot.on("message", async message => {
     //!kick @daeshan askin for it
 
     let mUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+		let mmUser = message.guild.member(message.mentions.users.second() || message.guild.members.get(args[0]));
     if(!mUser) return message.channel.send("Não achei o fiato!");
 
-      message.channel.send(mUser, 'Glub-Glub pra vc :>');
+      message.channel.send(mUser);
+			message.channel.send(mmUser);
 
     return;
   }
