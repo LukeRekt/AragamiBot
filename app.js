@@ -1794,8 +1794,7 @@ bot.on("message", async message => {
     let mUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!mUser) return message.channel.send("Não achei o fiato!");
 
-      message.channel.send(`${mUser}`, "linguiça");
-
+      message.channel.send("${mUser}", {files: ["https://media.giphy.com/media/iWEIxgPiAq58c/giphy.gif"]});
     return;
   }
 
