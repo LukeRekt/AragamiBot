@@ -1769,7 +1769,7 @@ bot.on("message", async message => {
 		if(!time) return message.reply('Coloca um tempo fiato >:C');
 
 		member.addRole(rankmute.id);
-		message.channel.send(` ${mUser} calei sua boca por ${ms(ms(time), {long: true})} >:D`);
+		message.channel.send(` ${member.user.tag} calei sua boca por ${ms(ms(time), {long: true})} >:D`);
 
 		setTimeout(function() {
 		member.removeRole(rankmute.id);
