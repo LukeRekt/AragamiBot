@@ -1779,7 +1779,27 @@ bot.on("message", async message => {
   }
 
 });
+bot.on("message", async message => {
+  if(message.author.bot) return;
+  if(message.channel.type === "dm") return;
 
+  let messageArray = message.content.split(" ");
+  let cmd = messageArray[0];
+  let args = messageArray.slice(1);
+
+  if(cmd === `${initcmd}glub`){
+
+    //!kick @daeshan askin for it
+
+    let mUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!mUser) return message.channel.send("Não achei o fiato!");
+
+      message.channel.send(mUser, 'Glub-Glub pra vc :>');
+
+    return;
+  }
+
+});
 
 
 //ping
