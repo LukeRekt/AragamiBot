@@ -1804,9 +1804,10 @@ bot.on("message", async message => {
 });
 
 bot.on('message', function(message) {
-    if (message.content === "$loop") { 
+    if (message.content === "$linguiça") {
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");		
         var interval = setInterval (function () {
-            message.channel.send("123")
+            message.channel.send("linguiça")
             .catch(console.error); // 
         }, 1 * 100000); 
     }
