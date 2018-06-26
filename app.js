@@ -1809,7 +1809,7 @@ bot.on('message', function(message) {
         var interval = setInterval (function () {
             message.channel.send("linguiça")
             .catch(console.error); // 
-        }, 1 * 100000); 
+        }, 1 * 500000); 
     }
 });
 
