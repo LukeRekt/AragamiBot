@@ -1803,14 +1803,16 @@ bot.on("message", async message => {
 
 });
 
-bot.on('message', function() {
+bot.on('message', function(message) {
+    // Now, you can use the message variable inside
     if (message.content === "$loop") { 
-      var interval = setInterval (function () {
-        message.channel.send("teste")
-      }, 1 * 1000); 
+        var interval = setInterval (function () {
+            // use the message's channel (TextChannel) to send a new message
+            message.channel.send("123")
+            .catch(console.error); // add error handling here
+        }, 1 * 1000); 
     }
 });
-
 
 //ping
 var http = require("http");
