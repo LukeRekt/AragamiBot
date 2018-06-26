@@ -1646,6 +1646,7 @@ bot.on('message', (message) => {
 	}
 });
 
+
 //pm top do aragami
 bot.on('message', (message) => {
 	if(message.content == '-pmara'){
@@ -1777,8 +1778,14 @@ bot.on("message", async message => {
 	}, ms(time));
 
   }
-
+//desmutar - inicio
+//membro recebe message.guild.members
+//if quem escreveu prem == Mute
+//else msg sem permissão
+//if member cargo == Mutado then Remove
+//message (desmutado/remove count)
 });
+
 bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
@@ -1788,15 +1795,20 @@ bot.on("message", async message => {
   let args = messageArray.slice(1);
 
   if(cmd === `${initcmd}bater`){
-
-    //!kick @daeshan askin for it
-
     let mUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!mUser) return message.channel.send("Não achei o fiato!");
       message.channel.send(`${mUser}`, {files: ["https://media.giphy.com/media/iWEIxgPiAq58c/giphy.gif"]});
     return;
   }
 
+});
+
+bot.on('message', function() {
+    if (message.content === "$loop") { 
+      var interval = setInterval (function () {
+        message.channel.send("teste")
+      }, 1 * 1000); 
+    }
 });
 
 
