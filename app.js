@@ -1803,15 +1803,15 @@ bot.on("message", async message => {
 
 });
 
-bot.on('message', function(message) {
-    if (message.content === "$linguiça") {
-    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");		
-        var interval = setInterval (function () {
-            message.channel.send("msg de teste :P (é automatica)")
-            .catch(console.error); // 
-        }, 1 * 500000); 
-    }
-});
+//bot.on('message', function(message) {
+ //   if (message.content === "$linguiça") {
+  //  if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");		
+  //      var interval = setInterval (function () {
+  //          message.channel.send("msg de teste :P (é automatica)")
+ //           .catch(console.error); // 
+ //       }, 1 * 500000); 
+ //   }
+//});
 
 //ping
 var http = require("http");
