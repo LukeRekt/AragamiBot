@@ -1803,8 +1803,52 @@ bot.on("message", async message => {
 
 });
 
+bot.on('message', message => {
+
+  
+    let msg = message.content.toUpperCase();
+    let sender = message.author; 
+    let cont = message.content.slice(prefix.length).split(" ");
+    let args = cont.slice(1); 
+
+    // Commandos
+    
+    if (msg.startsWith(initcmd + 'clear')) { 
+       
+        async function purge() {
+            message.delete(); 
+
+            
+            if (!message.member.roles.find("name", "Aragami Bot")) { 
+                message.channel.send('Sem permissão fiato >:C.'); 
+                return; 
+            }
+
+            
+            if (isNaN(args[0])) {
+                
+                message.channel.send('coloca a quantidade >:C. \n assim: ' + initcmd + 'clear <quantidade>'); 
+                
+                return;
+            }
+
+            const fetched = await message.channel.fetchMessages({limit: args[0]}); 
+            console.log(fetched.size + ' Deletando :P...'); 
+
+            // Deleting the messages
+            message.channel.bulkDelete(fetched)
+                .catch(error => message.channel.send(`Erro;-;: ${error}`)); 
+
+        }
+
+        
+        purge(); 
+
+    }
+});
+
 //bot.on('message', function(message) {
- //   if (message.content === "$linguiça") {
+ //   if (message.content === "-msg") {
   //  if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");		
   //      var interval = setInterval (function () {
   //          message.channel.send("msg de teste :P (é automatica)")
