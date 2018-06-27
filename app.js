@@ -1819,7 +1819,7 @@ bot.on('message', message => {
 
     // Commandos
     
-    if (msg.startsWith(initcmd + 'clear')) { 
+    if (msg.startsWith('-clear')) { 
        
         async function purge() {
             message.delete(); 
