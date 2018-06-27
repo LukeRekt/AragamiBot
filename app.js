@@ -1778,6 +1778,7 @@ bot.on("message", async message => {
 	}, ms(time));
 
   }
+  
 //desmutar - inicio
 //membro recebe message.guild.members
 //if quem escreveu prem == Mute
@@ -1859,7 +1860,7 @@ bot.on('message', function(message) {
         var interval = setInterval (function () {
            message.channel.send("Se quiser divulgar o server estamos ai :P")
            .catch(console.error); // 
-       }, 1 * 500000); 
+       }, 1 * 300000); 
     }
 });
 
