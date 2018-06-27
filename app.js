@@ -1824,12 +1824,24 @@ bot.on("message", async message => {
 });
 
 bot.on('message', (message) => {
-    if(message.content == '-cagar'){
-        message.channel.send('Você cagou :poop: ');
-    }
+	
+	if(cmd === `${initcmd}votar`){
+		
+if (!args) return message.reply("Você deve ter algo para votar!")
+    if (!message.content.includes("?")) return message.reply("Inclua um? no seu voto!")
+        message.channel.send(`:ballot_box:  ${message.author.username} começou uma votação! Reaja à minha próxima mensagem para votar nela. :ballot_box: `);
+        const pollTopic = await message.channel.send(message.content.slice(2));
+        await pollTopic.react(`✅`);
+        await pollTopic.react(`⛔`);
+        // Create a reaction collector
+        const filter = (reaction) => reaction.emoji.name === '✅';
+        const collector = pollTopic.createReactionCollector(filter, { time: 15000 });
+        collector.on('collect', r => console.log(`peguei ${r.emoji.name}`));
+        collector.on('end', collected => console.log(`peguei ${collected.size} items`));
+		
+		    }
 });
 
-bot.on('message', message => {
 
   
     let msg = message.content.toUpperCase();
