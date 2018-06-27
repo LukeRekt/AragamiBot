@@ -1864,6 +1864,18 @@ bot.on('message', function(message) {
     }
 });
 
+bot.on('message', function(message) {
+    if (message.content === "-msg2") {
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");		
+        var interval = setInterval (function () {
+           message.channel.send("o de cima é guei")
+           .catch(console.error); // 
+       }, 1 * 300000); 
+    }
+});
+
+
+
 //ping
 var http = require("http");
 setInterval(function() {
