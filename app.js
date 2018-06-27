@@ -1808,7 +1808,7 @@ bot.on('message', message => {
   
     let msg = message.content.toUpperCase();
     let sender = message.author; 
-    let cont = message.content.slice(prefix.length).split(" ");
+    let cont = message.content.slice(initcmd.length).split(" ");
     let args = cont.slice(1); 
 
     // Commandos
