@@ -1819,7 +1819,7 @@ bot.on('message', message => {
             message.delete(); 
 
             
-            if (!message.member.roles.find("name", "Aragami Bot")) { 
+            if (!message.member.roles.find("name", "Aragami-mestre")) { 
                 message.channel.send('Sem permissão fiato >:C.'); 
                 return; 
             }
