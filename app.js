@@ -1804,7 +1804,7 @@ bot.on("message", async message => {
 });
 
 bot.on('message', (message) => {
-    if(message.content == '!cagar){
+    if(message.content == '-cagar'){
         message.channel.send('Você cagou :poop: ');
     }
 });
