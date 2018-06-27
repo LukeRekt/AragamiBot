@@ -1825,9 +1825,13 @@ bot.on("message", async message => {
 
 bot.on('message', (message) => {
 	
-	if(cmd === `${initcmd}votar`){
-		
-if (!args) return message.reply("Você deve ter algo para votar!")
+  let messageArray = message.content.split(" ");
+  let cmd = messageArray[0];
+  let args = messageArray.slice(1);
+  let bReason = args.join(" ").slice(22);
+	
+  if(cmd === `${initcmd}votar`){
+  if (!args) return message.reply("Você deve ter algo para votar!")
     if (!message.content.includes("?")) return message.reply("Inclua um? no seu voto!")
         message.channel.send(`:ballot_box:  ${message.author.username} começou uma votação! Reaja à minha próxima mensagem para votar nela. :ballot_box: `);
         const pollTopic = await message.channel.send(message.content.slice(2));
