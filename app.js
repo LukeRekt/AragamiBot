@@ -1824,11 +1824,6 @@ bot.on("message", async message => {
 });
 
 bot.on('message', (message) => {
-	
-  let messageArray = message.content.split(" ");
-  let cmd = messageArray[0];
-  let args = messageArray.slice(1);
-  let bReason = args.join(" ").slice(22);
 		
   
     let msg = message.content.toUpperCase();
