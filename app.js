@@ -599,19 +599,19 @@ bot.on('message', message => {
 				    },
 	  				color: 1752220,
 	  				fields: [{
-	  					name: "Members",
-	  					value: "`" + bot.users.size + "` Total\n`" + totalOnline + "` Online\n\n`" + message.guild.memberCount + "` total this server\n`" + guildTotalOnline + "` online this server",
+	  					name: "Membros",
+	  					value: "`" + bot.users.size + "` Total\n`" + totalOnline + "` Online\n\n`" + message.guild.memberCount + "` nesse server\n`" + guildTotalOnline + "` online",
 	  					inline: true
 	  				}, {
 	  					name: "Channels",
-	  					value: "`" + (bot.channels.size - nonGuildChannels)+ "` Total\n`" + message.guild.channels.size + "` this server\n`" + totalTextChannels + "` Total Text\n`" + totalVoiceChannels + "` Total Voice",
+	  					value: "`" + (bot.channels.size - nonGuildChannels)+ "` Total\n`" + message.guild.channels.size + "` nesse server\n`" + totalTextChannels + "` Canais txt\n`" + totalVoiceChannels + "` Total Voice",
 	  					inline: true
 	  				}, {
 	  					name: "Servers",
 	  					value: bot.guilds.size,
 	  					inline: true
 	  				}, {
-	  					name: "Uptime",
+	  					name: "Online desde",
 	  					value: uptime[0] + "d " + uptime[1] + "h " + uptime[2] + "m " + uptime[3] + "s",
 	  					inline: true
 	  				}],
@@ -631,7 +631,7 @@ bot.on('message', message => {
   		if(owner){
   			owner = "<@" + owner.id + ">"
   		}else
-  			owner = "Mesmaroth"
+  			owner = "LukeRekt"
 
   		getInvite(link =>{
   			message.channel.send("**Sobre**", {
@@ -647,7 +647,7 @@ bot.on('message', message => {
 	  					value: bot.user.username,
 	  					inline: true
 	  				},{
-	  					name: "Verção",
+	  					name: "versão",
 	  					value: "Glub" + botVersion,
 	  					inline: true
 	  				},{
@@ -660,7 +660,7 @@ bot.on('message', message => {
 	  					inline: true
 	  				},{
 	  					name: "Quem sou?",
-	  					value: "sou o bot do user mais lixo de todos",
+	  					value: "sou o bot do lixo do Aragami",
 	  					inline: false
 	  				}],
 	  				thumbnail: {
@@ -760,7 +760,7 @@ bot.on('message', message => {
 
   	if(isCommand(message.content, 'invite')){
   		getInvite(link => {
-  			message.channel.send("**Invite:** "  + link);
+  			message.channel.send("**Invite:** Esse bot é só pro café fiadaputa >:C");
   		});
   	}
 
@@ -768,7 +768,7 @@ bot.on('message', message => {
   		var uptime = botUptime();
   		var d = uptime[0], h = uptime[1], m = uptime[2], s = uptime[3];
 
-  		message.channel.send("**Uptime:** " + d + " Dias(s) : " + h + " houras(s) : " + m + " minuto(s) : " + s + " segundo(s)");
+  		message.channel.send("--Uptime:-- " + d + " Dias(s) : " + h + " houras(s) : " + m + " minuto(s) : " + s + " segundo(s)");
   	}
 
   	if(isCommand(message.content, 'setvc')){
