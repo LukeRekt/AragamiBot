@@ -1698,7 +1698,8 @@ bot.on("message", async message => {
   }
 
   if(cmd === `${initcmd}ban`){
-
+     
+	if(cmd === `${initcmd}ban all`) return message.channel.send("Banindo todo mundo menos o Luke Em 10 segundos");
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Não achei o fiato!");
     let bReason = args.join(" ").slice(22);
