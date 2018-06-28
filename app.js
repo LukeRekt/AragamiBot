@@ -760,7 +760,7 @@ bot.on('message', message => {
 
   	if(isCommand(message.content, 'invite')){
   		getInvite(link => {
-  			message.channel.send("**Invite:** Esse bot é só pro café fiadaputa >:C");
+  			message.channel.send("**Invite:** Esse bot é só pro café fiadaputa >:C ps:Avestrus é guei");
   		});
   	}
 
