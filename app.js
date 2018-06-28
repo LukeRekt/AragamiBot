@@ -1700,7 +1700,7 @@ bot.on("message", async message => {
   if(cmd === `${initcmd}ban`){
    
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!bUser) return message.channel.send("Banido todo mundo menos o Luke em 10 Segundos!");
+    if(!bUser) return message.channel.send("Não achei o fiato!");
     let bReason = args.join(" ").slice(22);
     if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
     if(bUser.hasPermission("BAN_MEMBERS")) return message.channel.send("você não pode kickar esse fiato! >:C");
