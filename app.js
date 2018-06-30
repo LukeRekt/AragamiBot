@@ -1725,7 +1725,7 @@ bot.on("message", async message => {
   }
     if(cmd === `${initcmd}sug`){
    
-message.channel.send({embed: suggestedembed}).then(embedMessage => {
+
     let bReason = args.join(" ").slice(22);
 
     let banEmbed = new Discord.RichEmbed()
@@ -1736,7 +1736,7 @@ message.channel.send({embed: suggestedembed}).then(embedMessage => {
     let incidentchannel = message.guild.channels.find(`name`, "sugestões");
     if(!incidentchannel) return message.channel.send("não achei o canal ;-;.");
 	
-    embedMessage.react("👍");
+
     incidentchannel.send(banEmbed);
 	
 
