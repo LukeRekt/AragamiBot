@@ -1872,9 +1872,9 @@ bot.on('message', message => {
     let args = cont.slice(1); 
 
 
-    if (msg.startsWith(prefix + 'clear')) { 
+    if (msg.startsWith(prefix + 'CLEAR')) { 
     
-        async function purge() {
+        async function clear() {
             message.delete(); 
 
             
@@ -1901,7 +1901,7 @@ bot.on('message', message => {
         }
 
       
-        purge(); 
+        clear(); 
 
     }
 });
