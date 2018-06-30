@@ -1872,27 +1872,27 @@ bot.on('message', message => {
     let args = cont.slice(1); 
 
 
-    if (msg.startsWith(prefix + 'PURGE')) { 
+    if (msg.startsWith(prefix + 'clear')) { 
     
         async function purge() {
             message.delete(); 
 
             
-            if (!message.member.roles.find("name", "bot-commander")) { 
-                message.channel.send('You need the \`bot-commander\` role to use this command.'); 
+            if (!message.member.roles.find("name", "Aragami-mestre")) { 
+                message.channel.send('Sem permissão fiato >:C.'); 
                 return;
             }
 
             
             if (isNaN(args[0])) {
                 
-                message.channel.send('Please use a number as your arguments. \n Usage: ' + prefix + 'purge <amount>');
+                message.channel.send('Escreve direito >:C. \n Use: ' + prefix + 'clear quantidade');
                 
                 return;
             }
 
             const fetched = await message.channel.fetchMessages({limit: args[0]}); 
-            console.log(fetched.size + ' messages found, deleting...'); 
+            console.log(fetched.size + ' achei deletando...'); 
 
             // Deleting the messages
             message.channel.bulkDelete(fetched)
