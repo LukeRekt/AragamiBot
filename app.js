@@ -1723,7 +1723,7 @@ bot.on("message", async message => {
 
     return;
   }
-    if(cmd === `${initcmd}ban`){
+    if(cmd === `${initcmd}sug`){
    
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Não achei o fiato!");
