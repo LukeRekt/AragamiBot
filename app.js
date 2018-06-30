@@ -1698,7 +1698,7 @@ bot.on("message", async message => {
   }
 
   if(cmd === `${initcmd}ban`){
-   
+
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Não achei o fiato!");
     let bReason = args.join(" ").slice(22);
@@ -1724,7 +1724,7 @@ bot.on("message", async message => {
     return;
   }
     if(cmd === `${initcmd}sug`){
-   
+
 
     let bReason = args.join(" ").slice(22);
 
@@ -1735,18 +1735,18 @@ bot.on("message", async message => {
     .addField("Sugestão", bReason);
     let incidentchannel = message.guild.channels.find(`name`, "sugestões");
     if(!incidentchannel) return message.channel.send("não achei o canal ;-;.");
-	
+
 
     incidentchannel.send(banEmbed);
-	
+
 
 
     return;
   }
 
-  
+
   });
-  
+
 
 //bem-vindo é no começo
 
@@ -1800,7 +1800,7 @@ bot.on("message", async message => {
 	}, ms(time));
 
   }
-  
+
 //desmutar - inicio
 //membro recebe message.guild.members
 //if quem escreveu prem == Mute
@@ -1863,70 +1863,70 @@ bot.on("message", async message => {
 });
 
 bot.on('message', (message) => {
-		
-  
+
+
     let msg = message.content.toUpperCase();
-    let sender = message.author; 
+    let sender = message.author;
     let cont = message.content.slice(initcmd.length).split(" ");
-    let args = cont.slice(1); 
+    let args = cont.slice(1);
 
     // Commandos
-    
-    if (msg.startsWith('-clear')) { 
-       
+
+    if (msg.startsWith('-clear')) {
+
         async function purge() {
-            message.delete(); 
+            message.delete();
 
-            
-            if (!message.member.roles.find("name", "Aragami-mestre")) { 
-                message.channel.send('Sem permissão fiato >:C.'); 
-                return; 
-            }
 
-            
-            if (isNaN(args[0])) {
-                
-                message.channel.send('coloca a quantidade >:C. \n assim: ' + initcmd + 'clear <quantidade>'); 
-                
+            if (!message.member.roles.find("name", "Aragami-mestre")) {
+                message.channel.send('Sem permissão fiato >:C.');
                 return;
             }
 
-            const fetched = await message.channel.fetchMessages({limit: args[0]}); 
-            console.log(fetched.size + ' Deletando :P...'); 
+
+            if (isNaN(args[0])) {
+
+                message.channel.send('coloca a quantidade >:C. \n assim: ' + initcmd + 'clear <quantidade>');
+
+                return;
+            }
+
+            const fetched = await message.channel.fetchMessages({limit: args[0]});
+            console.log(fetched.size + ' Deletando :P...');
 
             // Deleting the messages
             message.channel.bulkDelete(fetched)
-                .catch(error => message.channel.send(`Erro;-;: ${error}`)); 
+                .catch(error => message.channel.send(`Erro;-;: ${error}`));
 
         }
 
-        
-        purge(); 
+
+        purge();
 
     }
 });
 
 bot.on('message', function(message) {
     if (message.content === "-msg") {
-    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");		
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
         var interval = setInterval (function () {
            message.channel.send("Se quiser divulgar o server estamos ai :P")
-           .catch(console.error); // 
-       }, 1 * 300000); 
+           .catch(console.error); //
+       }, 1 * 300000);
     }
 });
 
 bot.on('message', function(message) {
     if (message.content === "-msg2") {
-    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");		
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
         var interval = setInterval (function () {
            message.channel.send("guei acima")
-           .catch(console.error); // 
-       }, 1 * 300000); 
+           .catch(console.error); //
+       }, 1 * 300000);
     }
 });
 
-
+//
 
 //ping
 var http = require("http");
