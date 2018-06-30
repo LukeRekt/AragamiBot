@@ -1723,17 +1723,23 @@ bot.on("message", async message => {
 
     return;
   }
-    if(cmd === `${initcmd}sugestao`){
+    if(cmd === `${initcmd}ban`){
+   
+    let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!bUser) return message.channel.send("Não achei o fiato!");
     let bReason = args.join(" ").slice(22);
 
     let banEmbed = new Discord.RichEmbed()
     .setDescription("Sugestão")
     .setColor("#bc0000")
     .addField("por", `<@${message.author.id}>`)
-    .addField("Sugestão", bReason);
+	.addField("Hora", message.createdAt)
+    .addField("Motivo", bReason);
     let incidentchannel = message.guild.channels.find(`name`, "sugestões");
     if(!incidentchannel) return message.channel.send("não achei o canal ;-;.");
-	
+
+    message.guild.member(bUser).sendMessage("Banido do café Otaro >:D Motivo:");
+    message.guild.member(bUser).sendMessage(bReason);
     incidentchannel.send(banEmbed);
 
 
