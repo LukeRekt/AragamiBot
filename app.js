@@ -1723,10 +1723,7 @@ bot.on("message", async message => {
 
     return;
   }
-    if(cmd === `${initcmd}ban`){
-   
-    let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!bUser) return message.channel.send("Não achei o fiato!");
+    if(cmd === `${initcmd}sugestao`){
     let bReason = args.join(" ").slice(22);
 
     let banEmbed = new Discord.RichEmbed()
