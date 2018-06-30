@@ -1739,15 +1739,15 @@ bot.on("message", async message => {
 
     incidentchannel.send(banEmbed);
 	
-	message.channel.send({embed: suggestedembed}).then(embedMessage => {
-    embedMessage.react("👍");
 
 
     return;
   }
   
   });
-
+message.channel.send({embed: suggestedembed}).then(embedMessage => {
+    embedMessage.react("👍");
+});
 
 //bem-vindo é no começo
 
