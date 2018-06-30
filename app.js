@@ -1885,7 +1885,7 @@ bot.on('message', message => {
             
             if (isNaN(args[0])) {
                 
-                message.channel.send('Please use a number as your arguments. \n Usage: ' + prefix + 'purge <amount>'); .
+                message.channel.send('Please use a number as your arguments. \n Usage: ' + prefix + 'purge <amount>');
                 
                 return;
             }
