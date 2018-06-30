@@ -20,6 +20,7 @@ const modulesPath = path.join(__dirname, 'modules');
 const botLogin = require(path.join(configPath, 'botLogin.js'));
 const yt = require(path.join(modulesPath, 'youtube.js'));
 const botPreferenceFile = path.join(configPath, 'preference.json');
+const prefix = '-';
 
 
 
@@ -1871,7 +1872,7 @@ bot.on('message', message => {
     let args = cont.slice(1); 
 
 
-    if (msg.startsWith(initcmd + 'PURGE')) { 
+    if (msg.startsWith(prefix + 'PURGE')) { 
     
         async function purge() {
             message.delete(); 
