@@ -1862,46 +1862,45 @@ bot.on("message", async message => {
 
 });
 
-bot.on('message', (message) => {
+bot.on('message', message => {
+
+    
+    let msg = message.content.toUpperCase(); 
+    let sender = message.author; 
+    let cont = message.content.slice(prefix.length).split(" "); 
+    let args = cont.slice(1); 
 
 
-    let msg = message.content.toUpperCase();
-    let sender = message.author;
-    let cont = message.content.slice(initcmd.length).split(" ");
-    let args = cont.slice(1);
-
-    // Commandos
-
-    if (msg.startsWith('-clear')) {
-
+    if (msg.startsWith(initcmd + 'PURGE')) { 
+    
         async function purge() {
-            message.delete();
+            message.delete(); 
 
-
-            if (!message.member.roles.find("name", "Aragami-mestre")) {
-                message.channel.send('Sem permissão fiato >:C.');
+            
+            if (!message.member.roles.find("name", "bot-commander")) { 
+                message.channel.send('You need the \`bot-commander\` role to use this command.'); 
                 return;
             }
 
-
+            
             if (isNaN(args[0])) {
-
-                message.channel.send('coloca a quantidade >:C. \n assim: ' + initcmd + 'clear <quantidade>');
-
+                
+                message.channel.send('Please use a number as your arguments. \n Usage: ' + prefix + 'purge <amount>'); .
+                
                 return;
             }
 
-            const fetched = await message.channel.fetchMessages({limit: args[0]});
-            console.log(fetched.size + ' Deletando :P...');
+            const fetched = await message.channel.fetchMessages({limit: args[0]}); 
+            console.log(fetched.size + ' messages found, deleting...'); 
 
             // Deleting the messages
             message.channel.bulkDelete(fetched)
-                .catch(error => message.channel.send(`Erro;-;: ${error}`));
+                .catch(error => message.channel.send(`Error: ${error}`));
 
         }
 
-
-        purge();
+      
+        purge(); 
 
     }
 });
