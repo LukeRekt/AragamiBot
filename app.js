@@ -1708,7 +1708,7 @@ bot.on("message", async message => {
     let banEmbed = new Discord.RichEmbed()
     .setDescription("---Banido---")
     .setColor("#bc0000")
-    .addField("Banido", `${member.user.tag}`)
+    .addField("Banido", `${bUser.user.tag}`)
     .addField("Banido por", `<@${message.author.id}>`)
 	.addField("Hora", message.createdAt)
     .addField("Motivo", bReason);
