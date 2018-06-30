@@ -1733,8 +1733,8 @@ bot.on("message", async message => {
     .setColor("#bc0000")
     .addField("por", `<@${message.author.id}>`)
     .addField("Sugestão", bReason);
-    message.react("👍")
-    message.react("👎")
+    banEmbed.react("👍")
+    banEmbed.react("👎")
     let incidentchannel = message.guild.channels.find(`name`, "sugestões");
     if(!incidentchannel) return message.channel.send("não achei o canal ;-;.");
 
