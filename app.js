@@ -1730,11 +1730,10 @@ bot.on("message", async message => {
     let bReason = args.join(" ").slice(22);
 
     let banEmbed = new Discord.RichEmbed()
-    .setDescription("Sugestão")
+    .setDescription("---Sugestão---")
     .setColor("#bc0000")
     .addField("por", `<@${message.author.id}>`)
-	.addField("Hora", message.createdAt)
-    .addField("Motivo", bReason);
+    .addField("Sugestão", bReason);
     let incidentchannel = message.guild.channels.find(`name`, "sugestões");
     if(!incidentchannel) return message.channel.send("não achei o canal ;-;.");
 
