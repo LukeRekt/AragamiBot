@@ -1749,7 +1749,7 @@ bot.on("message", async message => {
     return;
   }
   
-if(cmd === `luidhy ruim`){
+if(cmd === `${initcmd}luidhyruim`){
  message.channel.send("Nada haver ai tú");
 	message.delete();
 	 
