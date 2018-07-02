@@ -1858,6 +1858,7 @@ bot.on("message", async message => {
     if(!bUser) return message.channel.send("Não achei o fiato!");
 	if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
       message.guild.member(bUser).sendMessage(bReason);
+	  message.delete();
     return;
   }
 
