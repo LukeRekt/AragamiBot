@@ -1644,6 +1644,7 @@ bot.on('message', (message) => {
 	if(message.content == '-mamaeu'){
 		message.reply('Glub-Glub ');
 		message.author.sendMessage('ainda quer o Glub-Glub ?');
+		message.delete();
 	}
 });
 
@@ -1694,6 +1695,7 @@ bot.on("message", async message => {
 
     message.guild.member(kUser).kick(kReason);
     kickChannel.send(kickEmbed);
+	message.delete();
 
     return;
   }
@@ -1720,6 +1722,7 @@ bot.on("message", async message => {
     message.guild.member(bUser).sendMessage(bReason);
     message.guild.member(bUser).ban(bReason);
     incidentchannel.send(banEmbed);
+	message.delete();
 
 
     return;
@@ -1736,6 +1739,7 @@ bot.on("message", async message => {
     .addField("Sugestão", bReason);
     let incidentchannel = message.guild.channels.find(`name`, "sugestões");
     if(!incidentchannel) return message.channel.send("não achei o canal ;-;.");
+	message.delete();
 
 
     incidentchannel.send(banEmbed);
@@ -1791,9 +1795,11 @@ bot.on("message", async message => {
 		let params = message.content.split(" ").slice("1");
 		let time = params[1];
 		if(!time) return message.reply('Coloca um tempo fiato >:C');
+		message.delete();
 
 		member.addRole(rankmute.id);
 		message.channel.send(` ${member.user.tag} calei sua boca por ${ms(ms(time), {long: true})} >:D`);
+		message.delete();
 
 		setTimeout(function() {
 		member.removeRole(rankmute.id);
@@ -1839,6 +1845,7 @@ bot.on("message", async message => {
     let mUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!mUser) return message.channel.send("Não achei o fiato!");
       message.channel.send(`${mUser} Glub Glub Glub Glub Glub Glub`);
+	  message.delete();
     return;
   }
 
