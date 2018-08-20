@@ -1659,7 +1659,7 @@ bot.on('message', (message) => {
 });
 bot.on('message', message=> {
     if (message.isMentioned(bot.user)) {
-    message.reply('fala o que vc quer de uma vez caralho ? -ajuda');
+    message.reply('Hoje é meu níver kraioKKKKKKKKK');
 
 }
 });
