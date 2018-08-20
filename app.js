@@ -1934,9 +1934,9 @@ bot.on('message', function(message) {
     if (message.content === "-msg2") {
     if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
         var interval = setInterval (function () {
-           message.channel.send("guei acima")
+           message.channel.send("hoje é meu níver fi duma éguaKKKKKKK")
            .catch(console.error); //
-       }, 1 * 300000);
+       }, 1 * 1000000);
     }
 });
 
