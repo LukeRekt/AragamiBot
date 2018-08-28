@@ -1659,7 +1659,7 @@ bot.on('message', (message) => {
 });
 bot.on('message', message=> {
     if (message.isMentioned(bot.user)) {
-    message.reply('o que vc quer ?');
+    message.reply('fala oq vc quer de uma vez crl');
 
 }
 });
