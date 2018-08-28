@@ -1931,12 +1931,12 @@ bot.on('message', function(message) {
 });
 
 bot.on('message', function(message) {
-    if (message.content === "-msg2") {
+    if (message.content === "-divulgar") {
     if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
         var interval = setInterval (function () {
-           message.channel.send("hoje é meu níver fi duma éguaKKKKKKK")
+           message.channel.send("@everyone Nosso server oficial :P https://discord.gg/SMCmgMC")
            .catch(console.error); //
-       }, 1 * 1000000);
+       }, 1 * 1000);
     }
 });
 
