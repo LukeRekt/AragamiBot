@@ -1659,7 +1659,7 @@ bot.on('message', (message) => {
 });
 bot.on('message', message=> {
     if (message.isMentioned(bot.user)) {
-    message.reply('Hoje é meu níver kraioKKKKKKKKK');
+    message.reply('o que vc quer ?');
 
 }
 });
@@ -1936,7 +1936,7 @@ bot.on('message', function(message) {
         var interval = setInterval (function () {
            message.channel.send("@everyone Nosso server oficial :P https://discord.gg/SMCmgMC")
            .catch(console.error); //
-       }, 1 * 1000);
+       }, 1 * 300000);
     }
 });
 
