@@ -1750,7 +1750,7 @@ bot.on("message", async message => {
   }
   
 if(cmd === `${initcmd}luidhyruim`){
- message.channel.send("<@&everyone> Nada haver ai tú");
+ message.channel.send(hereRole + " Nada haver ai tú");
 	message.delete();
 	 
 	 return;
