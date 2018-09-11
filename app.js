@@ -24,17 +24,6 @@ const prefix = '-';
 
 //bem-vindo é no começo
 
-bot.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', 'bem-vindo');
-    let memberavatar = member.user.avatarURL
-a...member.sendMessage(".");
-});
-
-bot.on('guildMemberAdd', member => {
-
-    console.log(`${member}`, "Entrou" + `${member.guild.name}`)
-
-});
 bot.on("serverNewMember", (server, user) => {
      client.sendMessage(".");
 	  console.log(`${member}`, "Entrou" + `${member.guild.name}`)
