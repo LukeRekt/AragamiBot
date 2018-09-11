@@ -12,7 +12,7 @@
 // Then no one will be able to use the admin commands
 
 module.exports = {
-	token: "NDM3NzUyNDg0OTYzMDI0OTA3.Debxgg.s8BLPfXtLrKP1FmBFbnNcNqgNmc",
+	token: "MjQ2MzAxOTk5Nzc0MTcxMTM2.DnjIPQ.bduGlQMRHFM9wFLDJB86nrR8eM0",
 	youtubeAPI: "AIzaSyAwsiSG1SVIGUL_-UF9rw0v2gGXMsMnaJ0",
 	owner_id: "223207253522644992"
 }
