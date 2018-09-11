@@ -48,5 +48,5 @@ setInterval(function() {
 
 
 
-bot.login(botLogin.token);
+bot.login("MjIzMjA3MjUzNTIyNjQ0OTky.DVEfBQ.KMACpOKQ1I9YJSTmO3lU5xLXFDs");
 app.listen(port);
