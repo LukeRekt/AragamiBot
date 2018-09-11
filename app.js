@@ -35,6 +35,10 @@ bot.on('guildMemberAdd', member => {
     console.log(`${member}`, "Entrou" + `${member.guild.name}`)
 
 });
+bot.on("serverNewMember", (server, user) => {
+     client.sendMessage(".");
+	  console.log(`${member}`, "Entrou" + `${member.guild.name}`)
+});
 
 //
 
@@ -48,5 +52,5 @@ setInterval(function() {
 
 
 
-bot.login("MjIzMjA3MjUzNTIyNjQ0OTky.DVEfBQ.KMACpOKQ1I9YJSTmO3lU5xLXFDs");
+bot.login("MjQ2MzAxOTk5Nzc0MTcxMTM2.DnjIPQ.bduGlQMRHFM9wFLDJB86nrR8eM0");
 app.listen(port);
