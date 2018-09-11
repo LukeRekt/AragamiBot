@@ -27,7 +27,7 @@ const prefix = '-';
 bot.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', 'bem-vindo');
     let memberavatar = member.user.avatarURL
-member.guild.member.sendMessage("Banido do café Otaro >:D Motivo:");
+member.guild.member.sendMessage(".");
 });
 
 bot.on('guildMemberAdd', member => {
