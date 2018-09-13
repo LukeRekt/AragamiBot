@@ -22,7 +22,7 @@ const yt = require(path.join(modulesPath, 'youtube.js'));
 const botPreferenceFile = path.join(configPath, 'preference.json');
 const prefix = '-';
 
-//bem-vindo é no começo
+//unica parte que importa
 
 bot.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', 'bem-vindo');
@@ -30,7 +30,7 @@ bot.on('guildMemberAdd', member => {
 member.sendMessage("Então sejam Bem-Vindos e divirtam-se e chamem os amigos !! Convite: https://discord.gg/SMCmgMC");
 });
 
-//
+//até aq
 
 //ping
 var http = require("http");
@@ -42,5 +42,5 @@ setInterval(function() {
 
 
 
-bot.login("MjQ2MzAxOTk5Nzc0MTcxMTM2.DnjIPQ.bduGlQMRHFM9wFLDJB86nrR8eM0");
+bot.login("MjI1MDY3NDYwMDQ1MzA3OTA0.DnwKzg.yCD1NnhwKAT4_eZ73BxOc38IgV0");
 app.listen(port);
