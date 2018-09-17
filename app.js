@@ -24,6 +24,12 @@ const prefix = '-';
 
 //unica parte que importa
 
+bot.on('message', message=> {
+    if (message.isMentioned(bot.user)) {
+    message.reply('Sou uma homenagem para o nosso amigo Hiromi : (');
+
+}
+});
 
 
 //até aq
