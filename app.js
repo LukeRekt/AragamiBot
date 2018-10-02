@@ -24,11 +24,10 @@ const prefix = '-';
 
 //unica parte que importa
 
-bot.on('message', message=> {
-    if (message.isMentioned(bot.user)) {
-    message.reply('Sou uma homenagem para o nosso amigo Hiromi : (');
-
-}
+bot.on('guildMemberAdd', member => {
+    let channel = member.guild.channels.find('name', 'bem-vindo');
+    let memberavatar = member.user.avatarURL
+member.sendMessage("Então sejam Bem-Vindos e divirtam-se e chamem os amigos !! Convite: https://discord.gg/SMCmgMC");
 });
 
 
@@ -44,5 +43,5 @@ setInterval(function() {
 
 
 
-bot.login("NDkxMzY4NTU5NzEzMzIwOTYw.DoG6lg.-mGwNc6ouHmkVRetA44MIK_ZATg");
+bot.login("NDkxMzczMzA4MDcyMTY1Mzgw.DpRpmw.LeQiZebI78qDIjMDuYigIjEitjU");
 app.listen(port);
