@@ -43,5 +43,5 @@ setInterval(function() {
 
 
 
-bot.login("NDkxMzczMzA4MDcyMTY1Mzgw.DpRpmw.LeQiZebI78qDIjMDuYigIjEitjU");
+bot.login("NDkxMzczMzY0NjQyNDEzODcxMl1.DrJaig.nSP2G4yVC-chquHEH3Y3fpGonxc");
 app.listen(port);
