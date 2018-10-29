@@ -27,7 +27,7 @@ const prefix = '-';
 bot.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', 'bem-vindo');
     let memberavatar = member.user.avatarURL
-member.sendMessage("Se quiser me ajudar <3 https://discord.gg/SMCmgMC");
+member.sendMessage("Se quiser me ajudar <3 https://discord.gg/SMCmgMC :P");
 });
 
 
