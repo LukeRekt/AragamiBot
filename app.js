@@ -27,7 +27,7 @@ const prefix = '-';
 bot.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', 'bem-vindo');
     let memberavatar = member.user.avatarURL
-member.sendMessage("Então sejam Bem-Vindos e divirtam-se e chamem os amigos !! Convite: https://discord.gg/SMCmgMC");
+member.sendMessage("Se quiser me ajudar <3 https://discord.gg/SMCmgMC");
 });
 
 
@@ -43,5 +43,5 @@ setInterval(function() {
 
 
 
-bot.login("NDkxMzY0NjQyNDEzODcxMTI1.DrJaig.nSP2G4yVC-chquHEH3Y3fpGonxc");
+bot.login("NDk2NTEwNDE0MjgxMjQ0Njgy.DrgCTQ.UVKz1T7bxWQAq4Dlbzy1yQJxL1g");
 app.listen(port);
