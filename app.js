@@ -1833,7 +1833,7 @@ bot.on('message', (message) => {
 
     // Commandos
     
-    if (msg.startsWith('-clear')) { 
+    if (msg.startsWith(initcmd + 'clear')) { 
        
         async function clear() {
             message.delete(); 
@@ -1855,7 +1855,6 @@ bot.on('message', (message) => {
             const fetched = await message.channel.fetchMessages({limit: args[0]}); 
             console.log(fetched.size + ' Deletando :P...'); 
 
-            // Deleting the messages
             message.channel.bulkDelete(fetched)
                 .catch(error => message.channel.send(`Erro;-;: ${error}`)); 
 
