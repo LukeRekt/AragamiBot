@@ -16,6 +16,7 @@ const tempFilesPath = path.join(__dirname, 'tempFiles');
 const logsPath = path.join(__dirname, 'logs');
 const configPath = path.join(__dirname, 'config');
 const modulesPath = path.join(__dirname, 'modules');
+const prefix = '-'
 
 const botLogin = require(path.join(configPath, 'botLogin.js'));
 const yt = require(path.join(modulesPath, 'youtube.js'));
@@ -1833,7 +1834,7 @@ bot.on('message', (message) => {
 
     // Commandos
     
-    if (msg.startsWith(initcmd + 'clear')) { 
+    if (msg.startsWith(prefix + 'clear')) { 
        
         async function clear() {
             message.delete(); 
