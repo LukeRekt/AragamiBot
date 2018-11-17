@@ -1835,7 +1835,7 @@ bot.on('message', (message) => {
     
     if (msg.startsWith('-clear')) { 
        
-        async function purge() {
+        async function clear() {
             message.delete(); 
 
             
@@ -1862,7 +1862,7 @@ bot.on('message', (message) => {
         }
 
         
-        purge(); 
+        clear(); 
 
     }
 });
