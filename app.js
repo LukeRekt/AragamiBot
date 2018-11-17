@@ -1841,7 +1841,7 @@ bot.on('message', message => {
     
     if (msg.startsWith(prefix + 'limpar')) { 
        
-        async function limpar() {
+        async function purge() {
             message.delete(); 
 
             
@@ -1867,7 +1867,7 @@ bot.on('message', message => {
         }
 
         
-        limpar(); 
+        purge(); 
 
     }
 });
