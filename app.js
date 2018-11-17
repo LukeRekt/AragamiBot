@@ -1834,9 +1834,9 @@ bot.on('message', (message) => {
 
     // Commandos
     
-    if (msg.startsWith(prefix + 'clear')) { 
+    if (msg.startsWith(prefix + 'limpar')) { 
        
-        async function clear() {
+        async function limbar() {
             message.delete(); 
 
             
@@ -1862,7 +1862,7 @@ bot.on('message', (message) => {
         }
 
         
-        clear(); 
+        limpar(); 
 
     }
 });
