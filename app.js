@@ -1824,7 +1824,7 @@ bot.on("message", async message => {
 
 });
 
-bot.on('message', (message) => {
+bot.on('message', message => {
 		
   
     let msg = message.content.toUpperCase();
@@ -1836,7 +1836,7 @@ bot.on('message', (message) => {
     
     if (msg.startsWith(prefix + 'limpar')) { 
        
-        async function limbar() {
+        async function limpar() {
             message.delete(); 
 
             
