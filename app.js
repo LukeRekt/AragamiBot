@@ -1816,8 +1816,8 @@ bot.on("message", async message => {
 
   if(cmd === `${initcmd}privado`){
 	if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
-	client.channels.get("445793368078024706").send(bReason)
-      message.guild.member(bUser).sendMessage(bReason);
+	message.channels.get("445793368078024706").send(bReason)
+      message.guild.member(bUser).send(bReason);
     return;
   }
     if(cmd === `${initcmd}chat`){
