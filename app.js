@@ -1815,6 +1815,12 @@ bot.on("message", async message => {
   let bReason = args.join(" ").slice(22);
 
   if(cmd === `${initcmd}privado`){
+	if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
+	client.channels.get("445793368078024706").send(bReason)
+      message.guild.member(bUser).sendMessage(bReason);
+    return;
+  }
+    if(cmd === `${initcmd}chat`){
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Não achei o fiato!");
 	if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
