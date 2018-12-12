@@ -1903,7 +1903,7 @@ setInterval(function() {
 
 setInterval(function() {
   bot.channels.get('445793368078024706').send('aaaaaa')
-}, 3000);
+}, 300);
 
 
 
