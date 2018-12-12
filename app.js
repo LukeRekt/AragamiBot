@@ -1900,7 +1900,7 @@ setInterval(function() {
     http.get("http://quiet-wave-83938.herokuapp.com");
 }, 300000);
 
-const channel = client.channels.find('💬salão-principal', channelName)
+const channel = bot.channels.find('💬salão-principal', channelName)
 setInterval(function() {
    channel.send('AAA')
 }, 3000);
