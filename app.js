@@ -1663,6 +1663,7 @@ bot.on('message', message=> {
 }
 });
 
+
 bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
@@ -1823,6 +1824,13 @@ bot.on("message", async message => {
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Não achei o fiato!");
       message.guild.member(bUser).sendMessage(bReason);
+	  message.delete();
+    return;
+  }
+    if(cmd === `${initcmd}dick`){
+    let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!bUser) return message.channel.send("Não achei o fiato!");
+      message.guild.member(bUser).sendMessage("https://cdn.boob.bot/penis/4A88.jpg");
 	  message.delete();
     return;
   }
