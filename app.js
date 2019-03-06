@@ -1820,6 +1820,11 @@ bot.on("message", async message => {
 	bot.channels.get("445793368078024706").send(bReason)
     return;
   }
+    if(cmd === `${initcmd}falar`){
+	bot.channels.get("451844584012644362").send(bReason)
+    return;
+  }
+  
     if(cmd === `${initcmd}privado`){
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Não achei o fiato!");
