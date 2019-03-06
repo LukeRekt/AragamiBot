@@ -1780,7 +1780,7 @@ bot.on("message", async message => {
 	}, ms(time));
 
   }
-  	if(cmd === `${initcmd}lkmutar`){
+  	if(cmd === `${initcmd}lkaaamutar`){
 
 		let member = message.mentions.members.first();
 		if(!member) return message.reply("Você precisa mencionar alguem");
