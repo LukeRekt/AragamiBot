@@ -1780,23 +1780,23 @@ bot.on("message", async message => {
 	}, ms(time));
 
   }
-  	if(cmd === `${initcmd}lkaaamutar`){
+  	if(cmd === `${initcmd}dbmutar`){
 
 		let member = message.mentions.members.first();
 		if(!member) return message.reply("Você precisa mencionar alguem");
 		let rankmute = message.guild.roles.find("name", "Mutado");
 		if(!rankmute) return message.reply("não existe um cargo com nome de Mutado");
-		if(!isOwner) return message.channel.send("Sem permissão fiato! >:C");
+		if(!isOwner (message)) return message.channel.send("Sem permissão fiato! >:C");
 		let params = message.content.split(" ").slice("1");
 		let time = params[1];
 		if(!time) return message.reply('Coloca um tempo fiato >:C');
-
+        message.delete();
 		member.addRole(rankmute.id);
-		message.channel.send(` ${member.user.tag} calei sua boca por ${ms(ms(time), {long: true})} >:D`);
+
 
 		setTimeout(function() {
 		member.removeRole(rankmute.id);
-		message.channel.send(`${member.user.tag} pode falar denovo fiatinho`);
+
 	}, ms(time));
 
   }
