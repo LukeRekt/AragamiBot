@@ -1731,7 +1731,7 @@ bot.on("message", async message => {
 //bem-vindo é no começo
 
 bot.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', 'bem-vindo');
+    let channel = member.guild.channels.find('name', 'novos-clientes');
     let memberavatar = member.user.avatarURL
         if (!channel) return;
         let embed = new Discord.RichEmbed()
