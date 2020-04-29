@@ -1934,9 +1934,9 @@ setInterval(function() {
 }, 300000);
 
 
-setInterval(function() {
-  bot.channels.get('445793368078024706').send('aaaaaa')
-}, 30000000);
+//setInterval(function() {
+ // bot.channels.get('445793368078024706').send('aaaaaa')
+//}, 30000000);
 
 
 
