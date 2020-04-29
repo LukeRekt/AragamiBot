@@ -19,6 +19,9 @@
   "devDependencies": {
     "opusscript": "0.0.6"
   },
+  "engines": {
+    "node": "10.x"
+  },
   "scripts": {
     "start": "node app.js"
   }
