@@ -648,11 +648,11 @@ bot.on('message', message => {
 	  					value: bot.user.username,
 	  					inline: true
 	  				},{
-	  					name: "Verção",
-	  					value: "Glub" + botVersion,
+	  					name: "Versão",
+	  					value: "V" + botVersion,
 	  					inline: true
 	  				},{
-	  					name: "Author",
+	  					name: "Autor",
 	  					value: owner,
 	  					inline: true
 	  				},{
@@ -1800,7 +1800,7 @@ bot.on("message", async message => {
 	}, ms(time));
 
   }
-  
+
 //desmutar - inicio
 //membro recebe message.guild.members
 //if quem escreveu prem == Mute
@@ -1844,7 +1844,7 @@ bot.on("message", async message => {
 	bot.channels.get("451844584012644362").send(bReason)
     return;
   }
-  
+
     if(cmd === `${initcmd}privado`){
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Não achei o fiato!");
@@ -1863,65 +1863,65 @@ bot.on("message", async message => {
 });
 
 bot.on('message', message => {
-		
-  
+
+
     let msg = message.content.toUpperCase();
-    let sender = message.author; 
+    let sender = message.author;
     let cont = message.content.slice(initcmd.length).split(" ");
-    let args = cont.slice(1); 
+    let args = cont.slice(1);
 
     // Commandos
-    
-    if (msg.startsWith(prefix + 'limpar')) { 
-       
+
+    if (msg.startsWith(prefix + 'limpar')) {
+
         async function purge() {
-            message.delete(); 
+            message.delete();
 
-            
-            if (!message.member.roles.find("name", "Aragami-mestre")) { 
-                message.channel.send('Sem permissão fiato >:C.'); 
-                return; 
-            }
 
-            
-            if (isNaN(args[0])) {
-                
-                message.channel.send('coloca a quantidade >:C. \n assim: ' + initcmd + 'clear <quantidade>'); 
-                
+            if (!message.member.roles.find("name", "Aragami-mestre")) {
+                message.channel.send('Sem permissão fiato >:C.');
                 return;
             }
 
-            const fetched = await message.channel.fetchMessages({limit: args[0]}); 
-            console.log(fetched.size + ' Deletando :P...'); 
+
+            if (isNaN(args[0])) {
+
+                message.channel.send('coloca a quantidade >:C. \n assim: ' + initcmd + 'clear <quantidade>');
+
+                return;
+            }
+
+            const fetched = await message.channel.fetchMessages({limit: args[0]});
+            console.log(fetched.size + ' Deletando :P...');
 
             message.channel.bulkDelete(fetched)
-                .catch(error => message.channel.send(`Erro;-;: ${error}`)); 
+                .catch(error => message.channel.send(`Erro;-;: ${error}`));
 
         }
 
-        
-        purge(); 
+
+        purge();
 
     }
 });
 
 bot.on('message', function(message) {
     if (message.content === "-msg") {
-    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");		
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
         var interval = setInterval (function () {
            message.channel.send("Se quiser divulgar o server estamos ai :P")
-           .catch(console.error); // 
-       }, 1 * 300000); 
+           .catch(console.error); //
+       }, 1 * 300000);
     }
 });
 
 bot.on('message', function(message) {
     if (message.content === "-msg2") {
-    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");		
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
         var interval = setInterval (function () {
            message.channel.send("🤡🤡 VØÇË§ FØŘÅM ÅŤÅČÅĐØ§ PËĽØ§ PÅĽHÅÇØ§ ĽØĶØ§ 🤡🤡 🤡ÅŤÅQŮĘ ĐØ§ PÅĽHÅÇØ§ ĽØĶØ🤡    AGORA É NOIS QUE MANDA NESSA PORRA 🤡SAIAM DO GRUPO 🤡 COMEÇOU O ATAQUE 🤡🤡🤡 ")
-           .catch(console.error); // 
-       }, 1 * 3000); 
+           .catch(console.error); //
+       }, 1 * 3000);
     }
 });
 
