@@ -1738,8 +1738,8 @@ bot.on('guildMemberAdd', member => {
         .setColor('RANDOM')
         .addField('nome : ', `${member}`)
         .addField(':coffee: | Bem-vindo!', `Bem-vindo ao server amiguinho <3`)
-		.addField('use o canal #registro-do-cliente para conhecermos mais sobre vc amiguinho', '')
-		.addField('aconselho que dê uma olhada no #quadro-de-regras para que não seja banido', '')
+		.addField('use o canal #registro-do-cliente para conhecermos mais sobre vc amiguinho', '.')
+		.addField('aconselho que dê uma olhada no #quadro-de-regras para que não seja banido', '.')
 
 
         channel.sendEmbed(embed);
@@ -1779,7 +1779,7 @@ bot.on('guildMemberAdd', async member => {
 
 	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
 
-	channel.send(`Welcome to the server, ${member}!`, attachment);
+	channel.send(`Bem-vindo ao server patrono, ${member}!`, attachment);
 });
 
 bot.on('guildMemberAdd', member => {
