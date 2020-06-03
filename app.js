@@ -53,7 +53,7 @@ catch(err){
 
 var adminRoles = botPreference.admingroups;
 var initcmd = botPreference.initcmd;
-var defualtGame = "Comandos -ajuda Café";
+var defualtGame = "Comandos -ajuda";
 
 // The object voice channel the bot is in
 var currentVoiceChannel = null;
@@ -404,7 +404,7 @@ bot.on('message', message => {
 					}
 				}
 			}
-		} else message.channel.send("Você não pode usar esse comando batola.");
+		} else message.channel.send("Você não pode usar esse comando.");
 	}
 
 	// Admin Commands
@@ -415,7 +415,7 @@ bot.on('message', message => {
 				bot.user.setUsername(username);
 				console.log("DISCORD: Username set to " + username);
 			}
-		} else message.channel.send("Você não tem permissão batola.");
+		} else message.channel.send("Você não tem permissão.");
 	}
 
 	if(isCommand(message.content, 'mudaravt')){
@@ -425,7 +425,7 @@ bot.on('message', message => {
 				bot.user.setAvatar(url);
 				console.log("DISCORD: Avatar changed");
 			}
-		} else message.channel.send("Você não tem permissão batola.");
+		} else message.channel.send("Você não tem permissão.");
 	}
 
   	if(isCommand(message.content, 'mudargame') && isAdmin(message)){
@@ -434,7 +434,7 @@ bot.on('message', message => {
 	  			var init = message.content.split(' ')[1];
 	  			setGame(init);
 	  		}
-			} else message.channel.send("Você não tem permissão batola.");
+			} else message.channel.send("Você não tem permissão.");
   	}
 
   	if(isCommand(message.content, 'desligar')){
@@ -442,7 +442,7 @@ bot.on('message', message => {
 				if(currentVoiceChannel)
 	  			currentVoiceChannel.leave();
 	  		bot.destroy();
-			} else message.channel.send("Você não tem permissão batola.");
+			} else message.channel.send("Você não tem permissão.");
   	}
 
   	if(isCommand(message.content, 'setinit')){
@@ -470,7 +470,7 @@ bot.on('message', message => {
 	  				});
 	  			});
 	  		}
-			} else message.channel.send("Você não tem permissão batola.");
+			} else message.channel.send("Você não tem permissão.");
   	}
   	// -----------------------------------------------------------------------
 
@@ -1643,7 +1643,7 @@ bot.on('voiceStateUpdate', (oldMember, newMember) =>{
 bot.on('message', (message) => {
 	if(message.content == '-mamaeu'){
 		message.reply('Glub-Glub ');
-		message.author.sendMessage('ainda quer o Glub-Glub ?');
+		//message.author.sendMessage('ainda quer o Glub-Glub ?');
 	}
 });
 
@@ -1731,7 +1731,7 @@ bot.on("message", async message => {
 //bem-vindo é no começo
 
 bot.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', 'novos-clientes');
+    let channel = member.guild.channels.find('name', '💬salão-principal');
     let memberavatar = member.user.avatarURL
         if (!channel) return;
         let embed = new Discord.RichEmbed()
