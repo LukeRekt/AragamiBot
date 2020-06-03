@@ -1747,7 +1747,7 @@ bot.on('guildMemberAdd', member => {
 });
 
 bot.on('guildMemberAdd', async member => {
-	const channel = member.guild.channels.cache.find(ch => ch.name === '💬salão-principal');
+	const channel = member.guild.channels.cache.find(ch => ch.name === 'bem-vindo');
 	if (!channel) return;
 
 	const canvas = Canvas.createCanvas(700, 250);
