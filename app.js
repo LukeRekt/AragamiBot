@@ -1746,7 +1746,7 @@ bot.on('guildMemberAdd', member => {
 
 });
 
-client.on('guildMemberAdd', async member => {
+bot.on('guildMemberAdd', async member => {
 	const channel = member.guild.channels.cache.find(ch => ch.name === 'member-log');
 	if (!channel) return;
 
