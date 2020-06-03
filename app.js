@@ -1738,8 +1738,8 @@ bot.on('guildMemberAdd', member => {
         .setColor('RANDOM')
         .addField('nome : ', `${member}`)
         .addField(':coffee: | Bem-vindo!', `Bem-vindo ao server amiguinho <3`)
-		.addField('use o canal #registro-do-cliente para conhecermos mais sobre vc amiguinho', ':P')
-		.addField('aconselho que dê uma olhada no #quadro-de-regras para que não seja banido', ':P')
+		.addField('use o canal #registro-do-cliente para conhecermos mais sobre vc amiguinho', '')
+		.addField('aconselho que dê uma olhada no #quadro-de-regras para que não seja banido', '')
 
 
         channel.sendEmbed(embed);
@@ -1747,7 +1747,7 @@ bot.on('guildMemberAdd', member => {
 });
 
 bot.on('guildMemberAdd', async member => {
-	const channel = member.guild.channels.cache.find(ch => ch.name === 'member-log');
+	const channel = member.guild.channels.cache.find(ch => ch.name === '💬salão-principal');
 	if (!channel) return;
 
 	const canvas = Canvas.createCanvas(700, 250);
