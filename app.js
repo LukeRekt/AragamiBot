@@ -1752,7 +1752,7 @@ bot.on("guildMemberAdd", async member => {
   let canal = bot.channels.get("445793368078024706")
   let fonte = await jimp.loadFont(jimp.FONT_SANS_32_BLACK)
   let mask = await jimp.read('mascara.png')
-  let fundo = await jimp.read('fundo.png')
+  let fundo = await jimp.read('nyan2.gif')
 
   jimp.read(member.user.displayAvatarURL).then(avatar => {
   avatar.resize(130, 130)
@@ -1760,8 +1760,8 @@ bot.on("guildMemberAdd", async member => {
   avatar.mask(mask)
 
   fundo.print(fonte, 170, 175, member.user.username)
-  fundo.composite(avatar, 40, 90).write('nyan2.gif')
-  canal.send(``, { files: ["nyan2.gif"] })
+  fundo.composite(avatar, 40, 90).write('bemvindo.png')
+  canal.send(``, { files: ["bemvindo.png"] })
 
   console.log('Imagem enviada para o Discord')
   })
