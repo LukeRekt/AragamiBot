@@ -1746,47 +1746,28 @@ bot.on('guildMemberAdd', member => {
 
 });
 
-bot.on('guildMemberAdd', async member => {
-	const channel = member.guild.channels.cache.find(ch => ch.name === 'bem-vindo');
-	if (!channel) return;
+bot.on("guildMemberAdd", async member => {
 
-	const canvas = Canvas.createCanvas(700, 250);
-	const ctx = canvas.getContext('2d');
+  let canal = client.channels.get("445793368078024706")
+  let fonte = await jimp.loadFont(jimp.FONT_SANS_32_BLACK)
+  let mask = await jimp.read('mascara.png')
+  let fundo = await jimp.read('fundo.png')
 
-	const background = await Canvas.loadImage('./wallpaper.jpg');
-	ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+  jimp.read(member.user.displayAvatarURL).then(avatar => {
+  avatar.resize(130, 130)
+  mask.resize(130, 130)
+  avatar.mask(mask)
 
-	ctx.strokeStyle = '#74037b';
-	ctx.strokeRect(0, 0, canvas.width, canvas.height);
+  fundo.print(fonte, 170, 175, member.user.username)
+  fundo.composite(avatar, 40, 90).write('bemvindo.png')
+  canal.send(``, { files: ["bemvindo.png"] })
 
-	// Slightly smaller text placed above the member's display name
-	ctx.font = '28px sans-serif';
-	ctx.fillStyle = '#ffffff';
-	ctx.fillText('Bem-vindo ao server patrono,', canvas.width / 2.5, canvas.height / 3.5);
-
-	// Add an exclamation point here and below
-	ctx.font = applyText(canvas, `${member.displayName}!`);
-	ctx.fillStyle = '#ffffff';
-	ctx.fillText(`${member.displayName}!`, canvas.width / 2.5, canvas.height / 1.8);
-
-	ctx.beginPath();
-	ctx.arc(125, 125, 100, 0, Math.PI * 2, true);
-	ctx.closePath();
-	ctx.clip();
-
-	const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
-	ctx.drawImage(avatar, 25, 25, 200, 200);
-
-	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
-
-	channel.send(`Bem-vindo ao server patrono, ${member}!`, attachment);
-});
-
-bot.on('guildMemberAdd', member => {
-
-    console.log(`${member}`, "Entrou" + `${member.guild.name}`)
-
-});
+  console.log('Imagem enviada para o Discord')
+  })
+  .catch(err => {
+  console.log('error avatar')
+  })
+})
 
 //Comando de mutar por tempo
 
