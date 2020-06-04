@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const jimp =require("jimp");
 const fs = require('fs');
 const path = require('path');
 const ms = require('ms');
