@@ -1752,7 +1752,7 @@ bot.on("guildMemberAdd", async member => {
   let canal = bot.channels.get("445793368078024706")
   let fonte = await jimp.loadFont(jimp.FONT_SANS_32_BLACK)
   let mask = await jimp.read('mascara.png')
-  let fundo = await jimp.read('nyan2.gif')
+  let fundo = await jimp.read('fundo.png')
 
   jimp.read(member.user.displayAvatarURL).then(avatar => {
   avatar.resize(130, 130)
