@@ -1748,7 +1748,7 @@ bot.on('guildMemberAdd', member => {
 
 bot.on("guildMemberAdd", async member => {
 
-  let canal = client.channels.get("445793368078024706")
+  let canal = bot.channels.get("445793368078024706")
   let fonte = await jimp.loadFont(jimp.FONT_SANS_32_BLACK)
   let mask = await jimp.read('mascara.png')
   let fundo = await jimp.read('fundo.png')
