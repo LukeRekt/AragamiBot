@@ -1735,7 +1735,12 @@ bot.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', '💬salão-principal');
    let memberavatar = member.user.avatarURL
         if (!channel) return;
-				bot.channels.get('445793368078024706').send('#📝-registro-cliente');
+				bot.channels.get('445793368078024706').send(message.guild.channels.get('445793368078024706').toString() + 'teste');
+
+
+
+
+
       //  let embed = new Discord.RichEmbed()
         //.setColor('RANDOM')
         //.addField('nome : ', `${member}`)
