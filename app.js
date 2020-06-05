@@ -1744,7 +1744,7 @@ bot.on('guildMemberAdd', member => {
 
         channel.sendEmbed(embed);
 
-//});
+});
 
 bot.on("guildMemberAdd", async member => {
 
