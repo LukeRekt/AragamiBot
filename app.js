@@ -1643,7 +1643,7 @@ bot.on('voiceStateUpdate', (oldMember, newMember) =>{
 //glubglub basico
 bot.on('message', (message) => {
 	if(message.content == '-mamaeu'){
-		message.reply('Glub-Glub ');
+		message.send('Glub-Glub ');
 		//message.author.sendMessage('ainda quer o Glub-Glub ?');
 	}
 });
