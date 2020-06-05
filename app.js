@@ -1735,7 +1735,7 @@ bot.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', '💬salão-principal');
    let memberavatar = member.user.avatarURL
         if (!channel) return;
-				bot.channels.get('445793368078024706').send(message.guild.channels.get('445793368078024706').toString() + 'teste');
+				bot.channels.get('445793368078024706').send('use o canal #📝-registro-cliente para conhecermos mais sobre vc amiguinho');
 
 
 
