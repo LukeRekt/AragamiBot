@@ -1731,19 +1731,18 @@ bot.on("message", async message => {
 
 //bem-vindo é no começo
 
-//bot.on('guildMemberAdd', member => {
-  //  let channel = member.guild.channels.find('name', '💬salão-principal');
-//    let memberavatar = member.user.avatarURL
-      //  if (!channel) return;
-      //  let embed = new Discord.RichEmbed()
-      //  .setColor('RANDOM')
-      //  .addField('nome : ', `${member}`)
-      //  .addField(':coffee: | Bem-vindo!', `Bem-vindo ao server amiguinho <3`)
-	//	.addField('use o canal #registro-do-cliente para conhecermos mais sobre vc amiguinho', '.')
-	//	.addField('aconselho que dê uma olhada no #quadro-de-regras para que não seja banido', '.')
+bot.on('guildMemberAdd', member => {
+    let channel = member.guild.channels.find('name', '💬salão-principal');
+   let memberavatar = member.user.avatarURL
+        if (!channel) return;
+        let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .addField('nome : ', `${member}`)
+        .addField(':coffee: | Bem-vindo!', `Bem-vindo ao server amiguinho <3`)
+		.addField('use o canal #registro-do-cliente para conhecermos mais sobre vc amiguinho', '.')
 
 
-      //  channel.sendEmbed(embed);
+        channel.sendEmbed(embed);
 
 //});
 
