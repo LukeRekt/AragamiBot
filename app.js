@@ -1971,7 +1971,7 @@ bot.on("message", async message => {
 
 			 let moneyAmt = Math.floor(Math.random() * 15) + 1;
 			 let baseAmt = Math.floor(Math.random() * 15) + 1;
-			 console.log(`${coinAmt} ; ${baseAmt}`);
+			 console.log(`${moneyAmt} ; ${moneyAmt}`);
 
 			 if(moneyAmt == moneyAmt){
 				 money[message.author.id] = {
