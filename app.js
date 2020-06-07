@@ -1973,11 +1973,11 @@ bot.on("message", async message => {
 			 let baseAmt = Math.floor(Math.random() * 15) + 1;
 			 console.log(`${moneyAmt} ; ${moneyAmt}`);
 
-			 if(moneyAmt == moneyAmt){
+			 if(moneyAmt === moneyAmt){
 				 money[message.author.id] = {
 					 money: money[message.author.id].money + moneyAmt
 				 };
-				 fs.writeFile("./money", JSON.stringify(money), (err) => {
+				 fs.writeFile("./money.json", JSON.stringify(money), (err) => {
 					 if (err) console.log(err)
 				 });
 
