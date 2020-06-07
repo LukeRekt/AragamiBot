@@ -11,7 +11,7 @@ if(!args[0]){
 
 if(!money[user.id]){
   money[user.id] = {
-    name: bot.user.get(user.id).tag,
+    name: bot.users.get(user.id).tag,
     money: 0
   }
   fs.writeFile("./money.json", JSON.stringify(money), (err) => {
