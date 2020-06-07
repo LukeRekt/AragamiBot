@@ -1964,11 +1964,11 @@ bot.on('message', function(message) {
 
 bot.on("message", async message => {
 //    if (!message.content.startsWith(prefix)) return;
-       let args = message.content.slice(prefix.length).trim().split(/ +/g);
-			 let cmd;
-			 cmd = args.shift().toLowerCase();
-			 let command;
-			 let commandfile = bot.commands.get(cmd.slice(prefix.length));
+       //let args = message.content.slice(prefix.length).trim().split(/ +/g);
+			 //let cmd;
+			 //cmd = args.shift().toLowerCase();
+			 //let command;
+			 //let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
       if(!coins[message.author.id]){
 				coins[message.author.id] = {
@@ -1987,7 +1987,7 @@ bot.on("message", async message => {
 					 if (err) console.log(err)
 				 });
           let coinEmbed = new Discord.RichEmbed()
-          .setAuthor(messsage.author.username)
+          .setAuthor(message.author.username)
 					.setColor("#0000FF")
 					.addField("a", `${coinAmt} add`);
 
