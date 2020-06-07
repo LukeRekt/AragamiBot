@@ -1970,7 +1970,7 @@ bot.on("message", async message => {
 			 let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
 			 let moneyAmt = Math.floor(Math.random() * 15) + 1;
-			 let moneyAmt = Math.floor(Math.random() * 15) + 1;
+			 let baseAmt = Math.floor(Math.random() * 15) + 1;
 			 console.log(`${coinAmt} ; ${baseAmt}`);
 
 			 if(moneyAmt == moneyAmt){
