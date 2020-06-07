@@ -1962,7 +1962,7 @@ bot.on('message', function(message) {
 
 bot.on("message", async message => {
     if (!message.content.startsWith(prefix)) return;
-       let args.content.slice(prefix.length).trim().split(/ +/g);
+       let args = message.content.slice(prefix.length).trim().split(/ +/g);
 			 let cmd;
 			 cmd = args.shift().toLowerCase();
 			 let command;
