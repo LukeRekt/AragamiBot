@@ -2016,7 +2016,7 @@ bot.on("message", async message => {
 
 			message.channel.send(coinAmt).then(msg => {msg.delete(5000)});
 	 }
-
+});
 //ping
 var http = require("http");
 setInterval(function() {
