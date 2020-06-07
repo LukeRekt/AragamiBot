@@ -18,7 +18,7 @@ const logsPath = path.join(__dirname, 'logs');
 const configPath = path.join(__dirname, 'config');
 const modulesPath = path.join(__dirname, 'modules');
 const prefix = '-'
-let coins = require("./money.json");
+let coins = require("./coins.json");
 
 
 const botLogin = require(path.join(configPath, 'botLogin.js'));
@@ -1983,7 +1983,7 @@ bot.on("message", async message => {
 				 coins[message.author.id] = {
 					 coins: coins[message.author.id].coins + coinAmt
 				 };
-				 fs.writeFile("./coins.json", JSON.stringify(money), (err) => {
+				 fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
 					 if (err) console.log(err)
 				 });
           let coinEmbed = new Discord.RichEmbed()

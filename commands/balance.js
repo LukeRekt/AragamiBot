@@ -1,5 +1,5 @@
 const fs = require("fs");
-const money = require("../coins.json");
+const coins = require("../coins.json");
 module.exports.run = async(bot, message, args) => {
 
 
