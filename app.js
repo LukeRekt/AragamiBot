@@ -18,6 +18,7 @@ const logsPath = path.join(__dirname, 'logs');
 const configPath = path.join(__dirname, 'config');
 const modulesPath = path.join(__dirname, 'modules');
 const prefix = '-'
+const money = require("./money.json");
 
 const botLogin = require(path.join(configPath, 'botLogin.js'));
 const yt = require(path.join(modulesPath, 'youtube.js'));
@@ -1967,6 +1968,21 @@ bot.on("message", async message => {
 			 cmd = args.shift().toLowerCase();
 			 let command;
 			 let commandfile = bot.commands.get(cmd.slice(prefix.length));
+
+			 let coinAmt = Math.floor(Math.random() * 15) + 1;
+			 let baseAmt = Math.floor(Math.random() * 15) + 1;
+			 console.log(`${coinAmt} ; ${baseAmt}`);
+
+			 if(moneyAmt == moneyAmt){
+				 money[message.author.id] = {
+					 money: money[message.author.id].money + moneyAmt
+				 };
+				 fs.writeFile("./money", JSON.stringify(money), (err) => {
+					 if (err) console.log(err)
+				 });
+
+			 }
+
 			 if(commandfile) commandfile.run(bot, message, args);
 
 			 if(bot.commands.has(cmd)){
