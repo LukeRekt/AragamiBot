@@ -1963,12 +1963,12 @@ bot.on('message', function(message) {
 });
 
 bot.on("message", async message => {
-//    if (!message.content.startsWith(prefix)) return;
-       //let args = message.content.slice(prefix.length).trim().split(/ +/g);
-			 //let cmd;
-			 //cmd = args.shift().toLowerCase();
-			 //let command;
-			 //let commandfile = bot.commands.get(cmd.slice(prefix.length));
+    if (!message.content.startsWith(prefix)) return;
+       let args = message.content.slice(prefix.length).trim().split(/ +/g);
+			 let cmd;
+			 cmd = args.shift().toLowerCase();
+			 let command;
+			 let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
       if(!coins[message.author.id]){
 				coins[message.author.id] = {

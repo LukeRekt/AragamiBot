@@ -10,7 +10,7 @@ if(!coins[message.author.id]){
 }
 let uCoins = coins[message.author.id].coins;
 let coinEmbed = new Discord.RichEmbed()
-.setAuthor(messsage.author.username)
+.setAuthor(message.author.username)
 .setColor("#00FF00")
 .addField("a", uCoins);
 
