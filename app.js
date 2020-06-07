@@ -18,6 +18,7 @@ const logsPath = path.join(__dirname, 'logs');
 const configPath = path.join(__dirname, 'config');
 const modulesPath = path.join(__dirname, 'modules');
 const prefix = '-'
+let coins = require("./money.json");
 
 
 const botLogin = require(path.join(configPath, 'botLogin.js'));
@@ -1969,19 +1970,28 @@ bot.on("message", async message => {
 			 let command;
 			 let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
-       let money = require("./money.json");
-			 let moneyAmt = Math.floor(Math.random() * 15) + 1;
+      if(!coins[message.author.id]){
+				coin[message.author.id] = {
+					coins: 0
+				};
+			}
+			 let coinAmt = Math.floor(Math.random() * 15) + 1;
 			 let baseAmt = Math.floor(Math.random() * 15) + 1;
-			 console.log(`${moneyAmt} ; ${moneyAmt}`);
+			 console.log(`${coinAmt} ; ${baseAmt}`);
 
-			 if(moneyAmt === moneyAmt){
-				 money[message.author.id] = {
-					 money: money[message.author.id].money + moneyAmt
+			 if(coinAmt === baseAmt){
+				 coins[message.author.id] = {
+					 coins: coins[message.author.id].coins + coinAmt
 				 };
-				 fs.writeFile("./money.json", JSON.stringify(money), (err) => {
+				 fs.writeFile("./coins.json", JSON.stringify(money), (err) => {
 					 if (err) console.log(err)
 				 });
+          let coinEmbed = new Discord.RichEmbed()
+          .setAuthor(messsage.author.username)
+					.setColor("#0000FF")
+					.addField("a", `${coinAmt} add`);
 
+					message.channel.send(coinAmt).then(msg => {msg.delete(5000)});
 			 }
 
 			 if(commandfile) commandfile.run(bot, message, args);
