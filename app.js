@@ -18,7 +18,6 @@ const logsPath = path.join(__dirname, 'logs');
 const configPath = path.join(__dirname, 'config');
 const modulesPath = path.join(__dirname, 'modules');
 const prefix = '-'
-let coins = require("./coins.json")
 
 const botLogin = require(path.join(configPath, 'botLogin.js'));
 const yt = require(path.join(modulesPath, 'youtube.js'));
