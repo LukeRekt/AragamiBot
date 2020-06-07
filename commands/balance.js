@@ -18,7 +18,7 @@ if(!money[user.id]){
     if(err) console.log(err);
   });
 }
-return message.channel.send(`${bot.users.get(user.id).username} tem $${money[user.id].money}.`)
+return message.channel.send(`${bot.users.get(user.id).username} tem $${money[user.id].money} dinheirinhos.`)
 
 }
 
