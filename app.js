@@ -26,6 +26,8 @@ bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
 
+
+
 fs.readdir("./commands/", (err, files) => {
 	if(err) console.log(err);
 
@@ -1958,13 +1960,29 @@ bot.on('message', function(message) {
     }
 });
 
-bot.on('message', function(message) {
-    if (message.content === "-msg2") {
-    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
-        var interval = setInterval (function () {
-           message.channel.send("🤡🤡 VØÇË§ FØŘÅM ÅŤÅČÅĐØ§ PËĽØ§ PÅĽHÅÇØ§ ĽØĶØ§ 🤡🤡 🤡ÅŤÅQŮĘ ĐØ§ PÅĽHÅÇØ§ ĽØĶØ🤡    AGORA É NOIS QUE MANDA NESSA PORRA 🤡SAIAM DO GRUPO 🤡 COMEÇOU O ATAQUE 🤡🤡🤡 ")
-           .catch(console.error); //
-       }, 1 * 3000);
+bot.on("message", async message => {
+    if (!message.content.startsWith(prefix)) return;
+       let args.content.slice(prefix.length).trim().split(/ +/g);
+			 let cmd;
+			 cmd = args.shift().toLowerCase();
+			 let command;
+			 let commandfile = bot.commands.get(cmd.slice(prefix.length));
+			 if(commandfile) commandfile.run(bot, message, args);
+
+			 if(bot.commands.has(cmd)){
+				 command = bot.commands.get(cmd);
+			 }else if (bot.aliases.has(cmd)) {
+			 	command = bot.command.get(bot.aliases.get(cmd));
+			 }
+			 try{
+				 command.run(bot, message, args);
+			 }catch (e) {
+				 return;
+			 }
+
+		{
+
+
     }
 });
 
