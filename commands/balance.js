@@ -1,24 +1,20 @@
 const fs = require("fs");
-const money = require("../money.json");
+const money = require("../coins.json");
 module.exports.run = async(bot, message, args) => {
 
-if(!args[0]){
-  var user = message.author;
 
-}else{
-  var user = message.mentions.users.first() || bot.users.get(args[0]);
+if(!coins[message.author.id]){
+  coins[message.author.id] = {
+    coins: 0
+  };
 }
+let uCoins = coins[message.author.id].coins;
+let coinEmbed = new Discord.RichEmbed()
+.setAuthor(messsage.author.username)
+.setColor("#00FF00")
+.addField("a", uCoins);
 
-if(!money[user.id]){
-  money[user.id] = {
-    name: bot.users.get(user.id).tag,
-    money: 0
-  }
-  fs.writeFile("./money.json", JSON.stringify(money), (err) => {
-    if(err) console.log(err);
-  });
-}
-return message.channel.send(`${bot.users.get(user.id).username} tem $${money[user.id].money} dinheirinhos.`)
+message.channel.send(coinEmbed).then(msg => {msg.delete(5000)});
 
 }
 
