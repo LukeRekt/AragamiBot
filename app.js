@@ -1972,7 +1972,7 @@ bot.on("message", async message => {
 			 if(bot.commands.has(cmd)){
 				 command = bot.commands.get(cmd);
 			 }else if (bot.aliases.has(cmd)) {
-			 	command = bot.command.get(bot.aliases.get(cmd));
+			 	command = bot.commands.get(bot.aliases.get(cmd));
 			 }
 			 try{
 				 command.run(bot, message, args);
