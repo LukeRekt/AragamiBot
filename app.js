@@ -1969,7 +1969,7 @@ bot.on("message", async message => {
 			 let command;
 			 let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
-       const money = require("./money.json");
+       let money = require("./money.json");
 			 let moneyAmt = Math.floor(Math.random() * 15) + 1;
 			 let baseAmt = Math.floor(Math.random() * 15) + 1;
 			 console.log(`${moneyAmt} ; ${moneyAmt}`);
