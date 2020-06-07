@@ -22,6 +22,8 @@ const prefix = '-'
 const botLogin = require(path.join(configPath, 'botLogin.js'));
 const yt = require(path.join(modulesPath, 'youtube.js'));
 const botPreferenceFile = path.join(configPath, 'preference.json');
+bot.commands = new Discord.Collection();
+bot.aliases = new Discord.Collection();
 
 
 fs.readdir("./commands/", (err, files) => {
