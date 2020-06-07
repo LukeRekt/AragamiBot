@@ -1963,7 +1963,7 @@ bot.on('message', function(message) {
 });
 
 bot.on("message", async message => {
-    if (!message.content.startsWith(prefix)) return;
+//    if (!message.content.startsWith(prefix)) return;
        let args = message.content.slice(prefix.length).trim().split(/ +/g);
 			 let cmd;
 			 cmd = args.shift().toLowerCase();
@@ -1971,7 +1971,7 @@ bot.on("message", async message => {
 			 let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
       if(!coins[message.author.id]){
-				coin[message.author.id] = {
+				coins[message.author.id] = {
 					coins: 0
 				};
 			}
