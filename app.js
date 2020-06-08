@@ -2000,8 +2000,8 @@ if(message.channel.type === "dm") return;
 			coins: 0
 		};
 	}
-	 let coinAmt = Math.floor(Math.random() * 1) + 1;
-	 let baseAmt = Math.floor(Math.random() * 1) + 1;
+	 let coinAmt = Math.floor(Math.random() * 150) + 1;
+	 let baseAmt = Math.floor(Math.random() * 150) + 1;
 	 console.log(`${coinAmt} ; ${baseAmt}`);
 
 	 if(coinAmt === baseAmt){
@@ -2011,13 +2011,13 @@ if(message.channel.type === "dm") return;
 		 fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
 			 if (err) console.log(err)
 		 });
-			//let coinEmbed = new Discord.RichEmbed()
-			//.setAuthor(message.author.username)
-			//.setColor("#0000FF")
-			//.addField("💸", `${coinAmt} moedas adicionadas`);
+			let coinEmbed = new Discord.RichEmbed()
+			.setAuthor(message.author.username)
+			.setColor("#0000FF")
+			.addField("💸", `${coinAmt} moedas adicionadas`);
 
-			//message.channel.send(coinEmbed).then(msg => {msg.delete(5000)});
-	 //}
+			message.channel.send(coinEmbed).then(msg => {msg.delete(5000)});
+	 }
 });
 //ping
 var http = require("http");
