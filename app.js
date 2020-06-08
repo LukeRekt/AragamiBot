@@ -2000,8 +2000,8 @@ if(message.channel.type === "dm") return;
 			coins: 0
 		};
 	}
-	 let coinAmt = Math.floor(Math.random() * 15) + 1;
-	 let baseAmt = Math.floor(Math.random() * 15) + 1;
+	 let coinAmt = Math.floor(Math.random() * 1) + 1;
+	 let baseAmt = Math.floor(Math.random() * 1) + 1;
 	 console.log(`${coinAmt} ; ${baseAmt}`);
 
 	 if(coinAmt === baseAmt){
@@ -2014,7 +2014,7 @@ if(message.channel.type === "dm") return;
 			let coinEmbed = new Discord.RichEmbed()
 			.setAuthor(message.author.username)
 			.setColor("#0000FF")
-			.addField("💸", `${coinAmt} add`);
+			.addField("💸", `${coinAmt} moedas adicionadas`);
 
 			message.channel.send(coinEmbed).then(msg => {msg.delete(5000)});
 	 }
