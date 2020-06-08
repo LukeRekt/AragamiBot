@@ -25,7 +25,7 @@ coins[message.author.id] = {
   coins: sCoins - parseInt(args[1])
   };
 
-  coins[message.author.id] = {
+  coins[pUser.id] = {
     coins: pCoins - parseInt(args[1])
   };
   message.channel.send(`${message.author} deu ${args[1]} moedas para ${pUser}`);
