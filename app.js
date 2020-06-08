@@ -2014,7 +2014,7 @@ bot.on("message", async message => {
 			.setColor("#0000FF")
 			.addField("a", `${coinAmt} add`);
 
-			message.channel.send(coinAmt).then(msg => {msg.delete(5000)});
+			message.channel.send(coinEmbed).then(msg => {msg.delete(5000)});
 	 }
 });
 //ping
