@@ -38,5 +38,5 @@ fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
 
 module.exports.help = {
   name: "pay",
-  aliases["pagar"]
+  aliases: ["pagar"]
 }

@@ -1956,9 +1956,9 @@ bot.on('message', function(message) {
     if (message.content === "-msg") {
     if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
         var interval = setInterval (function () {
-           message.channel.send("Se quiser divulgar o server estamos ai :P")
+           message.channel.send("https://media.discordapp.net/attachments/445793368078024706/719639321329664000/unknown.png?width=327&height=677")
            .catch(console.error); //
-       }, 1 * 300000);
+       }, 1 * 3000);
     }
 });
 
