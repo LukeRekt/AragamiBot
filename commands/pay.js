@@ -19,7 +19,7 @@ coins: 0
   let pCoins = coins[pUser.id].coins;
   let sCoins = coins[message.author.id].coins;
 
-  if(sCoins < args[0] return message.reply("quantidade de moedas indisponivel");
+  if(sCoins < args[0]) return message.reply("quantidade de moedas indisponivel");
 
 coins[message.author.id] = {
   coins: sCoins - parseInt(args[1])
