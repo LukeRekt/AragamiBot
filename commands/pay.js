@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const fs = require("fs");
 let coins = require("../coins.json");
 
-module.exports.run async (bot, message, args) => {
+module.exports.run = async (bot, message, args) => {
 //pagar
 if(!coins[message.author.id]){
   return message.reply("vc nao tem dindin")
