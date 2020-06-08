@@ -2018,7 +2018,7 @@ if(message.channel.type === "dm") return;
 
 			//message.channel.send(coinEmbed).then(msg => {msg.delete(5000)});
 	 //}
-//});
+});
 //ping
 var http = require("http");
 setInterval(function() {
