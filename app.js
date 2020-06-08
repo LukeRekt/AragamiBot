@@ -2011,14 +2011,14 @@ if(message.channel.type === "dm") return;
 		 fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
 			 if (err) console.log(err)
 		 });
-			let coinEmbed = new Discord.RichEmbed()
-			.setAuthor(message.author.username)
-			.setColor("#0000FF")
-			.addField("💸", `${coinAmt} moedas adicionadas`);
+			//let coinEmbed = new Discord.RichEmbed()
+			//.setAuthor(message.author.username)
+			//.setColor("#0000FF")
+			//.addField("💸", `${coinAmt} moedas adicionadas`);
 
-			message.channel.send(coinEmbed).then(msg => {msg.delete(5000)});
-	 }
-});
+			//message.channel.send(coinEmbed).then(msg => {msg.delete(5000)});
+	 //}
+//});
 //ping
 var http = require("http");
 setInterval(function() {
