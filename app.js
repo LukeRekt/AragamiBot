@@ -20,10 +20,6 @@ const modulesPath = path.join(__dirname, 'modules');
 const prefix = '-'
 let coins = require("./coins.json");
 
-
-import * as db from "quick.db";
-
-
 const botLogin = require(path.join(configPath, 'botLogin.js'));
 const yt = require(path.join(modulesPath, 'youtube.js'));
 const botPreferenceFile = path.join(configPath, 'preference.json');
