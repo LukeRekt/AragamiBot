@@ -21,6 +21,9 @@ const prefix = '-'
 let coins = require("./coins.json");
 
 
+import * as db from "quick.db";
+
+
 const botLogin = require(path.join(configPath, 'botLogin.js'));
 const yt = require(path.join(modulesPath, 'youtube.js'));
 const botPreferenceFile = path.join(configPath, 'preference.json');
@@ -656,7 +659,7 @@ bot.on('message', message => {
   		if(owner){
   			owner = "<@" + owner.id + ">"
   		}else
-  			owner = "Mesmaroth"
+  			owner = "LukeRekt"
 
   		getInvite(link =>{
   			message.channel.send("**Sobre**", {
@@ -2029,7 +2032,6 @@ setInterval(function() {
 //setInterval(function() {
  // bot.channels.get('445793368078024706').send('aaaaaa')
 //}, 30000000);
-
 
 
 
