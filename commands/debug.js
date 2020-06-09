@@ -23,9 +23,9 @@ coins: 0
 
 
 
-coins[message.author.id] = {
-  coins: sCoins - parseInt(args[1])
-  };
+//coins[message.author.id] = {
+  //coins: sCoins - parseInt(args[1])
+  //};
 
   coins[pUser.id] = {
     coins: pCoins - parseInt(args[1])
