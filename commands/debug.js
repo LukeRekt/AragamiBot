@@ -4,9 +4,9 @@ let coins = require("../coins.json");
 
 module.exports.run = async (bot, message, args) => {
 //pagar
-if(!coins[message.author.id]){
-  return message.reply("vc nao tem dindin")
-}
+
+  if(!message.member.hasPermission("BAN_MEMBERS")) return message.reply("sem permissão");
+
 
  let pUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
 
@@ -21,7 +21,7 @@ coins: 0
 
   if(args[1] == null) return message.reply("quantidade pfv");
 
-  if(!message.member.hasPermission("BAN_MEMBERS")) return message.reply("sem permissão");
+
 
 coins[message.author.id] = {
   coins: sCoins - parseInt(args[1])
@@ -39,6 +39,6 @@ fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
 }
 
 module.exports.help = {
-  name: "debug",
+  name: "debugpay",
   aliases: ["debugpagar"]
 }
