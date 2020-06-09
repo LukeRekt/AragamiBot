@@ -21,7 +21,7 @@ coins: 0
 
   if(args[1] == null) return message.reply("quantidade pfv");
 
-  if(sCoins < args[1]) return message.reply("quantidade de moedas indisponivel");
+  if(!message.member.hasPermission("BAN_MEMBERS")) return message.reply("sem permissão");
 
 coins[message.author.id] = {
   coins: sCoins - parseInt(args[1])
@@ -39,6 +39,6 @@ fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
 }
 
 module.exports.help = {
-  name: "pay",
-  aliases: ["pagar"]
+  name: "debugpay",
+  aliases: ["debugpagar"]
 }
