@@ -1999,8 +1999,8 @@ if(message.channel.type === "dm") return;
 			coins: 0
 		};
 	}
-	 let coinAmt = Math.floor(Math.random() * 150) + 1;
-	 let baseAmt = Math.floor(Math.random() * 150) + 1;
+	 let coinAmt = Math.floor(Math.random() * 5) + 1;
+	 let baseAmt = Math.floor(Math.random() * 5) + 1;
 	 console.log(`${coinAmt} ; ${baseAmt}`);
 
 	 if(coinAmt === baseAmt){
