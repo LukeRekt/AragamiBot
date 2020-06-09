@@ -19,6 +19,8 @@ coins: 0
   let pCoins = coins[pUser.id].coins;
   let sCoins = coins[message.author.id].coins;
 
+  if(args[1] == null) return message.reply("quantidade pfv bb");
+
   if(sCoins < args[1]) return message.reply("quantidade de moedas indisponivel");
 
 coins[message.author.id] = {
