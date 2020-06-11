@@ -17,6 +17,7 @@ const tempFilesPath = path.join(__dirname, 'tempFiles');
 const logsPath = path.join(__dirname, 'logs');
 const configPath = path.join(__dirname, 'config');
 const modulesPath = path.join(__dirname, 'modules');
+
 const prefix = '-'
 let coins = require("./coins.json");
 
@@ -26,7 +27,10 @@ const botPreferenceFile = path.join(configPath, 'preference.json');
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
-
+mongoose.connect("mongodb://179.35.0.113:27017/Tutorial", {
+	useNewUrlParser: true
+});
+const Money = require("./models/money.js")
 
 
 fs.readdir("./commands/", (err, files) => {
@@ -1994,29 +1998,27 @@ bot.on("message", async message => {
 if(message.author.bot) return;
 if(message.channel.type === "dm") return;
 
-	if(!coins[message.author.id]){
-		coins[message.author.id] = {
-			coins: 0
-		};
-	}
-	 let coinAmt = Math.floor(Math.random() * 50) + 1;
-	 let baseAmt = Math.floor(Math.random() * 50) + 1;
-	 console.log(`${coinAmt} ; ${baseAmt}`);
+let coinstoadd = Math.ceil(Math.random() * 50);
+console.log(coinstoadd + " coins");
+Money.findOne({
+	userID: message.author.id,
+	serverID: message.guild.id
+ }, (err, money) =>{
+if(err) console.log(err);
+if(!money){
+	const newMoney = new Money({
+		userID: message.author.id,
+		serverID: message.guild.id,
+		money: coinstoadd
+	})
 
-	 if(coinAmt === baseAmt){
-		 coins[message.author.id] = {
-			 coins: coins[message.author.id].coins + coinAmt
-		 };
-		 fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
-			 if (err) console.log(err)
-		 });
-			let coinEmbed = new Discord.RichEmbed()
-			.setAuthor(message.author.username)
-			.setColor("#0000FF")
-			.addField("💸", `${coinAmt} moedas adicionadas`);
+	newMoney.save().catch(err => console.console.log(err));
+  }else {
+money.money = money.money + coinstoadd;
+money.save().catch(err => console.log(err));
+}
+})
 
-			message.channel.send(coinEmbed).then(msg => {msg.delete(5000)});
-	 }
 });
 //ping
 var http = require("http");
