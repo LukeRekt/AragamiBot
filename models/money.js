@@ -7,4 +7,4 @@ money: Number
 
 })
 
-module.exports = mangoose.model("Money", moneySchema);
+module.exports = mongoose.model("Money", moneySchema);
