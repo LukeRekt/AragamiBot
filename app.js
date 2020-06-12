@@ -28,7 +28,7 @@ const botPreferenceFile = path.join(configPath, 'preference.json');
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
-mongoose.connect("mongodb://179.35.0.113:27017/Tutorial", {
+mongoose.connect("mongodb://177.149.152.159:27017/Tutorial", {
 	useNewUrlParser: true
 });
 const Money = require("./models/money.js")
