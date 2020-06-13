@@ -13,7 +13,7 @@ if(message.author.id != "437752484963024907") return;
 
 Money.findOne({
 	userID: message.author.id,
-	serverID: message.guild.// IDEA:
+	serverID: message.guild.id
 }, (err, money) => {
 	if(err) console.log(err);
 
