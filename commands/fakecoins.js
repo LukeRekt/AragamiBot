@@ -26,10 +26,10 @@ Money.findOne({
 	}
 
 	if(!money){
-		embed.addField("Money", "0", true);
+		embed.addField("Money💸", "0", true);
 		return message.channel.send(embed);
 	}else {
-		embed.addField("Money", money.money, true);
+		embed.addField("Money💸", money.money, true);
 		return message.channel.send(embed)
 	}
 })
