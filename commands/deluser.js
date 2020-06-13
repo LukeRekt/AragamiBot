@@ -8,7 +8,7 @@ const Coins = require("../models/coins.js")
 module.exports.run = async(bot, message, args) => {
 
   await message.delete();
-  if(message.author.id != "437752484963024907") return;
+  if(message.author.id != "223207253522644992") return;
    let member = message.mentions.members.first();
    if(!member) return message.reply("zap");
 
