@@ -36,6 +36,6 @@ Money.findOne({
 }
 
 module.exports.help = {
-  name: "fakemoney",
-  aliases: ["moneyfake"]
+  name: "money",
+  aliases: ["dinheiro"]
 }
