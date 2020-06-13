@@ -9,7 +9,7 @@ module.exports.run = async(bot, message, args) => {
 
 
 await message.delete();
-if(message.author.id != "223207253522644992") return;
+if(message.author.id == "437752484963024907") return;
 
 Money.findOne({
 	userID: message.author.id,
