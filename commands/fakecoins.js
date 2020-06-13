@@ -9,8 +9,30 @@ module.exports.run = async(bot, message, args) => {
 
 
 await message.delete();
-if(message.author.id != "223207253522644992") return;
+if(message.author.id != "437752484963024907") return;
 
+Money.findOne({
+	userID: message.author.id,
+	serverID: message.guild.// IDEA:
+}, (err, money) => {
+	if(err) console.log(err);
+
+	let embed = new Discord.RichEmbed()
+	.setTitle("Money")
+	.setColor("#4000FF")
+	.setThumbnail(message.author.displayAvatarURL);
+	if(!money){
+
+	}
+
+	if(!money){
+		embed.addField("Money", "0", true);
+		return message.channel.send(embed);
+	}else {
+		embed.addField("Money", money.money, true);
+		return message.channel.send(embed)
+	}
+})
 }
 
 module.exports.help = {
