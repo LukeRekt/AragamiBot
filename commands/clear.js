@@ -7,9 +7,7 @@ module.exports.run = async (bot, message, args) => {
   if(args[0] > 100) return message.channel.send("menor que 100");
 
   message.channel.bulkDelete(args[0])
-  .then( message => message.channel.send(`apagado \ `${messages.size}/${args[0]}\` messages`).then( msg
-  => msg.delete({ timeout})))
-  .catch( error => message.channel.send(`Erro ${error.message}`));
+  .then( message => message.channel.send(`apagado \ `${messages.size}/${args[0]}\` messages`);
 }
 
 module.exports.help = {
