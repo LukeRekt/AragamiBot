@@ -29,9 +29,9 @@ embed.setColor("BLURPLE");
 for(i = 0; i < res.length; i++){
   let member = message.guild.members.get(res[i].userID) || "User saiu"
   if(member === "User saiu"){
-    embed.addField(`${i + 1}. ${member}`, `Money: ${res[i].coins}`);
+    embed.addField(`${i + 1}. ${member}`, `Money: ${res[i].money}`);
   }else {
-embed.addField(`${i + 1}. ${member.user.username}`, `Money: ${res[i].coins}`);
+embed.addField(`${i + 1}. ${member.user.username}`, `Money: ${res[i].money}`);
   }
  }
 }else {
@@ -39,9 +39,9 @@ embed.addField(`${i + 1}. ${member.user.username}`, `Money: ${res[i].coins}`);
   for(i = 0; i < 10; i++){
     let member = message.guild.members.get(res[i].userID) || "User saiu"
     if(member === "User saiu"){
-      embed.addField(`${i + 1}. ${member}`, `Money: ${res[i].coins}`);
+      embed.addField(`${i + 1}. ${member}`, `Money: ${res[i].money}`);
     }else {
-      embed.addField(`${i + 1}. ${member.user.username}`, `Money: ${res[i].coins}`);
+      embed.addField(`${i + 1}. ${member.user.username}`, `Money: ${res[i].money}`);
       }
      }
     }
