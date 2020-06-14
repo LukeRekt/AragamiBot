@@ -30,7 +30,7 @@ module.exports.run = async (bot, message, args) => {
   return message.reply("essa pessoa nunca falou no chat");
 
     }else {
-  money.money = money.money + coinstoadd;
+  money.money = coinstoadd;
   money.save().catch(err => console.log(err));
   }
   })
