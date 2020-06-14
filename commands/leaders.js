@@ -4,13 +4,13 @@ mongoose.connect("mongodb+srv://lucasrsl1:1010101010@cluster0-rzkwu.mongodb.net/
 	useNewUrlParser: true
 });
 
-const Coins = require("../models/coins.js")
+const Money = require("../models/coins.js")
 module.exports.run = async(bot, message, args) => {
 
   await message.delete();
   if(message.author.id == "437752484963024907") return;
 
-Coins.find({
+Money.find({
   serverID: message.guild.id
 }).sort([
   ['money', 'descending']
