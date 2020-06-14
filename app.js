@@ -2010,6 +2010,7 @@ if(!money){
 	const newMoney = new Money({
 		userID: message.author.id,
 		serverID: message.guild.id,
+		username: message.author.username,
 		money: coinstoadd
 	})
 
