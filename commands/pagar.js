@@ -26,6 +26,12 @@ module.exports.run = async (bot, message, args) => {
    }, (err, money) =>{
   if(err) console.log(err);
   if(!money){
+    const newMoney = new Money({
+      userID: message.author.id,
+      username: message.author.tag,
+      serverID: message.guild.id,
+      money: coinstoadd
+    })
 
   return message.reply("essa pessoa nunca falou no chat");
 
