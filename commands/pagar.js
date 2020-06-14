@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
   console.log(coinstoadd + " coins");
 
   Money.findOne({
-  	userID: message.author.id,
+  	userID: pUser.id,
   	serverID: message.guild.id
    }, (err, money) =>{
   if(err) console.log(err);
