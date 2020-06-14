@@ -23,7 +23,7 @@ Coins.find({
   if(res.length === 0){
     embed.setColor("RED");
     embed.addField("sem dados", "escreva algo no chat")
-  }else if(res.length < 3){
+  }else if(res.length < 10){
 embed.setColor("BLURPLE");
 for(i = 0; e < res.length; i++){
   let member = message.guild.members.get(res[i].userID) || "User saiu"
