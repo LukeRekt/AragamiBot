@@ -4,7 +4,7 @@ mongoose.connect("mongodb+srv://lucasrsl1:1010101010@cluster0-rzkwu.mongodb.net/
 	useNewUrlParser: true
 });
 
-const Money = require("../models/coins.js")
+const Money = require("../models/money.js")
 module.exports.run = async(bot, message, args) => {
 
   await message.delete();
