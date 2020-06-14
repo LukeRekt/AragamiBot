@@ -1999,7 +1999,7 @@ bot.on("message", async message => {
 if(message.author.bot) return;
 if(message.channel.type === "dm") return;
 
-let coinstoadd = Math.ceil(Math.random() * 50);
+let coinstoadd = Math.ceil(Math.random() * 40);
 console.log(coinstoadd + " coins");
 Money.findOne({
 	userID: message.author.id,
