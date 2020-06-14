@@ -40,14 +40,10 @@ module.exports.run = async (bot, message, args) => {
   }
   })
   message.channel.send(`${message.author} deu ${args[1]} moedas para ${pUser}`);
-fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
-//pinto molhado
-
-});
 
 }
 
 module.exports.help = {
-  name: "paybalanciaga",
-  aliases: ["pagarbalanciaga"]
+  name: "pay",
+  aliases: ["pagar"]
 }
