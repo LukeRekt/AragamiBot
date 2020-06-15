@@ -9,8 +9,9 @@ const Money = require("../models/money.js")
 
 module.exports.run = async (bot, message, args) => {
 //todo
-//checar money da pessoa
-//enviar para o alvo e remover do sender
+//checar money da pessoa(pronto)
+//enviar para o banco e remover do bolso/money(+-)
+//formatar as msgs em embed
 	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
 	    Money.findOne({serverID: message.guild.id, userID: member.id},(err,data) => {
 	        if(!loc){
@@ -28,7 +29,7 @@ module.exports.run = async (bot, message, args) => {
               loc.banco += Math.floor(parseInt(oldmoney));
               loc.money -= Math.floor(parseInt(oldmoney));
 
-	            loc.save();)
+	            loc.save();
 	            message.channel.send(embed)
 	                }
 	            })
