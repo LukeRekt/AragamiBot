@@ -14,27 +14,22 @@ module.exports.run = async (bot, message, args) => {
  let pUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
 
   //checar se todos os argumentos foram colocados
-  //if(args[1] == null) return message.reply("quantidade pfv");
+  if(args[1] == null) return message.reply("quantidade pfv");
   //if(sCoins < args[1]) return message.reply("quantidade de moedas indisponivel");
 
   let coinstoadd = args[1];
   console.log(coinstoadd + " coins");
 
   Money.findOne({
-  	userID: pUser.id,
+  	userID: message.author.id,
   	serverID: message.guild.id
    }, (err, money) =>{
   if(err) console.log(err);
   if(!money){
-    const newMoney = new Money({
-      userID: message.author.id,
-      username: message.author.tag,
-      serverID: message.guild.id,
-      money: coinstoadd
-    })
 
   return message.reply("essa pessoa nunca falou no chat");
 
+  	newMoney.save().catch(err => console.console.log(err));
     }else {
   money.money = money.money + coinstoadd;
   money.save().catch(err => console.log(err));
