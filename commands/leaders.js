@@ -13,7 +13,7 @@ module.exports.run = async(bot, message, args) => {
 Money.find({
   serverID: message.guild.id
 }).sort([
-  ['money', 'descending']
+  ['banco', 'descending']
 ]).exec((err, res) => {
   if(err) console.log(err);
 
