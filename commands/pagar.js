@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
 	    Money.findOne({guildID: message.guild.id, userID: message.author.id},(err,loc) => {
 	    Money.findOne({guildID: message.guild.id, userID: member.id},(err,data) => {
 	        if(!data){
-	            let errorMess = new Discord.MessageEmbed()
+	            let errorMess = new Discord.RichEmbed()
 	            .setColor('RED')
 	            .setDescription(`o User **${member.user.tag}** nao esta no banco de dados.`)
 	            return message.channel.send(errorMess)
@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
 	            if(loc.userID == member.id) return message.reply(`Você não pode transferir moedas para si mesmo!`)
 	            if(member.user.bot) return message.reply(`Bots não são humanos.`)
 
-	            let embed = new Discord.MessageEmbed()
+	            let embed = new Discord.RichEmbed()
 	            .setColor(config.color)
 	            .setDescription(`**${message.author.username}** transferido com sucesso **${member.user.username}** money ${args[1]}`)
 	            loc.money -= Math.floor(parseInt(args[1]));
