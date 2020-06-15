@@ -20,13 +20,13 @@ module.exports.run = async (bot, message, args) => {
 	            return message.channel.send(errorMess)
 	        }else{
 
-	            if(loc.money < 1) return message.reply(`Você não tem moedas.`)
+	            if(loc.money < 1) return message.reply(`Você não tem dinheiro.`)
               let oldmoney = loc.money
 	            let embed = new Discord.RichEmbed()
 	            .setColor('RED')
 	            .setDescription(`**${message.author.username}** depositou ${oldmoney}`)
-              loc.banco += Math.floor(parseInt(oldmoney);
-              loc.money -= Math.floor(parseInt(oldmoney);
+              loc.banco += Math.floor(parseInt(oldmoney));
+              loc.money -= Math.floor(parseInt(oldmoney));
 
 	            loc.save();)
 	            message.channel.send(embed)
