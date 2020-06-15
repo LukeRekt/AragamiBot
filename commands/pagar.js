@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
   //if(sCoins < args[1]) return message.reply("quantidade de moedas indisponivel");
 
   const quantidade = parseInt(args[0]);
-  console.log(coinstoadd + " coins");
+  console.log(quantidade + " coins");
 
   Money.findOne({
   	userID: message.author.id,
