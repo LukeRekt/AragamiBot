@@ -21,8 +21,8 @@ module.exports.run = async (bot, message, args) => {
 	if(!args[1]) return message.reply(`Indique a quantidade de dinheiro que você deseja pagar.`)
 	    if(args[1] < 1) return message.reply(`valor muito baixo`)
 	    if(isNaN(args[1])) return message.reply(`Por favor, insira um valor válido.`)
-	    Money.findOne({guildID: message.guild.id, userID: message.author.id},(err,loc) => {
-	    Money.findOne({guildID: message.guild.id, userID: member.id},(err,data) => {
+	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
+	    Money.findOne({serverID: message.guild.id, userID: member.id},(err,data) => {
 	        if(!data){
 	            let errorMess = new Discord.RichEmbed()
 	            .setColor('RED')
