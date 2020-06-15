@@ -11,33 +11,41 @@ module.exports.run = async (bot, message, args) => {
 //todo
 //checar money da pessoa
 //enviar para o alvo e remover do sender
- let pUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0])
+ let member = message.guild.member(message.mentions.users.first())
 
-  //checar se todos os argumentos foram colocados
+ if(!member) return message.reply(`O usuário não foi encontrado.`)
+
   if(args[1] == null) return message.reply("quantidade pfv");
   //if(sCoins < args[1]) return message.reply("quantidade de moedas indisponivel");
 
-  const quantidade = parseInt(args[1]);
-  console.log(quantidade + " coins");
+	if(!args[1]) return message.reply(`Indique a quantidade de dinheiro que você deseja pagar.`)
+	    if(args[1] < 1) return message.reply(`valor muito baixo`)
+	    if(isNaN(args[1])) return message.reply(`Por favor, insira um valor válido.`)
+	    Money.findOne({guildID: message.guild.id, userID: message.author.id},(err,loc) => {
+	    Money.findOne({guildID: message.guild.id, userID: member.id},(err,data) => {
+	        if(!data){
+	            let errorMess = new Discord.MessageEmbed()
+	            .setColor('RED')
+	            .setDescription(`o User **${member.user.tag}** nao esta no banco de dados.`)
+	            return message.channel.send(errorMess)
+	        }else{
 
-  Money.findOne({
-  	userID: message.author.id,
-  	serverID: message.guild.id
-   }, (err, money) =>{
-  if(err) console.log(err);
-  if(!money){
+	            if(loc.money < args[1]) return message.reply(`Você não tem tantas moedas.`)
+	            if(loc.userID == member.id) return message.reply(`Você não pode transferir moedas para si mesmo!`)
+	            if(member.user.bot) return message.reply(`Bots não são humanos.`)
 
-  return message.reply("essa pessoa nunca falou no chat");
-
-  	newMoney.save().catch(err => console.console.log(err));
-    }else {
-  money.money = money.money + quantidade;
-  money.save().catch(err => console.log(err));
-  }
-  })
-  message.channel.send(`${message.author} deu ${args[1]} moedas para ${pUser}`);
-
-}
+	            let embed = new Discord.MessageEmbed()
+	            .setColor(config.color)
+	            .setDescription(`**${message.author.username}** transferido com sucesso **${member.user.username}** money ${args[1]}`)
+	            loc.money -= Math.floor(parseInt(args[1]));
+	            data.money += Math.floor(parseInt(args[1]));
+	            loc.save(); data.save()
+	            message.channel.send(embed)
+	                }
+	            })
+	        })
+	    }
+	}
 
 module.exports.help = {
   name: "pay",
