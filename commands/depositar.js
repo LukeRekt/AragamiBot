@@ -11,9 +11,10 @@ module.exports.run = async (bot, message, args) => {
 //todo
 //checar money da pessoa(pronto)
 //enviar para o banco e remover do bolso/money(+-)
+//membro nao foi definido
 //formatar as msgs em embed
+
 	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
-	    Money.findOne({serverID: message.guild.id, userID: member.id},(err,data) => {
 	        if(!loc){
 	            let errorMess = new Discord.RichEmbed()
 	            .setColor('RED')
@@ -32,7 +33,6 @@ module.exports.run = async (bot, message, args) => {
 	            loc.save();
 	            message.channel.send(embed)
 	                }
-	            })
 	        })
 	    }
 
