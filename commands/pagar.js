@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
   if(args[1] == null) return message.reply("quantidade pfv");
   //if(sCoins < args[1]) return message.reply("quantidade de moedas indisponivel");
 
-  const quantidade = parseInt(args[0]);
+  const quantidade = parseInt(args[1]);
   console.log(quantidade + " coins");
 
   Money.findOne({
