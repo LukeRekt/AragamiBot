@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, args) => {
     	        }else{
 
     	            if(data.money < 100) return message.reply(`Você não tem tantas moedas.`)
-    	            if(data.userID == member.id) return message.reply(`Você não pode transferir moedas para si mesmo!`)
+    	           // if(data.userID == member.id) return message.reply(`Você não pode transferir moedas para si mesmo!`)
     	            if(member.user.bot) return message.reply(`Bots não são humanos.`)
 
                   if(numero > 5){
