@@ -14,7 +14,6 @@ module.exports.run = async (bot, message, args) => {
 
      if(!member) return message.reply(`O usuário não foi encontrado.`)
 
-      if(args[1] == null) return message.reply("quantidade pfv");
 
     	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
     	    Money.findOne({serverID: message.guild.id, userID: member.id},(err,data) => {
