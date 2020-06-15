@@ -35,7 +35,7 @@ module.exports.run = async (bot, message, args) => {
 	            if(member.user.bot) return message.reply(`Bots não são humanos.`)
 
 	            let embed = new Discord.RichEmbed()
-	            .setColor(config.color)
+	            .setColor('RED')
 	            .setDescription(`**${message.author.username}** transferido com sucesso **${member.user.username}** money ${args[1]}`)
 	            loc.money -= Math.floor(parseInt(args[1]));
 	            data.money += Math.floor(parseInt(args[1]));
