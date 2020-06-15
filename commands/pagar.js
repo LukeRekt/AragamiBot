@@ -17,8 +17,8 @@ module.exports.run = async (bot, message, args) => {
   if(args[1] == null) return message.reply("quantidade pfv");
   //if(sCoins < args[1]) return message.reply("quantidade de moedas indisponivel");
 
-  let pagamento = args[1];
-  console.log(pagamento + " coins");
+  const quantidade = parseInt(args[0]);
+  console.log(coinstoadd + " coins");
 
   Money.findOne({
   	userID: message.author.id,
@@ -31,7 +31,7 @@ module.exports.run = async (bot, message, args) => {
 
   	newMoney.save().catch(err => console.console.log(err));
     }else {
-  money.money = money.money + pagamento;
+  money.money = money.money + quantidade;
   money.save().catch(err => console.log(err));
   }
   })
