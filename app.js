@@ -1968,7 +1968,7 @@ if(!money){
 		userID: message.author.id,
 		username: message.author.tag,
 		serverID: message.guild.id,
-		money: coinstoadd
+		money: coinstoadd,
 		banco: 0
 	})
 
