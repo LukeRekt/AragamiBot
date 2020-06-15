@@ -31,7 +31,7 @@ Money.findOne({
 		return message.channel.send(embed);
 	}else {
 		embed.addField("Mão✋", money.money, true);
-		embed.addField("Mão🏦", money.banco, true);
+		embed.addField("Banco🏦", money.banco, true);
 		return message.channel.send(embed)
 	}
 })
