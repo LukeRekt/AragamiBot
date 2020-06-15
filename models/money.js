@@ -4,7 +4,8 @@ const moneySchema = mongoose.Schema({
 userID: String,
 serverID: String,
 username: String,
-money: Number
+money: Number,
+banco: Number
 
 
 })

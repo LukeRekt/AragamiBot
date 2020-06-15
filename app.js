@@ -1969,6 +1969,7 @@ if(!money){
 		username: message.author.tag,
 		serverID: message.guild.id,
 		money: coinstoadd
+		banco: 0
 	})
 
 	newMoney.save().catch(err => console.console.log(err));
