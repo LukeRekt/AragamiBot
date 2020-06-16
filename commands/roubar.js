@@ -9,22 +9,32 @@ const Money = require("../models/money.js")
 
 module.exports.run = async (bot, message, args) => {
      let numero = Math.floor(Math.random() * 10) + 1;
-     let numeroroub = Math.floor(Math.random() * 100) + 1;
+  //   let numeroroub = Math.floor(Math.random() * 100) + 1;
      let member = message.guild.member(message.mentions.users.first())
-
+     var timer = setInterval(myTimer, 10000);
      if(!member) return message.reply(`O usuário não foi encontrado.`)
 
+function myTimer() {
+	 var d = new Date();
+	 if(d > 0) return message.reply("sem tempo irmao");
 
     	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
     	    Money.findOne({serverID: message.guild.id, userID: member.id},(err,data) => {
-    	        if(!data){
+          if(data.money < 100) return message.reply(`Você não tem tantas moedas.`)
+              if(data.money > 500){
+								     let numeroroub = Math.floor(Math.random() * 500) + 1;
+							}
+							if(data.money > 1000){
+								     let numeroroub = Math.floor(Math.random() * 1000) + 1;
+							}
+							if(!data){
     	            let errorMess = new Discord.RichEmbed()
     	            .setColor('RED')
     	            .setDescription(`o User **${member.user.tag}** nao esta no banco de dados.`)
     	            return message.channel.send(errorMess)
     	        }else{
 
-    	            if(data.money < 100) return message.reply(`Você não tem tantas moedas.`)
+
     	           // if(data.userID == member.id) return message.reply(`Você não pode transferir moedas para si mesmo!`)
     	            if(member.user.bot) return message.reply(`Bots não são humanos.`)
 
@@ -37,8 +47,12 @@ module.exports.run = async (bot, message, args) => {
     	            loc.save(); data.save()
     	            message.channel.send(embed)
                 }else {
-                  return message.reply("perdeu--mudar msg");
+									let embed = new Discord.RichEmbed()
+									.setColor('RED')
+									.setDescription(`**${message.author.username}** não conseguiu roubar de ${member}`)
+									message.channel.send(embed)
                 }
+								}
     	                }
     	            })
     	        })
