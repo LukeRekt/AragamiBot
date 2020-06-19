@@ -35,6 +35,7 @@ module.exports.run = async (bot, message, args) => {
 							loc.money -= Math.floor(parseInt(oldmoney));
 
 							loc.save();
+							loc.save();
 	                }
 	        })
 	    }
