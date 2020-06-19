@@ -1974,6 +1974,7 @@ if(!money){
 
 	newMoney.save().catch(err => console.console.log(err));
   }else {
+		if (message.content.startsWith(prefix)) return;
 money.money = money.money + coinstoadd;
 money.save().catch(err => console.log(err));
 }
