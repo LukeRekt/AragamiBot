@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
     const b = message.guild.roles.get('464548108643336192');
       const c = message.guild.roles.get('464548108643336192');
 	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
-      const filter = (reaction, user) => ['🇦, '🇧', '🇨'].includes(reaction.emoji.name)
+      const filter = (reaction, user) => ['🇦', '🇧', '🇨'].includes(reaction.emoji.name) && user.id === message.author.id;
           let embed = new Discord.RichEmbed()
           .setTitle('Loja')
           .setDescription(`
