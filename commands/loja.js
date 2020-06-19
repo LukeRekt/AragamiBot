@@ -56,7 +56,6 @@ module.exports.run = async (bot, message, args) => {
 
                 }
 
-
               }).catch(colleted => {
                 return message.channel.send('nao foi')
               })
