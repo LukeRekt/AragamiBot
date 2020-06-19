@@ -31,9 +31,9 @@ module.exports.run = async (bot, message, args) => {
             .setFooter(`ID: ${message.author.id}`);
 
             message.channel.send(embed).then(async msg => {
-              await msg.react('a');
-              await msg.react('b');
-              await msg.react('c');
+              await msg.react('🅰️');
+              await msg.react('🅱️');
+              await msg.react('✅');
 
               msg.awaitReactions(filter, {
                 max: 1,
