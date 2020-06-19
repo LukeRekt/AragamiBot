@@ -39,7 +39,7 @@ module.exports.run = async (bot, message, args) => {
 	            .setDescription(`**${message.author.username}** transferido com sucesso **${member.user.username}** money ${args[1]}`)
 	            loc.money -= Math.floor(parseInt(args[1]));
 	            data.money += Math.floor(parseInt(args[1]));
-	            loc.save(); data.save()
+	            loc.save(); data.save();
 	            message.channel.send(embed)
 	                }
 	            })
