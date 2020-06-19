@@ -11,12 +11,12 @@ module.exports.run = async (bot, message, args) => {
      let numero = Math.floor(Math.random() * 10) + 1;
   //   let numeroroub = Math.floor(Math.random() * 100) + 1;
      let member = message.guild.member(message.mentions.users.first())
-     var timer = setInterval(myTimer, 10000);
+
+
+
      if(!member) return message.reply(`O usuário não foi encontrado.`)
 
-function myTimer() {
-	 var d = new Date();
-	 if(d > 0) return message.reply("sem tempo irmao");
+
 
     	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
     	    Money.findOne({serverID: message.guild.id, userID: member.id},(err,data) => {
