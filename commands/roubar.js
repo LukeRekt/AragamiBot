@@ -9,7 +9,7 @@ const Money = require("../models/money.js")
 
 module.exports.run = async (bot, message, args) => {
      let numero = Math.floor(Math.random() * 10) + 1;
-  //   let numeroroub = Math.floor(Math.random() * 100) + 1;
+     let numeroroub = Math.floor(Math.random() * 100) + 1;
      let member = message.guild.member(message.mentions.users.first())
 
 
@@ -56,7 +56,7 @@ module.exports.run = async (bot, message, args) => {
     	                })
     	            })
     	        }
-    	    
+
 
 module.exports.help = {
   name: "roubar",
