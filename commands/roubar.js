@@ -34,8 +34,8 @@ module.exports.run = async (bot, message, args) => {
     	            let embed = new Discord.RichEmbed()
     	            .setColor('RED')
     	            .setDescription(`**${message.author.username}** roubou **${numeroroll}** de ${member}`)
-    	            loc.money += Math.floor(parseInt(numeroroll));
-    	            data.money -= Math.floor(parseInt(numeroroll));
+    	            loc.money += Math.floor(parseInt(numeroroub));
+    	            data.money -= Math.floor(parseInt(numeroroub));
     	            loc.save(); data.save()
     	            message.channel.send(embed)
                 }else {
