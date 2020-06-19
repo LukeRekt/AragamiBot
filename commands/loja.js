@@ -28,7 +28,7 @@ module.exports.run = async (bot, message, args) => {
             .setColor(0xdd9323)
             .setFooter(`ID: ${message.author.id}`);
 
-            message.channel.send(embed).then(msg => {
+            message.channel.send(embed).then(async msg => {
               await msg.react('a');
               await msg.react('b');
               await msg.react('c');
