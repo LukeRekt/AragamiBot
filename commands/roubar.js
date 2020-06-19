@@ -15,26 +15,18 @@ module.exports.run = async (bot, message, args) => {
 
 
      if(!member) return message.reply(`O usuário não foi encontrado.`)
-
-
+     if(message.author.id === member.id) return message.reply("voce nao pode roubar vc mesmo");
 
     	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
     	    Money.findOne({serverID: message.guild.id, userID: member.id},(err,data) => {
-          if(data.money < 100) return message.reply(`Você não tem tantas moedas.`)
-              if(data.money > 500){
-								     let numeroroub = Math.floor(Math.random() * 500) + 1;
-							}
-							if(data.money > 1000){
-								     let numeroroub = Math.floor(Math.random() * 1000) + 1;
-							}
-							if(!data){
+    	        if(!data){
     	            let errorMess = new Discord.RichEmbed()
     	            .setColor('RED')
     	            .setDescription(`o User **${member.user.tag}** nao esta no banco de dados.`)
     	            return message.channel.send(errorMess)
     	        }else{
 
-
+    	            if(data.money < 100) return message.reply(`Você não tem tantas moedas.`)
     	           // if(data.userID == member.id) return message.reply(`Você não pode transferir moedas para si mesmo!`)
     	            if(member.user.bot) return message.reply(`Bots não são humanos.`)
 
@@ -52,11 +44,10 @@ module.exports.run = async (bot, message, args) => {
 									.setDescription(`**${message.author.username}** não conseguiu roubar de ${member}`)
 									message.channel.send(embed)
                 }
-								}
-    	                })
+    	                }
     	            })
-    	        }
-
+    	        })
+    	    }
 
 module.exports.help = {
   name: "roubar",
