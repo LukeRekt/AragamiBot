@@ -17,23 +17,23 @@ module.exports.run = async (bot, message, args) => {
     const b = message.guild.roles.get('464548108643336192');
       const c = message.guild.roles.get('464548108643336192');
 	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
-      const filter = (reaction, user) => ['A', 'B', 'C'].includes(reaction.emoji.name)
+      const filter = (reaction, user) => ['🇦, '🇧', '🇨'].includes(reaction.emoji.name)
           let embed = new Discord.RichEmbed()
           .setTitle('Loja')
           .setDescription(`
 
-            A ${a.toString()}
-            B ${b.toString()}
-            C ${c.toString()}
+            🇦 ${a.toString()}
+            🇧 ${b.toString()}
+            🇨 ${c.toString()}
 
             `)
             .setColor(0xdd9323)
             .setFooter(`ID: ${message.author.id}`);
 
             message.channel.send(embed).then(async msg => {
-              await msg.react('🅰️');
-              await msg.react('🅱️');
-              await msg.react('✅');
+              await msg.react('🇦');
+              await msg.react('🇧');
+              await msg.react('🇨');
 
               msg.awaitReactions(filter, {
                 max: 1,
@@ -45,13 +45,13 @@ module.exports.run = async (bot, message, args) => {
                 const reaction = colleted.first();
 
                 switch (reaction.emoji.name) {
-                  case 'A':
+                  case '🇦':
                     message.reply("penis a");
                     break;
-                  case 'B':
+                  case '🇧':
                       message.reply("penis b");
                     break;
-                  case 'C':
+                  case '🇨':
                         message.reply("penis c");
                     break;
                   default:
