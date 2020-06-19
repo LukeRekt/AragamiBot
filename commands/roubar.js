@@ -26,7 +26,7 @@ module.exports.run = async (bot, message, args) => {
     	            return message.channel.send(errorMess)
     	        }else{
 
-    	            if(data.money < 100) return message.reply(`Você não tem tantas moedas.`)
+    	            if(data.money < 100) return message.reply(`a pessoa nao tem dinheiro para roubar.`)
     	           // if(data.userID == member.id) return message.reply(`Você não pode transferir moedas para si mesmo!`)
     	            if(member.user.bot) return message.reply(`Bots não são humanos.`)
 
