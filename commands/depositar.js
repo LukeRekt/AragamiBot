@@ -15,6 +15,7 @@ module.exports.run = async (bot, message, args) => {
 //formatar as msgs em embed
 
 	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
+				let oldmoney = loc.money
 	        if(!loc){
 	            let errorMess = new Discord.RichEmbed()
 	            .setColor('RED')
@@ -29,7 +30,7 @@ module.exports.run = async (bot, message, args) => {
 	            .setDescription(`**${message.author.username}** depositou ${oldmoney}`)
 
 	            message.channel.send(embed)
-							let oldmoney = loc.money
+
 							loc.banco += Math.floor(parseInt(oldmoney));
 							loc.money -= Math.floor(parseInt(oldmoney));
 

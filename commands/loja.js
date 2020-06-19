@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
   //if(sCoins < args[1]) return message.reply("quantidade de moedas indisponivel");
 	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
       const filter = (reaction, user) => ['A', 'B', 'C'].includes(reaction.emoji.name)
-          const embed = new RichEmbed()
+          let embed = new Discord.RichEmbed()
           .setTitle('Loja')
           .setDescription(`
 
