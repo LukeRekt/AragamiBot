@@ -9,13 +9,10 @@ const Money = require("../models/money.js")
 
 module.exports.run = async (bot, message, args) => {
 //todo
-//checar money da pessoa(pronto)
-//enviar para o banco e remover do bolso/money(+-)
-//membro nao foi definido
-//formatar as msgs em embed
-
+//checar money da pessoa
+//enviar para o alvo e remover do sender
 	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
-				let oldmoney = loc.money
+	    Money.findOne({serverID: message.guild.id, userID: member.id},(err,data) => {
 	        if(!loc){
 	            let errorMess = new Discord.RichEmbed()
 	            .setColor('RED')
@@ -23,19 +20,18 @@ module.exports.run = async (bot, message, args) => {
 	            return message.channel.send(errorMess)
 	        }else{
 
-	            if(loc.money < 1) return message.reply(`Você não tem dinheiro.`)
-
+	            if(loc.money < 1) return message.reply(`essa pessoa nao tem dinheiro.`)
+              let oldmoney = loc.money
 	            let embed = new Discord.RichEmbed()
 	            .setColor('RED')
 	            .setDescription(`**${message.author.username}** depositou ${oldmoney}`)
+              loc.banco += Math.floor(parseInt(oldmoney));
+              loc.money -= Math.floor(parseInt(oldmoney));
 
+	            loc.save();)
 	            message.channel.send(embed)
-
-							loc.banco += Math.floor(parseInt(oldmoney));
-							loc.money -= Math.floor(parseInt(oldmoney));
-
-							loc.save();
 	                }
+	            })
 	        })
 	    }
 
