@@ -12,11 +12,10 @@ module.exports.run = async (bot, message, args) => {
 //checar money da pessoa
 //enviar para o alvo e remover do sender
 	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
-	    Money.findOne({serverID: message.guild.id, userID: member.id},(err,data) => {
 	        if(!loc){
 	            let errorMess = new Discord.RichEmbed()
 	            .setColor('RED')
-	            .setDescription(`o User **${member.user.tag}** nao esta no banco de dados.`)
+	            .setDescription(`o User **${message.author.username}** nao esta no banco de dados.`)
 	            return message.channel.send(errorMess)
 	        }else{
 
@@ -31,7 +30,6 @@ module.exports.run = async (bot, message, args) => {
 	            loc.save();
 	            message.channel.send(embed)
 	                }
-	            })
 	        })
 	    }
 
