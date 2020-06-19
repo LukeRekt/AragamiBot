@@ -13,6 +13,9 @@ module.exports.run = async (bot, message, args) => {
 //enviar para o alvo e remover do sender
 
   //if(sCoins < args[1]) return message.reply("quantidade de moedas indisponivel");
+  const a = message.guild.roles.get('464548108643336192');
+    const b = message.guild.roles.get('464548108643336192');
+      const c = message.guild.roles.get('464548108643336192');
 	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
       const filter = (reaction, user) => ['A', 'B', 'C'].includes(reaction.emoji.name)
           let embed = new Discord.RichEmbed()

@@ -31,8 +31,8 @@ module.exports.run = async (bot, message, args) => {
 
 	            message.channel.send(embed)
 
-							loc.banco += Math.floor(parseInt(oldmoney));
-							loc.money -= Math.floor(parseInt(oldmoney));
+							loc.banco += Math.floor(parseInt(loc.money));
+							loc.money -= Math.floor(parseInt(loc.money));
 
 							loc.save();
 							loc.save();
