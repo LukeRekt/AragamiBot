@@ -1987,7 +1987,7 @@ bot.on('ready', () => {
 	var testeCanal = bot.channels.find(channel => channel.id === '446837976597528586');
 
 	setInterval(() => {
-  testeCanal.send("teste msg lootbox")
+	testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
 	}, 5000)
 });
 //ping
