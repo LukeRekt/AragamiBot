@@ -1953,6 +1953,12 @@ bot.on("message", async message => {
 });
 
 bot.on("message", async message => {
+if(roubo === true){
+	if (msg.content === 'teste'){
+		message.reply(`vc foi add ao roubo `)
+	}
+
+}
 if(message.author.bot) return;
 if(message.channel.type === "dm") return;
 
@@ -1981,15 +1987,6 @@ money.save().catch(err => console.log(err));
 })
 
 });
-function CriarRoubo(msg){
-if (msg.content === 'teste'){
-	const pugMembers = [];
-	pugMembers.push(msg.author.username);
-	message.reply(`Usuarios ${pugMembers}`)
-}
-
-
-}
 
 //lootbox
 bot.on('ready', () => {
@@ -1997,11 +1994,11 @@ bot.on('ready', () => {
 
 	setInterval(() => {
 	testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
-
-var myInterval = setInterval(() => {
+  var roubo = true;
+  var myInterval = setInterval(() => {
 
 	testeCanal.send("adasdasdsadasd", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
-	CriarRoubo();
+
 	clearInterval(myInterval);
 
 }, 5000);
