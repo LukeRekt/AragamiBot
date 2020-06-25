@@ -1988,10 +1988,12 @@ bot.on('ready', () => {
 
 	setInterval(() => {
 	testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
-	  setInterval(() => {
-	  testeCanal.send("msg2 **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
-    }, 3000)
-  });
+	
+	setInterval(() => {
+	testeCanal.send("adasdasdsadasd", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
+
+}, 5000);
+
 }, 30000)
 });
 //ping
