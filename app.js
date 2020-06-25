@@ -1955,7 +1955,7 @@ bot.on("message", async message => {
 
 bot.on("message", async message => {
 if(roubo === true){
-	if (msg.content === 'teste'){
+	if (message.content === 'teste'){
 		message.reply(`vc foi add ao roubo `)
 	}
 
