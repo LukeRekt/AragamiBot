@@ -18,6 +18,7 @@ const logsPath = path.join(__dirname, 'logs');
 const configPath = path.join(__dirname, 'config');
 const modulesPath = path.join(__dirname, 'modules');
 const mongoose = require("mongoose");
+const roubo = false;
 
 const prefix = '-'
 let coins = require("./coins.json");
@@ -1994,7 +1995,7 @@ bot.on('ready', () => {
 
 	setInterval(() => {
 	testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
-  var roubo = true;
+  const roubo = true;
   var myInterval = setInterval(() => {
 
 	testeCanal.send("adasdasdsadasd", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
