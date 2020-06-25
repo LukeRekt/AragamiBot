@@ -1981,6 +1981,15 @@ money.save().catch(err => console.log(err));
 })
 
 });
+
+//lootbox
+bot.on('ready', () => {
+	var testeCanal = bot.channels.find(channel => channel.id === '446837976597528586');
+
+	setInterval(() => {
+  testeCanal.send("teste msg lootbox")
+	}, 5000)
+});
 //ping
 var http = require("http");
 setInterval(function() {
