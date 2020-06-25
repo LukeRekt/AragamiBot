@@ -18,7 +18,7 @@ const logsPath = path.join(__dirname, 'logs');
 const configPath = path.join(__dirname, 'config');
 const modulesPath = path.join(__dirname, 'modules');
 const mongoose = require("mongoose");
-const roubo = false;
+const roubo = true;
 
 const prefix = '-'
 let coins = require("./coins.json");
