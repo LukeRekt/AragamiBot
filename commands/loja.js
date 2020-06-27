@@ -50,15 +50,15 @@ module.exports.run = async (bot, message, args) => {
                 switch (reaction.emoji.name) {
                   case '🇦':
 									message.member.addRole(a);
-                    message.reply("penis a");
+                    msg.delete();
                     break;
                   case '🇧':
 									message.member.addRole(b);
-                      message.reply("penis b");
+                      msg.delete();
                     break;
                   case '🇨':
 									message.member.addRole(c);
-                        message.reply("penis c");
+                      msg.delete();
                     break;
                   default:
 

@@ -1953,13 +1953,13 @@ bot.on("message", async message => {
     }
 });
 
-bot.on("message", async message => {
-if(roubo === true){
-	if (message.content === 'teste'){
-		message.reply(`vc foi add ao roubo `)
-	}
+//bot.on("message", async message => {
+//if(roubo === true){
+	//if (message.content === 'teste'){
+		//message.reply(`vc foi add ao roubo `)
+	//}
 
-}
+//}
 if(message.author.bot) return;
 if(message.channel.type === "dm") return;
 
@@ -1990,22 +1990,22 @@ money.save().catch(err => console.log(err));
 });
 
 //lootbox
-bot.on('ready', () => {
-	var testeCanal = bot.channels.find(channel => channel.id === '446837976597528586');
+//bot.on('ready', () => {
+	//var testeCanal = bot.channels.find(channel => channel.id === '446837976597528586');
 
-	setInterval(() => {
-	testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
-  const roubo = true;
-  var myInterval = setInterval(() => {
+	//setInterval(() => {
+	//testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
+  //const roubo = true;
+  //var myInterval = setInterval(() => {
 
-	testeCanal.send("adasdasdsadasd", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
+	//testeCanal.send("adasdasdsadasd", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
 
-	clearInterval(myInterval);
+	//clearInterval(myInterval);
 
-}, 5000);
+//}, 5000);
 
-}, 30000)
-});
+//}, 30000)
+//});
 //ping
 var http = require("http");
 setInterval(function() {
