@@ -1987,7 +1987,7 @@ money.save().catch(err => console.log(err));
 }
 })
 
-});
+//});
 
 //lootbox
 //bot.on('ready', () => {
