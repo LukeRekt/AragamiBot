@@ -13,9 +13,12 @@ module.exports.run = async (bot, message, args) => {
 //enviar para o alvo e remover do sender
 
   //if(sCoins < args[1]) return message.reply("quantidade de moedas indisponivel");
-  const a = message.guild.roles.get('464548108643336192');
-    const b = message.guild.roles.get('464548108643336192');
-      const c = message.guild.roles.get('464548108643336192');
+  const a = message.guild.roles.get('726215603563528403');
+    const b = message.guild.roles.get('726215588850171951');
+      const c = message.guild.roles.get('726227853376749570');
+			const d = message.guild.roles.get('726227857025794128');
+			const e = message.guild.roles.get('726215603538624594');
+			const f = message.guild.roles.get('726215576988418159');
 	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
       const filter = (reaction, user) => ['🇦', '🇧', '🇨'].includes(reaction.emoji.name) && user.id === message.author.id;
           let embed = new Discord.RichEmbed()
@@ -46,12 +49,15 @@ module.exports.run = async (bot, message, args) => {
 
                 switch (reaction.emoji.name) {
                   case '🇦':
+									message.member.addRole(a);
                     message.reply("penis a");
                     break;
                   case '🇧':
+									message.member.addRole(b);
                       message.reply("penis b");
                     break;
                   case '🇨':
+									message.member.addRole(c);
                         message.reply("penis c");
                     break;
                   default:
