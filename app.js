@@ -1991,20 +1991,20 @@ money.save().catch(err => console.log(err));
 
 //lootbox
 bot.on('ready', () => {
-	var testeCanal = bot.channels.find(channel => channel.id === '446837976597528586');
+//	var testeCanal = bot.channels.find(channel => channel.id === '446837976597528586');
 
 	setInterval(() => {
-	testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
+	//testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
   const roubo = true;
   var myInterval = setInterval(() => {
 
-	testeCanal.send("adasdasdsadasd", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
+	//testeCanal.send("adasdasdsadasd", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
 
 	clearInterval(myInterval);
 
-}, 5000000000);
+}, 5000000);
 
-}, 3000000000)
+}, 3000000)
 });
 //ping
 var http = require("http");
