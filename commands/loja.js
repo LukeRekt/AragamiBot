@@ -28,9 +28,9 @@ module.exports.run = async (bot, message, args) => {
             🇦 ${a.toString()}
             🇧 ${b.toString()}
             🇨 ${c.toString()}
-						🇩 ${c.toString()}
-						🇪 ${c.toString()}
-						🇫 ${c.toString()}
+						🇩 ${d.toString()}
+						🇪 ${e.toString()}
+						🇫 ${f.toString()}
 
             `)
             .setColor(0xdd9323)
