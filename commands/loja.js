@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
 			const e = message.guild.roles.get('726215603538624594');
 			const f = message.guild.roles.get('726215576988418159');
 	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
-      const filter = (reaction, user) => ['🇦', '🇧', '🇨'].includes(reaction.emoji.name) && user.id === message.author.id;
+      const filter = (reaction, user) => ['🇦', '🇧', '🇨', '🇩', '🇪', '🇫'].includes(reaction.emoji.name) && user.id === message.author.id;
           let embed = new Discord.RichEmbed()
           .setTitle('Loja')
           .setDescription(`
@@ -28,6 +28,9 @@ module.exports.run = async (bot, message, args) => {
             🇦 ${a.toString()}
             🇧 ${b.toString()}
             🇨 ${c.toString()}
+						🇩 ${c.toString()}
+						🇪 ${c.toString()}
+						🇫 ${c.toString()}
 
             `)
             .setColor(0xdd9323)
@@ -37,7 +40,9 @@ module.exports.run = async (bot, message, args) => {
               await msg.react('🇦');
               await msg.react('🇧');
               await msg.react('🇨');
-
+							await msg.react('🇩');
+              await msg.react('🇪');
+							await msg.react('🇫');
               msg.awaitReactions(filter, {
                 max: 1,
                 time: 30000,
@@ -57,9 +62,21 @@ module.exports.run = async (bot, message, args) => {
                       msg.delete();
                     break;
                   case '🇨':
-									message.member.addRole(c);
+								  message.member.addRole(c);
                       msg.delete();
                     break;
+									case '🇩':
+								  message.member.addRole(d);
+										  msg.delete();
+									  break;
+									case '🇪':
+								  message.member.addRole(e);
+										  msg.delete();
+									  break;
+									case '🇫':
+									message.member.addRole(f);
+										msg.delete();
+										break;
                   default:
 
                 }
