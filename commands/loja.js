@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
 //todo
 //checar money da pessoa
 //enviar para o alvo e remover do sender
-
+//sim
   //if(sCoins < args[1]) return message.reply("quantidade de moedas indisponivel");
   const a = message.guild.roles.get('726215603563528403');
     const b = message.guild.roles.get('726215588850171951');
