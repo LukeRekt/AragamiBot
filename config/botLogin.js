@@ -1,5 +1,6 @@
 module.exports = {
-	token: "removido por motivos de seguranca",
-	youtubeAPI: "removido por motivos de seguranca",
+
+	token: "aaa",
+	youtubeAPI: "aa-k3E",
 	owner_id: "223207253522644992"
 }

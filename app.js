@@ -2020,5 +2020,5 @@ setInterval(function() {
 
 
 
-bot.login(process.env.token);
+bot.login(botLogin.token);
 app.listen(port);
