@@ -29,7 +29,7 @@ const botPreferenceFile = path.join(configPath, 'preference.json');
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
-mongoose.connect("mongodb+srv://lucasrsl1:1010101010@cluster0-rzkwu.mongodb.net/Teste?retryWrites=true&w=majority", {
+mongoose.connect(process.env.mongosenha, {
 	useNewUrlParser: true
 });
 const Money = require("./models/money.js")
@@ -1994,11 +1994,11 @@ bot.on('ready', () => {
 	var testeCanal = bot.channels.find(channel => channel.id === '446837976597528586');
 
 	setInterval(() => {
-	testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
+	//testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
   const roubo = true;
   var myInterval = setInterval(() => {
 
-	testeCanal.send("adasdasdsadasd", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
+	//testeCanal.send("adasdasdsadasd", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
 
 	clearInterval(myInterval);
 

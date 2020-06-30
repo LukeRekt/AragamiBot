@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const mongoose = require("mongoose");
 const talkedRecently = new Set();
-mongoose.connect("mongodb+srv://lucasrsl1:1010101010@cluster0-rzkwu.mongodb.net/Teste?retryWrites=true&w=majority", {
+mongoose.connect(process.env.mongosenha, {
 	useNewUrlParser: true
 });
 
