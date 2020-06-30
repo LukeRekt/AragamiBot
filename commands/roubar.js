@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
      let member = message.guild.member(message.mentions.users.first())
 		 const talkedRecently = new Set();
 
-		 if (talkedRecently.has(msg.author.id)) return msg.channel.send("cooldown. - " + msg.author);
+		 if (talkedRecently.has(message.author.id)) return message.channel.send("cooldown. - " + message.author);
 
 
      if(!member) return message.reply(`O usuário não foi encontrado.`)
@@ -33,7 +33,7 @@ module.exports.run = async (bot, message, args) => {
     	            if(member.user.bot) return message.reply(`Bots não são humanos.`)
 
                   if(numeroroll > 5){
-										talkedRecently.add(msg.author.id);
+										talkedRecently.add(message.author.id);
     	            let embed = new Discord.RichEmbed()
     	            .setColor('RED')
     	            .setDescription(`**${message.author.username}** roubou **${numeroroll}** de ${member}`)
