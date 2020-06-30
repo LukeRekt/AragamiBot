@@ -29,18 +29,19 @@ module.exports.run = async (bot, message, args) => {
     	            return message.channel.send(errorMess)
     	        }else{
 								if (talkedRecently.has(message.author.id)) {
-														message.channel.send("Piruzinho " + message.author);
+														message.channel.send(message.author + "Espere 1 minuto para roubar de novo");
 										} else {
 
     	            if(data.money < 100) return message.reply(`a pessoa nao tem dinheiro para roubar.`)
     	           // if(data.userID == member.id) return message.reply(`Você não pode transferir moedas para si mesmo!`)
+
     	            if(member.user.bot) return message.reply(`Bots não são humanos.`)
 
                   if(numeroroll > 5){
 										talkedRecently.add(message.author.id);
     	            let embed = new Discord.RichEmbed()
     	            .setColor('RED')
-    	            .setDescription(`**${message.author.username}** roubou **${numeroroll}** de ${member}`)
+    	            .setDescription(`**${message.author.username}** roubou **${numeroroub}** de ${member}`)
     	            loc.money += Math.floor(parseInt(numeroroub));
     	            data.money -= Math.floor(parseInt(numeroroub));
     	            loc.save(); data.save()
@@ -53,7 +54,6 @@ module.exports.run = async (bot, message, args) => {
 									message.channel.send(embed)
                 }
 								setTimeout(() => {
-
           talkedRecently.delete(message.author.id);
         }, 60000);
     }
