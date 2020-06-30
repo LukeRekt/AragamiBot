@@ -29,7 +29,7 @@ module.exports.run = async (bot, message, args) => {
     	            return message.channel.send(errorMess)
     	        }else{
 								if (talkedRecently.has(message.author.id)) {
-														message.channel.send(message.author + "Espere 1 minuto para roubar de novo");
+														message.channel.send(message.author + " Espere 30 segundos para roubar de novo");
 										} else {
 
     	            if(data.money < 100) return message.reply(`a pessoa nao tem dinheiro para roubar.`)
@@ -55,7 +55,7 @@ module.exports.run = async (bot, message, args) => {
                 }
 								setTimeout(() => {
           talkedRecently.delete(message.author.id);
-        }, 60000);
+        }, 30000);
     }
 								}
 							})
