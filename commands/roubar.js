@@ -51,8 +51,8 @@ module.exports.run = async (bot, message, args) => {
 									message.channel.send(embed)
                 }
 								setTimeout(() => {
-          
-          talkedRecently.delete(msg.author.id);
+
+          talkedRecently.delete(message.author.id);
         }, 60000);
     }
 								}
