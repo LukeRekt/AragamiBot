@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
 
 
 
-      talkedRecently.add(message.author.id);
+
      if(!member) return message.reply(`O usuário não foi encontrado.`)
      if(message.author.id === member.id) return message.reply("voce nao pode roubar vc mesmo");
 
@@ -37,6 +37,7 @@ module.exports.run = async (bot, message, args) => {
     	            if(member.user.bot) return message.reply(`Bots não são humanos.`)
 
                   if(numeroroll > 5){
+										talkedRecently.add(message.author.id);
     	            let embed = new Discord.RichEmbed()
     	            .setColor('RED')
     	            .setDescription(`**${message.author.username}** roubou **${numeroroll}** de ${member}`)
@@ -45,6 +46,7 @@ module.exports.run = async (bot, message, args) => {
     	            loc.save(); data.save()
     	            message.channel.send(embed)
                 }else {
+									talkedRecently.add(message.author.id);
 									let embed = new Discord.RichEmbed()
 									.setColor('RED')
 									.setDescription(`**${message.author.username}** não conseguiu roubar de ${member}`)
