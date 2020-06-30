@@ -21,7 +21,6 @@ const mongoose = require("mongoose");
 const roubo = false;
 
 const prefix = '-'
-let coins = require("./coins.json");
 
 const botLogin = require(path.join(configPath, 'botLogin.js'));
 const yt = require(path.join(modulesPath, 'youtube.js'));
