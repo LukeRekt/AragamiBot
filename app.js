@@ -18,7 +18,7 @@ const logsPath = path.join(__dirname, 'logs');
 const configPath = path.join(__dirname, 'config');
 const modulesPath = path.join(__dirname, 'modules');
 const mongoose = require("mongoose");
-const roubo = true;
+const roubo = false;
 
 const prefix = '-'
 let coins = require("./coins.json");
@@ -1991,14 +1991,14 @@ money.save().catch(err => console.log(err));
 
 //lootbox
 bot.on('ready', () => {
-//	var testeCanal = bot.channels.find(channel => channel.id === '446837976597528586');
+	var testeCanal = bot.channels.find(channel => channel.id === '446837976597528586');
 
 	setInterval(() => {
-	//testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
+	testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
   const roubo = true;
   var myInterval = setInterval(() => {
 
-	//testeCanal.send("adasdasdsadasd", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
+	testeCanal.send("adasdasdsadasd", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
 
 	clearInterval(myInterval);
 
@@ -2020,5 +2020,5 @@ setInterval(function() {
 
 
 
-bot.login(botLogin.token);
+bot.login(process.env.token);
 app.listen(port);
