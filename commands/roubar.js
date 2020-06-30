@@ -29,7 +29,7 @@ module.exports.run = async (bot, message, args) => {
     	            return message.channel.send(errorMess)
     	        }else{
 								if (talkedRecently.has(message.author.id)) {
-														message.channel.send("Piruzinho " + msg.author);
+														message.channel.send("Piruzinho " + message.author);
 										} else {
 
     	            if(data.money < 100) return message.reply(`a pessoa nao tem dinheiro para roubar.`)
@@ -60,7 +60,7 @@ module.exports.run = async (bot, message, args) => {
     	            })
     	        }
 
-    	    
+
 
 module.exports.help = {
   name: "roubar",
