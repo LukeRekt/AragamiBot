@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
      let member = message.guild.member(message.mentions.users.first())
 		 const talkedRecently = new Set();
 
-		 if (talkedRecently.has(msg.author.id)) return msg.channel.send("Wait 1 minute before getting typing this again. - " + msg.author);
+		 if (talkedRecently.has(msg.author.id)) return msg.channel.send("cooldown. - " + msg.author);
 
 
      if(!member) return message.reply(`O usuário não foi encontrado.`)
