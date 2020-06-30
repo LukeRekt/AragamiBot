@@ -56,7 +56,7 @@ module.exports.run = async (bot, message, args) => {
         }, 60000);
     }
 								}
-    	                }
+							})
     	            })
     	        })
 
