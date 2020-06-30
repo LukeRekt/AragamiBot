@@ -1850,7 +1850,7 @@ bot.on("message", async message => {
 		member.removeRole(rankmute.id);
 
 	}, ms(time));
-
+//aa
   }
 
 //desmutar - inicio
@@ -2020,5 +2020,5 @@ setInterval(function() {
 
 
 
-bot.login(botLogin.token);
+bot.login(process.env.token);
 app.listen(port);
