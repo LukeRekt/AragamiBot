@@ -13,10 +13,9 @@ module.exports.run = async (bot, message, args) => {
      let member = message.guild.member(message.mentions.users.first())
 		 const talkedRecently = new Set();
 
-		 if (talkedRecently.has(msg.author.id)) {
-		             msg.channel.send("cooldown 1 min funcionando. - " + msg.author);
-		     } else {
-         talkedRecently.add(msg.author.id);
+		 if (talkedRecently.has(msg.author.id)) return msg.channel.send("Wait 1 minute before getting typing this again. - " + msg.author);
+
+
      if(!member) return message.reply(`O usuário não foi encontrado.`)
      if(message.author.id === member.id) return message.reply("voce nao pode roubar vc mesmo");
 
@@ -34,6 +33,7 @@ module.exports.run = async (bot, message, args) => {
     	            if(member.user.bot) return message.reply(`Bots não são humanos.`)
 
                   if(numeroroll > 5){
+										talkedRecently.add(msg.author.id);
     	            let embed = new Discord.RichEmbed()
     	            .setColor('RED')
     	            .setDescription(`**${message.author.username}** roubou **${numeroroll}** de ${member}`)
@@ -47,11 +47,7 @@ module.exports.run = async (bot, message, args) => {
 									.setDescription(`**${message.author.username}** não conseguiu roubar de ${member}`)
 									message.channel.send(embed)
                 }
-								setTimeout(() => {
-          // Removes the user from the set after a minute
-            talkedRecently.delete(msg.author.id);
-           }, 60000);
-        }
+
     	                }
     	            })
     	        })
