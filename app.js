@@ -34,7 +34,7 @@ mongoose.connect(process.env.mongosenha, {
 });
 const Money = require("./models/money.js")
 
-
+//apenas para testar se o heroku esta fazendo os deploys
 fs.readdir("./commands/", (err, files) => {
 	if(err) console.log(err);
 
