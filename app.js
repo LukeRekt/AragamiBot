@@ -20,6 +20,7 @@ const modulesPath = path.join(__dirname, 'modules');
 const mongoose = require("mongoose");
 const roubo = false;
 
+
 const prefix = '-'
 
 const botLogin = require(path.join(configPath, 'botLogin.js'));
@@ -1953,12 +1954,7 @@ bot.on("message", async message => {
 });
 
 bot.on("message", async message => {
-if(roubo === true){
-	if (message.content === 'teste'){
-		message.reply(`vc foi add ao roubo `)
-	}
 
-}
 if(message.author.bot) return;
 if(message.channel.type === "dm") return;
 
@@ -2004,7 +2000,7 @@ bot.on('ready', () => {
 
 }, 10000);
 
-}, 100000)
+}, 30000)
 });
 //ping
 var http = require("http");
