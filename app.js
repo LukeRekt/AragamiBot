@@ -20,7 +20,6 @@ const modulesPath = path.join(__dirname, 'modules');
 const mongoose = require("mongoose");
 const roubo = false;
 
-
 const prefix = '-'
 
 const botLogin = require(path.join(configPath, 'botLogin.js'));
@@ -1954,6 +1953,17 @@ bot.on("message", async message => {
 });
 
 bot.on("message", async message => {
+	if(roubo === true){
+		if (message.content === '-teste'){
+			message.reply(`vc foi add ao roubo `)	
+		membrosroubo.push(msg.author.username);
+		message.reply("add no roubo")
+	  message.reply(`Debug: participantes: ${membrosroubo}`)
+	}
+	   
+	   }else{
+		   message.reply("nenhum roubo acontencendo")
+	   }
 
 if(message.author.bot) return;
 if(message.channel.type === "dm") return;
