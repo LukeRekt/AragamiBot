@@ -29,7 +29,7 @@ bot.on('ready', () => {
 
 
 	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
-	    Money.findOne({serverID: message.guild.id, userID: member.id},(err,data) => {
+
 
 	    if(roubo === true){
 		message.reply('entrou no roubo')
@@ -37,8 +37,7 @@ bot.on('ready', () => {
 		 message.reply('nenhum roubo acontecendo')
 	}
   
-	     
-	            })
+	    
 	        })
 	    }
 
