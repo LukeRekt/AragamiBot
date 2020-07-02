@@ -1,3 +1,4 @@
+
 const Discord = require('discord.js');
 const jimp =require("jimp");
 const fs = require('fs');
@@ -20,6 +21,7 @@ const modulesPath = path.join(__dirname, 'modules');
 const mongoose = require("mongoose");
 const roubo = false;
 
+
 const prefix = '-'
 
 const botLogin = require(path.join(configPath, 'botLogin.js'));
@@ -33,6 +35,7 @@ mongoose.connect(process.env.mongosenha, {
 });
 const Money = require("./models/money.js")
 
+//apenas para testar se o heroku esta fazendo os deploys
 fs.readdir("./commands/", (err, files) => {
 	if(err) console.log(err);
 
@@ -85,6 +88,14 @@ var defualtGame = "Comandos -ajuda";
 // The object voice channel the bot is in
 var currentVoiceChannel = null;
 
+// Playback
+var queue = [];
+var botPlayback;	// stream dispatcher
+var voiceConnection;	// voice Connection object
+var playing = false;
+var stopped = false;
+var stayOnQueue = false;
+var looping = false;
 
 // Check existence of folders
 var paths = [localPath, playlistPath, tempFilesPath, logsPath];
@@ -102,6 +113,10 @@ function sendError(title, error, channel){
 	channel.send("**" + title + " Error**\n```" + error.message +"```");
 }
 
+//	peguei aq: https://stackoverflow.com/questions/1303646/check-whether-variable-is-number-or-string-in-javascript#1303650
+function isNumber(obj) {
+	return !isNaN(parseFloat(obj))
+}
 
 // teste do comando
 function isCommand(message, command){
@@ -133,6 +148,17 @@ function isOwner(message){
 		return false;
 }
 
+function getGuildByString(guildName){
+	return bot.guilds.filterArray( (guild) =>{
+		return guild.name === guildName;
+	})[0];
+}
+
+function getChannelByString(guild, channelName){
+	return guild.channels.filterArray( (channel) =>{
+		return channel.name === channelName;
+	})[0];
+}
 
 function setGame(game){
 	bot.user.setActivity(game);
@@ -201,6 +227,50 @@ function botUptime(){
 
 	return [uptimeDays, uptimeHours, uptimeMinutes, uptimeSeconds];
 }
+
+/*	Starts playing the first song(index) of the queue
+*	After it has passed it checks to see if there is another in queue
+*	If there are more songs in queue, the first song is removed after it has been played unless
+*	it is set to loop, replay, or stopped
+*/
+function play(connection, message) {
+	const song = queue[0];
+	if(!fs.existsSync(song.file)){
+		message.channel.send("**ERRO:** `" + queue[0].title + "` Arquivo não encontrado Pulando...");
+		queue.shift();
+	}
+
+	botPlayback = connection.playFile(song.file)
+		.on('end', ()=>{
+			playing = false;
+
+			if(!stopped){
+				if(looping){
+					queue.push(queue.shift());
+				} else{
+					if(!stayOnQueue){
+						queue.shift();
+					} else
+						stayOnQueue = false;
+				}
+
+				if(queue.length > 0){
+					play(connection, message);
+				} else{
+					// setGame(defualtGame);
+					setTimeout(()=>{
+						removeTempFiles();
+					}, 1500);
+				}
+			}
+		})
+		.on('error', (error)=>{
+			sendError("Playback", error, message.channel);
+		});
+	botPlayback.setVolume(0.5);
+	playing = true;
+}
+
 // Generate Invite link
 function getInvite(callback){
 	bot.generateInvite([
@@ -225,6 +295,14 @@ function clearTemp(){
 
 }
 
+function isYTLink(input){
+	/* YT REGEX : https://stackoverflow.com/questions/3717115/regular-expression-for-youtube-links
+	*	by Adrei Zisu
+	*/
+	var YT_REG = /http(?:s?):\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)([\w\-\_]*)(&(amp;)?‌​[\w\?‌​=]*)?/
+
+	return YT_REG.test(input);
+}
 
 bot.on('ready', () => {
 	console.log("Aragami V" + botVersion)
@@ -280,7 +358,6 @@ bot.on('message', message => {
 			});
 		}
 	}
-
 
 	// Command to add a certain group to use admin access
 	if(isCommand(message.content, 'addgrupo')){
@@ -489,7 +566,7 @@ bot.on('message', message => {
 					}
 					message.channel.send("Report não disponiveis");
 				});
-			} else message.channel.send("sem permissão baitola.");
+			} else message.channel.send("sem permissão batola.");
 		}
 
 		if(isCommand(message.content, 'delreports')){
@@ -614,7 +691,7 @@ bot.on('message', message => {
 	  					inline: true
 	  				},{
 	  					name: "Quem sou?",
-	  					value: "exato",
+	  					value: "sou o bot do user mais lixo de todos",
 	  					inline: false
 	  				}],
 	  				thumbnail: {
@@ -723,10 +800,875 @@ bot.on('message', message => {
   		var d = uptime[0], h = uptime[1], m = uptime[2], s = uptime[3];
 
   		message.channel.send("**Uptime:** " + d + " Dias(s) : " + h + " houras(s) : " + m + " minuto(s) : " + s + " segundo(s)");
-	  }
-	});
+  	}
+
+  	if(isCommand(message.content, 'setvc')){
+  		if(message.content.indexOf(" ") !== -1){
+  			var voiceChannelName = message.content.split(" ")[1];
+
+  			var guild = message.member.guild;
+  			var channel = getChannelByString(guild, voiceChannelName);
+
+  			function writeOutChannels(){
+  				fs.writeFile(defaultChannelPath, JSON.stringify(defaultChannel, null, '\t'), () =>{
+		  			message.channel.send("vc do server setado para " + voiceChannelName);
+		  		});
+  			}
+
+  			if(channel){
+  				defaultChannel.name = voiceChannelName;
+				defaultChannel.guild = guild.name;
+				defaultChannel.voiceID = channel.id;
+				defaultChannel.guildID = guild.id;
+				writeOutChannels();
+  			} else
+  			  	message.channel.send("vc não encontrado");
+  		}
+  	}
+
+  	if(isCommand(message.content, 'entrar')){
+  		var userVoiceChannel = message.member.voiceChannel;
+  		if(userVoiceChannel){
+  			if(!playing){
+  				if(currentVoiceChannel){
+	  				currentVoiceChannel.leave();
+	  				currentVoiceChannel = null;
+	  			 }
+  				userVoiceChannel.join();
+  				currentVoiceChannel = userVoiceChannel;
+		  	} else
+		  		message.channel.send("já tô tocando >:C");
+  		}
+  		else
+  			message.channel.send("Entra no chat primeiro >:C .");
+  	}
+
+  	if(isCommand(message.content, 'fila') || isCommand(message.content, 'tocando') || isCommand(message.content, 'q')){
+  		var songs = [];
+  		for (var i = 0; i < queue.length; i++) {
+  			songs.push(queue[i].title);
+  		}
+
+  		if(songs.length > 0){
+  			if(songs.length === 1){
+  				if(looping){
+  					message.channel.send("**Fila - [LOOP]**\n**Tocando:** " + songs[0]);
+  				} else
+  					message.channel.send("*Fila - [LOOP]**\n**Tocando:**  " + songs[0]);
+  			} else{
+  				var firstSong = songs.shift();
+  				for (var i = 0; i < songs.length; i++) {
+  					songs[i] = "**" + (i+1) + ". **"+ songs[i];
+  				}
+  				if(looping){
+  					message.channel.send("*Fila - [LOOP]**\n**Tocando:** " + firstSong + "\n\n" + songs.join("\n"));
+  				} else
+  					message.channel.send("**Queue - Playlist**\n**Tocando:** " + firstSong + "\n\n" + songs.join("\n"));
+  			}
+  		} else
+  			message.channel.send("No songs queued");
+  	}
+
+  	if(isCommand(message.content, 'local') || isCommand(message.content, 'l')){
+  		fs.readdir(localPath, (error, files) =>{
+  			if(error) return sendError("Reading Local directory", error, message.channel);
+  			for(var i = 0; i < files.length; i++){
+  				files[i] = "**" + (i+1) + ".** " + files[i].split(".")[0];
+  			}
+
+  			message.channel.send("**Local Songs**", {
+  				embed: {
+  					color: 10181046,
+  					description: files.length > 0 ? files.join("\n") : "No Local files found"
+  				}
+  			});
+  		});
+  	}
+
+  	if(isCommand(message.content, 'tocar') || isCommand(message.content, 'p')){
+  		var file = message.attachments.first();
+
+  		// Handle playing audio for a single channel
+  		if(playing && currentVoiceChannel !== message.member.voiceChannel){
+			message.channel.send("Tô tocando em outro canal de voz >:C");
+			return;
+		}
+
+		if(!message.member.voiceChannel){
+			message.channel.send("entra em um canal primeiro batola");
+			return;
+		}
+
+		if(currentVoiceChannel !== message.member.voiceChannel){
+			if(currentVoiceChannel) currentVoiceChannel.leave();
+
+			currentVoiceChannel = message.member.voiceChannel;
+			if(playing){
+				message.channel.send("atualmente tocando algo");
+				return;
+			}
+		}
+
+		function pushPlay(title, fPath, local, id, URL){
+			if(id && URL){
+				queue.push({
+			 		title: title,
+			 		id: id,
+			 		file: fPath,
+			 		local: local,
+			 		url: URL
+			 	});
+			} else if(!id && !URL){
+				queue.push({
+			 		title: title,
+			 		file: fPath,
+			 		local: local
+			 	});
+			}
 
 
+		 	if(!playing){
+		 		message.channel.send("**Tocando:** " + title);
+		 		currentVoiceChannel.join().then( connection => {
+					voiceConnection = connection;
+					play(connection, message);
+				});
+		 	} else{
+		 		message.channel.send("**Adicionado:**\n" + title);
+		 	}
+		}
+
+		// Play audio by file
+		if(file){
+			if(stopped){
+				stopped = false;
+	  			stayOnQueue = false;
+	  			queue.splice(0,1);
+	  	}
+
+			var ext = file.filename.split('.');
+			ext = ext[ext.length - 1];
+			if(ext !== 'mp3'){
+				message.channel.send("SÓ Mp3 :c");
+				return;
+			}
+
+			var fileName = file.filename.replace(/[&\/\\#,+()$~%'":*?<>{}|_-]/g,'');
+			var filePath = path.resolve(tempFilesPath, fileName);
+			var title = fileName.slice(0, fileName.lastIndexOf('.'));
+
+			if(fs.existsSync(filePath)){
+				pushPlay(title, filePath, false);
+			 } else{
+			 	var stream = request.get(file.url);
+
+				stream.on('error', error => {
+					if(error) return sendError("Getting Sound File", error, message.channel);
+				});
+
+				stream.pipe(fs.createWriteStream(filePath));
+
+				stream.on('complete', () =>{
+					pushPlay(title, filePath, false);
+				});
+			}
+		} else if(message.content.indexOf(' ') !== -1){
+			var input = message.content.split(' ')[1];
+			var qUrl = URL.parse(input, true);
+			var isLink = isYTLink(input);
+
+			if(stopped){
+				stopped = false;
+	  			stayOnQueue = false;
+	  			queue.splice(0,1);
+	  		}
+
+			// Play audio by direct url link
+			if( qUrl.hostname !== null && qUrl.hostname !== "www.youtube.com" && qUrl.hostname !== "youtu.be"){
+				if(input.endsWith('.mp3')){
+					var file = input.slice(input.lastIndexOf('/') + 1).replace(/[&\/\\#,+()$~%'":*?<>{}|_-]/g,'');
+					var filePath = path.join(tempFilesPath, file);
+					var title = file.slice(0, file.lastIndexOf('.'));
+
+					if(fs.existsSync(filePath)){
+						pushPlay(title, filePath, false);
+					 } else{
+					 	var stream = request.get(input);
+
+					 	stream.on('response', response =>{
+					 		if(response.statusCode === 404){
+					 			message.channel.send("Nenhum arquivo aceitavel encontrado nesse link");
+					 		}else{
+					 			stream.pipe(fs.createWriteStream(filePath));
+					 		}
+					 	});
+
+						stream.on('error', error => {
+							if(error) return sendError("Pegando somzinho", error, message.channel);
+						});
+
+						stream.on('complete', () =>{
+							if(fs.existsSync(filePath)){
+								pushPlay(title, filePath, false);
+							}
+						});
+					}
+				} else
+					message.channel.send("arquivo não encontrado/não suportavel");
+			} else if(isLink){
+				// Play audo by YTURL
+				var input = message.content.split(' ')[1];
+				yt.getInfo(input, (error, rawData, id, title, length_seconds) => {
+					if(error) return sendError("Youtube Info", error, message.channel);
+					var filePath = path.join(tempFilesPath, id + '.mp3');
+
+					yt.getFile(input, filePath, (err) =>{
+						if(err) return sendError("Streamando", err, message.channel);
+						pushPlay(title, filePath, false, id, input);
+					});
+				});
+			} else{
+				// Play audio file by index number
+				var indexFile = message.content.split(' ')[1];
+				if(isNumber(indexFile)){
+					indexFile = Number(indexFile);
+					fs.readdir(localPath, (error, files) =>{
+						if(error) return sendError("Reading local", error, message.channel);
+						for(var i = 0; i < files.length; i++){
+							if( indexFile === (i+1)){
+								var title = files[i].split('.')[0];
+								var file = path.join(localPath, files[i]);
+
+								pushPlay(title, file, true);
+								return;
+							}
+						}
+						message.channel.send("nenhuma musica local encontrada.");
+					});
+				} else{
+					input = message.content.split(' ');
+					input.shift();
+
+					// Playing a playlist
+					if(input[0] === 'playlist' || input[0] === 'pl'){
+						var pl = input[1];
+						fs.readdir(playlistPath, (error, files) =>{
+							if(error) return sendError("Reading Playlist Path", error, message.channel);
+
+							if(isNumber(pl)){
+								pl = Number(pl);
+							} else
+								pl = pl.toLowerCase();
+
+							async.eachOf(files, (file, index, callback)=>{
+								if((index+1) === pl || files[index].split('.')[0].toLowerCase() === pl){
+									try{
+										var playlist = fs.readFileSync(path.join(playlistPath, files[index]));
+										playlist = JSON.parse(playlist);
+									}catch(error){
+										if(error) return sendError("Parsing Playlist File", error, message.channel);
+									}
+
+									message.channel.send("Carregando `" + files[index].split('.')[0] + '` Para a fila');
+
+									async.eachSeries(playlist, (song, callback) =>{
+										var title = song.title;
+										var URL = song.url;
+										var id = song.id;
+										var local = song.local;
+
+										if(song.local){
+											queue.push({
+												title: title,
+												file: song.file,
+												local: true
+											});
+
+											if(queue.length === 1){
+												if(!playing){
+											 		message.channel.send("**Tocando:** " + title);
+											 		currentVoiceChannel.join().then( connection => {
+														voiceConnection = connection;
+														play(connection, message);
+													});
+											 	}
+											}
+										} else{
+											yt.getInfo(URL, (error, rawData, id, title, length_seconds) =>{
+												if(error) return callback(error);
+												var filePath = path.join(tempFilesPath, id + '.mp3');
+
+												yt.getFile(URL, filePath, ()=>{
+													queue.push({
+														title: title,
+														file: filePath,
+														id: id,
+														url: URL,
+														local: false
+													});
+
+													if(queue.length === 1){
+														if(!playing){
+													 		message.channel.send("**Tocando:** " + title);
+													 		currentVoiceChannel.join().then( connection => {
+																voiceConnection = connection;
+																play(connection, message);
+															});
+													 	}
+													}
+												});
+											});
+										}
+										callback(null);
+									}, err =>{
+										if(err) return sendError("Getting Youtube Info", err, message.channel);
+									});
+								}
+							}, err=>{
+								if(err) return sendError(err, err, message.channel);
+							});
+						});
+					}else{
+						input = input.join();
+						//	Play Youtube by search
+						yt.search(input, (error, searchResults) =>{
+							if(error) return sendError("Youtube Search", error, message.channel);
+							var id, title, songURL;
+
+							if(searchResults.length > 0){
+								id = searchResults[0].id;
+								title = searchResults[0].title;
+								songURL = searchResults[0].url;
+							} else{
+								message.channel.send("Não achei >:C");
+								return;
+							}
+							var file = path.join(tempFilesPath, id + '.mp3' );
+
+							yt.getFile(songURL, file, () =>{
+								pushPlay(title, file, false, id, songURL);
+							});
+						});
+					}
+				}
+			}
+  		} else{
+  			if(queue.length > 0){
+  				if(!playing){
+  					currentVoiceChannel.join().then( connection => {
+  						voiceConnection = connection;
+  						play(voiceConnection, message);
+  					});
+  				} else
+  					message.channel.send("Já estou tocando algo");
+  			}
+  			else
+  				message.channel.send("Sem musicas na fila");
+  		}
+  	}
+
+  	if(isCommand(message.content, 'parar')){
+  		if(currentVoiceChannel !== message.member.voiceChannel){
+			message.channel.send("Você não está no meu canal >:C");
+  			return;
+  		}
+
+  		if(playing){
+  			playing = false;
+  			stayOnQueue = true;
+  			stopped = true;
+  			botPlayback.end();
+  		} else
+  			message.channel.send("Tem nada pra parar ;-;");
+  	}
+
+  	if(isCommand(message.content, 'pular')){
+  		if(currentVoiceChannel !== message.member.voiceChannel){
+			message.channel.send("Você não está no meu canal >:C");
+  			return;
+  		}
+
+  		if(playing){
+  			var prevSong = queue[0].title;
+  			playing = false;
+  			stayOnQueue = false;
+  			botPlayback.end();
+  			if(queue.length > 0)
+  				message.channel.send("**Pulado:** " + prevSong + "\n**Tocando:** " + queue[0].title);
+  			else
+  				message.channel.send("**Pulado:** " + prevSong);
+  		} else{
+  			if(queue.length > 0){
+  				var prevSong = queue[0].title;
+
+  				if(stayOnQueue)
+  					stayOnQueue = false;
+  				queue.shift();
+  				message.channel.send("**Pulado:** " + prevSong + "\n**Tocando:** " + queue[0].title);
+  				play(voiceConnection, message);
+  			} else{
+  				message.channel.send("Nada pra para ;-;");
+  			}
+  		}
+  	}
+
+  	if(isCommand(message.content, 'replay')){
+  		if(currentVoiceChannel !== message.member.voiceChannel){
+			message.channel.send("Você não está no meu canal >:C");
+  			return;
+  		}
+
+  		if(playing){
+  			playing = false;
+  			stayOnQueue = true;
+  			botPlayback.end();
+  		} else
+  			message.channel.send("Precisa estar tocando pra dar replay");
+  	}
+
+  	if(isCommand(message.content, 'remover')){
+  		if(currentVoiceChannel !== message.member.voiceChannel){
+			message.channel.send("Você não está no meu canal >:C");
+  			return;
+  		}
+
+  		if(message.content.indexOf(' ') !== -1){
+  			var param = message.content.split(' ')[1];
+
+  			if(param === "all"){
+  				if(!playing){
+  					queue = [];
+  					removeTempFiles();
+  				} else{
+  					queue.splice(1, queue.length - 1);
+  				}
+  				message.channel.send("Todas as musicas removidas da fila");
+  				return;
+  			}
+
+  			if(param.indexOf(',') !== -1){
+  				param = param.split(',');
+  			}else{
+  				param = [param];
+  			}
+  			for(var i = 0; i < param.length; i++){
+  				if(isNumber(param[i])){
+  					param[i] = Number(param[i]);
+  				}else{
+  					message.channel.send("alguns dos parametros não são numeros");
+  					return;
+  				}
+  			}
+
+  			var list = [];
+  			for(var x = 0; x < param.length; x++){
+  				for(var y = 1; y < queue.length; y++){
+  					if(param[x] === y){
+  						list.push(queue[y]);
+  					}
+  				}
+  			}
+
+  			for(var i = 0; i < list.length; i++){
+  				for(var x = 1; x < queue.length; x++){
+  					if(list[i].title === queue[x].title){
+  						var title = queue[x].title;
+						queue.splice(x, 1);
+						message.channel.send("**Removido:** `" + title + "` da fila");
+  					}
+  				}
+  			}
+  		}
+  	}
+
+  	if(isCommand(message.content, 'salva')){
+  		if(currentVoiceChannel !== message.member.voiceChannel){
+			message.channel.send("Você não está no meu canal >:C");
+  			return;
+  		}
+
+	  	if(message.content.indexOf(' ') !== -1){
+	  		var url = message.content.split(' ')[1];
+	  		yt.getInfo(url, (error, rawData, id, title, length_seconds) =>{
+	  			if(error) return sendError("Youtube Info", error, message.channel);
+	  			var title = title.replace(/[&\/\\#,+()$~%.'":*?<>{}|]/g,'');
+	  			yt.getFile(url, './local/' + title + '.mp3', () =>{
+	  				message.channel.send("**Salvado:** *" + title + "*");
+	  			});
+	  		});
+
+	  	}
+	  	else{
+	  		if(playing){
+	  			var song = queue[0];
+		  		var title = song.title.replace(/[&\/\\#,+()$~%.'":*?<>{}|]/g,'');
+			  	var output = './local/' + title + '.mp3';
+	  			if(!song.local){
+		  			if(!fs.existsSync(output)){
+		  				fs.createReadStream(song.file).pipe(fs.createWriteStream(output));
+		  				message.channel.send("**Salvado:** *" + title + "*");
+		  			} else{
+		  				message.channel.send("Você já salvou essa musica >:C")
+		  			}
+		  		} else{
+		  			message.channel.send("Você já salvou essa musica >:C");
+		  		}
+	  		} else{
+	  			message.channel.send("Nada tocando para adicionar");
+	  		}
+	  	}
+  	}
+
+  	if(isCommand(message.content, 'remlocal')){
+  		var index = Number(message.content.split(' ')[1]);
+
+  		fs.readdir(localPath, (error, files) =>{
+  			if(error) return sendError("Remove Local", error, message.channel);
+  			for (var i = 0; i < files.length; i++) {
+	  			if((i+1) === index){
+	  				if(!playing){
+	  					fs.unlinkSync(localPath + files[i]);
+	  					message.channel.send("Removido " + files[i].split('.')[0]);
+	  					return;
+	  				} else{
+	  					if(files[i] !== queue[0].title + '.mp3'){
+	  						fs.unlinkSync(localPath + files[i]);
+	  						message.channel.send("Removido " + files[i].split('.')[0]);
+	  						return;
+	  					}
+	  				}
+
+	  			}
+  			}
+  			message.channel.send("Nenhum arquivo local removido com essa index.");
+  		});
+  	}
+
+  	if(isCommand(message.content, 'readd')){
+  		if(currentVoiceChannel !== message.member.voiceChannel){
+			message.channel.send("não está no meu canal >:C");
+  			return;
+  		}
+
+  		if(queue.length > 0){
+  			var newSong = queue[0];
+			queue.push(newSong);
+			message.channel.send("**Readicionado na fila** " + newSong.title);
+  		} else
+  			message.channel.send("Nada tocando.");
+  	}
+
+  	if(isCommand(message.content, 'loop')){
+  		if(currentVoiceChannel !== message.member.voiceChannel){
+			message.channel.send("não está no meu canal >:C");
+  			return;
+  		}
+
+	  	if(!looping){
+	  		looping = true;
+	  		message.channel.send("Loop `ON`");
+	  	} else{
+	  		looping = false;
+	  		message.channel.send("Loop `OFF`");
+	  	}
+  	}
+
+  	if(isCommand(message.content, 'playlist') || isCommand(message.content, 'pl')){
+  		if(message.content.indexOf(' ') !== -1){
+  			var param = message.content.split(' ')[1];
+
+  			if(isNumber(param)){
+  				param = Number(param);
+  				fs.readdir(playlistPath, (error, files) => {
+  					if(error) return sendError("Reading Playlist Directory", error, message.channel);
+
+  					for(var i = 0; i < files.length; i++){
+  						if((i+1) === param){
+  							try{
+								var playlist = fs.readFileSync(path.join(playlistPath, files[i]));
+								var playlist = JSON.parse(playlist);
+  							}catch(error){
+  								if(error) return sendError("Reading Playlist File", error, message.channel);
+  							}
+
+  							var playlistTitle = files[i].split('.')[0];
+							var songs = [];
+
+							for(var i = 0; i < playlist.length; i++){
+								songs.push("**" + (i+1) + ".** " + playlist[i].title);
+							}
+
+							message.channel.send("**Playlist - " + playlistTitle + "**\n" + songs.join("\n"));
+  						}
+  					}
+  				});
+  			} else{
+  				if(param.toLowerCase() === 'save'){
+  					if(message.content.indexOf(' ', message.content.indexOf('save')) !== -1){
+  						var playlistName = message.content.split(' ');
+  						playlistName.splice(0,2);
+  						playlistName = playlistName.join(' ');
+  						var playlist = [];
+
+  						if(queue.length === 0)
+  							return message.channel.send("No songs in queue to save from");
+
+  						for(var i = 0; i < queue.length; i++){
+  							if(queue[i].local){
+  								playlist.push({
+  									title: queue[i].title,
+  									file: queue[i].file,
+  									local: queue[i].local
+  								});
+  							} else{
+  								playlist.push({
+  									title: queue[i].title,
+  									url: queue[i].url,
+  									id: queue[i].id,
+  									local: false
+  								});
+  							}
+  						}
+
+  						fs.readdir(playlistPath, (error, files) =>{
+  							if(error) return sendError("Readding Playlist Path", error, message.channel);
+
+  							for(var i = 0; i < files.length; i++){
+  								var fileName = files[i].split('.')[0];
+  								if(fileName.toLowerCase() === playlistName.toLowerCase()){
+  									message.channel.send("There is a playlist with this name already");
+  									return;
+  								}
+  							}
+
+  							fs.writeFile(path.join(playlistPath, playlistName + '.json'), JSON.stringify(playlist, null, '\t'), error =>{
+	  							if(error) return sendError("Writing Playlist File", error, message.channel);
+	  							message.channel.send("Playlist `" + playlistName + '` salva');
+	  						});
+  						});
+  					}
+  					return;
+  				}
+
+  				if(param.toLowerCase() === 'remover'){
+  					if(message.content.indexOf(' ', message.content.indexOf('remover')) !== -1){
+  						var playlistIndex = message.content.split(' ')[2];
+  						var trackIndex = message.content.split(' ')[3];
+
+  						if(!isNumber(playlistIndex)){
+  							message.channel.send('coloque o numero da index para remover')
+  							return;
+  						} else playlistIndex = Number(playlistIndex);
+
+  						if(trackIndex){
+  							if(isNumber(trackIndex)){
+  								trackIndex = Number(trackIndex);
+  								fs.readdir(playlistPath, (error, files) =>{
+  									if(error) return sendError("Reading Playlist Path", error, message.channel);
+  									for(var i = 0; i < files.length; i++){
+  										if((i+1) === playlistIndex){
+  											var playlistFile = files[i];
+  											var playlistFileName = files[i].split('.')[0];
+
+  											fs.readFile(path.join(playlistPath, playlistFile), (error, file)=>{
+  												try{
+  													file = JSON.parse(file);
+  												} catch(error){
+  													if(error) return sendError("Parsing Playlist File", error, message.channel);
+  												}
+
+  												if(trackIndex > file.length || trackIndex <= 0){
+  													return message.channel.send('Coloca o index certo >:C')
+  												}
+
+  												var titleTrack = file[trackIndex-1].title;
+  												file.splice(trackIndex - 1, 1);
+  												if(file.length === 0){
+  													message.channel.send("Considere remover a playlist toda.");
+  													return;
+  												}
+  												fs.writeFile(path.join(playlistPath, playlistFile), JSON.stringify(file, null, '\t'), error =>{
+  													if(error) return sendError("Writing to Playlist File", error, message.channel);
+  													message.channel.send('**Playlist**\n `' + titleTrack +  '` Foi removida de `' + playlistFileName + '` playlist')
+  												});
+  											});
+  										}
+  									}
+  								});
+  							} else{
+  								message.channel.send('por favor o numero da index');
+  								return;
+  							}
+  							return;
+  						}
+
+  						fs.readdir(playlistPath, (error, files) => {
+  							if(error) return sendError("Reading Playlist Path", error, message.channel);
+  							for(var i = 0; i < files.length; i++){
+  								if((i+1) === playlistIndex){
+  									var title = files[i].split('.')[0];
+  									fs.unlink(path.join(playlistPath, files[i]), error =>{
+  										if(error) return sendError("Unlinking Playlist File", error, message.channel);
+  										message.channel.send("Playlist `" + title + "` removida");
+  									});
+  									return;
+  								}
+  							}
+  							message.channel.send("Playlist não encontrada");
+  						});
+  					}
+  					return;
+  				}
+
+  				if(param.toLowerCase() === 'add'){
+  					if(message.content.indexOf(' ', message.content.indexOf('add')) !== -1){
+  						var playListIndex = message.content.split(' ')[2];
+  						var link = message.content.split(' ')[3];
+
+  						if(isNumber(playListIndex)){
+  							playListIndex = Number(playListIndex);
+  							if(link){
+  								if(!isYTLink(link)){
+								message.channel.send("você não colocou um numero do youtube valido");
+  									return;
+  								}
+
+  								fs.readdir(playlistPath, (err, files) =>{
+  									if(err) return sendError("Reading Directory", err, message.channel);
+  									async.eachOf(files, (file, index) =>{
+  										if((index + 1) === playListIndex){
+  											fs.readFile(path.join(playlistPath, file), (err, pl) =>{
+  												if(err) return sendError("Reading File", err, message.channel);
+  												try{
+  													pl = JSON.parse(pl);
+  												} catch(err){
+  													if(err) return sendError("Parsing File", err, message.channel);
+  												}
+
+  												yt.getInfo(link, (error, rawData, id, title) =>{
+
+  													async.each(pl, (song, callback) =>{
+	  													if(song.id === id || song.url === link || song.title === title){
+	  														callback(new Error("Already in playlist"));
+	  													} else {
+	  														callback(null);
+	  													}
+	  												}, err =>{
+	  													if(err) return sendError(err, err, message.channel);
+
+	  													pl.push({
+	  														title: title,
+	  														id: id,
+	  														url: link,
+	  														local: false
+	  													});
+
+	  													fs.writeFile(path.join(playlistPath, file), JSON.stringify(pl, null, '\t'), err =>{
+	  														if(err) return sendError("Writing Playlist File", err, message.channel);
+
+	  														message.channel.send("*" + title +"*\n Foi adicionada em `" + file.split('.')[0] + "` playlist");
+	  													});
+	  												});
+
+
+  												});
+
+  											});
+  										}
+  									});
+  								});
+  							}else {
+  								message.channel.send("URL não deu tenta dnv parceirinho");
+  							}
+   						} else{
+  							message.channel.send("Index não especificada");
+  						}
+  					}
+  					return;
+  				}
+
+  				if(param.toLowerCase() === 'renomear'){
+  					if(message.content.indexOf(' ', message.content.indexOf('renomear')) !== -1){
+  						var playlistName = message.content.split(' ')[2];
+  						var newPlaylistName = message.content.split(' ')[3];
+
+  						if(!newPlaylistName){
+  							message.channel.send("nome da playlist não especificada");
+  							return;
+  						}
+
+  						if(isNumber(playlistName)){
+  							playlistName = Number(playlistName);
+  						}
+
+  						var e = /^[a-zA-Z0-9_]*$/;
+  						if(!e.test(newPlaylistName)){
+  							message.channel.send("Sem simbolos >:C");
+  							return;
+  						}
+
+  						fs.readdir(playlistPath, (err, files) =>{
+  							if(err) return sendError("Reading Playlist Path", err, message.channel);
+
+  							for(var i = 0; i < files.length; i++){
+  								if(files[i].split('.')[0].toLowerCase() === (isNumber(playlistName) ? playlistName : playlistName.toLowerCase()) || (playlistName - 1) === i){
+  									var oldPlPath = path.join(playlistPath, files[i]);
+  									var newPlPath = path.join(playlistPath, newPlaylistName + '.json');
+  									fs.rename(oldPlPath, newPlPath, (err)=>{
+  										if(err) return sendError("Renaming Playlist File", err, message.channel);
+  										message.channel.send("Playlist `" + files[i].split('.')[0] + "` has been renamed to `" + newPlaylistName + "`");
+  									});
+  									return;
+  								}
+  							}
+  							message.channel.send("Playlist `" + files[i].split('.')[0] + "` not found");
+  						});
+  					} else{
+  						message.channel.send("No name specified");
+  					}
+  				}
+  			}
+  		} else {
+  			fs.readdir(playlistPath, (error, files) =>{
+  				if(error) return sendError("Reading Playlist Directory", error, message.channel);
+  				for(var i = 0; i < files.length; i++){
+  					files[i] = "**" + (i+1) + ".** " + files[i].split('.')[0];
+  				}
+
+  				if(files.length > 0)
+  					message.channel.send("**Playlist**\n" + files.join("\n"));
+  				else {
+  					message.channel.send("Nenhuma playlist salva");
+  				}
+  			});
+  		}
+  	}
+});
+
+
+bot.on('voiceStateUpdate', (oldMember, newMember) =>{
+	if(newMember.id === bot.user.id){
+		newMember.voiceChannel = currentVoiceChannel;
+	}
+
+	if(currentVoiceChannel && oldMember.voiceChannel){
+		if(oldMember.voiceChannel === currentVoiceChannel && newMember.voiceChannel !== currentVoiceChannel  && currentVoiceChannel.members.size === 1){
+			if(queue.length > 0){
+				queue.splice(0, queue.length);
+			}
+
+			if(playing){
+				botPlayback.end();
+				playing = false;
+				stopped = false;
+				looping = false;
+				stayOnQueue = false;
+			}
+
+			currentVoiceChannel.leave();
+		}
+	}
+});
 //glubglub basico
 bot.on('message', (message) => {
 	if(message.content == '-mamaeu'){
@@ -920,6 +1862,22 @@ bot.on("message", async message => {
 //message (desmutado/remove count)
 });
 
+bot.on("message", async message => {
+  if(message.author.bot) return;
+  if(message.channel.type === "dm") return;
+
+  let messageArray = message.content.split(" ");
+  let cmd = messageArray[0];
+  let args = messageArray.slice(1);
+
+  if(cmd === `${initcmd}bater`){
+    let mUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!mUser) return message.channel.send("Não achei o fiato!");
+      message.channel.send(`${mUser}`, {files: ["https://media.giphy.com/media/iWEIxgPiAq58c/giphy.gif"]});
+    return;
+  }
+
+});
 
 bot.on("message", async message => {
   if(message.author.bot) return;
@@ -929,6 +1887,16 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
   let bReason = args.join(" ").slice(22);
+
+  if(cmd === `${initcmd}chat`){
+	if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
+	bot.channels.get("445793368078024706").send(bReason)
+    return;
+  }
+    if(cmd === `${initcmd}falar`){
+	bot.channels.get("451844584012644362").send(bReason)
+    return;
+  }
 
     if(cmd === `${initcmd}privado`){
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -987,17 +1955,6 @@ bot.on("message", async message => {
 });
 
 bot.on("message", async message => {
-	if(roubo === true){
-		if (message.content === '-teste'){
-			message.reply(`vc foi add ao roubo `)	
-		membrosroubo.push(msg.author.username);
-		message.reply("add no roubo")
-	  message.reply(`Debug: participantes: ${membrosroubo}`)
-	}
-	   
-	   }else{
-		   message.reply("nenhum roubo acontencendo")
-	   }
 
 if(message.author.bot) return;
 if(message.channel.type === "dm") return;
