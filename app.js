@@ -1992,11 +1992,11 @@ bot.on('ready', () => {
 	setInterval(() => {
 	//testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
   const roubo = true;
-  testeCanal.send(`Debug: status do roubo : ${roubo}`)
+  //testeCanal.send(`Debug: status do roubo : ${roubo}`)
   var myInterval = setInterval(() => {
 	const roubo = false;
 	//testeCanal.send("adasdasdsadasd", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
-	testeCanal.send(`Debug: status do roubo : ${roubo}`)
+	//testeCanal.send(`Debug: status do roubo : ${roubo}`)
 	clearInterval(myInterval);
 
 }, 10000);
