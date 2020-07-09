@@ -1958,7 +1958,7 @@ bot.on("message", async message => {
 
 if(message.author.bot) return;
 if(message.channel.type === "dm") return;
-if(bot.channels.get === "446570179258744842") return;
+//if(bot.channels.get === "446570179258744842") return;
 
 let coinstoadd = Math.ceil(Math.random() * 40);
 console.log(coinstoadd + " coins");
