@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
 	        if(!data){
 	            let errorMess = new Discord.RichEmbed()
 	            .setColor('RED')
-	            .setDescription(`o User **${member.user.tag}** não esta no banco de dados.`)
+	            .setDescription(`o User **${message.author.id}** não esta no banco de dados.`)
 	            return message.channel.send(errorMess)
 	        }else{
 
@@ -31,7 +31,7 @@ module.exports.run = async (bot, message, args) => {
 
 	            let embed = new Discord.RichEmbed()
 	            .setColor('RED')
-	            .setDescription(`**${message.author.username}** Sacado com sucesso **${member.user.username}** money ${args[1]}`)
+	            .setDescription(`**${message.author.username}** Sacado com sucesso ${args[1]} de money`)
 	            loc.banco -= Math.floor(parseInt(args[0]));
 	            data.money += Math.floor(parseInt(args[0]));
 	            loc.save(); data.save();
