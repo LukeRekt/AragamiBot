@@ -26,7 +26,7 @@ module.exports.run = async (bot, message, args) => {
 	            return message.channel.send(errorMess)
 	        }else{
 
-	            if(loc.money < args[0]) return message.reply(`Você não tem tantas moedas.`)
+	            if(loc.banco < args[0]) return message.reply(`Você não tem tantas moedas.`)
 	            if(member.user.bot) return message.reply(`Bots não são humanos.`)
 
 	            let embed = new Discord.RichEmbed()
