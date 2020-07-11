@@ -15,11 +15,11 @@ module.exports.run = async (bot, message, args) => {
 	        if(!loc){
 	            let errorMess = new Discord.RichEmbed()
 	            .setColor('RED')
-	            .setDescription(`o User **${message.author.username}** nao esta no banco de dados.`)
+	            .setDescription(`O user **${message.author.username}** não esta no banco de dados.`)
 	            return message.channel.send(errorMess)
 	        }else{
 
-	            if(loc.money < 1) return message.reply(`essa pessoa nao tem dinheiro.`)
+	            if(loc.money < 1) return message.reply(`essa pessoa não tem dinheiro.`)
               let oldmoney = loc.money
 	            let embed = new Discord.RichEmbed()
 	            .setColor('RED')

@@ -26,17 +26,17 @@ module.exports.run = async (bot, message, args) => {
 	        if(!data){
 	            let errorMess = new Discord.RichEmbed()
 	            .setColor('RED')
-	            .setDescription(`o User **${member.user.tag}** nao esta no banco de dados.`)
+	            .setDescription(`O user **${member.user.tag}** não esta no banco de dados.`)
 	            return message.channel.send(errorMess)
 	        }else{
 
-	            if(loc.money < args[1]) return message.reply(`Você não tem tantas moedas.`)
+	            if(loc.money < args[1]) return message.reply(`Você não tem moedas suficientes.`)
 	            if(loc.userID == member.id) return message.reply(`Você não pode transferir moedas para si mesmo!`)
 	            if(member.user.bot) return message.reply(`Bots não são humanos.`)
 
 	            let embed = new Discord.RichEmbed()
 	            .setColor('RED')
-	            .setDescription(`**${message.author.username}** transferido com sucesso **${member.user.username}** money ${args[1]}`)
+	            .setDescription(`**${message.author.username}** transferido com sucesso ${args[1]} money para **${member.user.username}**`)
 	            loc.money -= Math.floor(parseInt(args[1]));
 	            data.money += Math.floor(parseInt(args[1]));
 	            loc.save(); data.save();

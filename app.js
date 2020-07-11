@@ -691,7 +691,7 @@ bot.on('message', message => {
 	  					inline: true
 	  				},{
 	  					name: "Quem sou?",
-	  					value: "sou o bot do user mais lixo de todos",
+	  					value: "sou conhecido por todos como lo expocador de xotas",
 	  					inline: false
 	  				}],
 	  				thumbnail: {
@@ -745,7 +745,7 @@ bot.on('message', message => {
 				}
 
 				if(prt.toLowerCase() === 'musica'){
-					message.channel.send("**comandos musica**", {
+					message.channel.send("**comandos musica**(Não funciona)", {
 						embed: {
 							color: 1752220,
 							description: "`" + initcmd + "fila` ou `tocando`: para ver as musicas na fila\n" +
@@ -1709,8 +1709,8 @@ bot.on("message", async message => {
     let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!kUser) return message.channel.send("Não achei o fiato!");
     let kReason = args.join(" ").slice(22);
-    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
-    if(kUser.hasPermission("BAN_MEMBERS")) return message.channel.send("você não pode kickar esse fiato! >:C");
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão!");
+    if(kUser.hasPermission("BAN_MEMBERS")) return message.channel.send("Não tenho permissão para kickar essa pessoa!");
 
     let kickEmbed = new Discord.RichEmbed()
     .setDescription("---Kickado---")
@@ -1721,7 +1721,7 @@ bot.on("message", async message => {
     .addField("Motivo", kReason);
 
     let kickChannel = message.guild.channels.find(`name`, "punidos");
-    if(!kickChannel) return message.channel.send("não achei o canal ;-;.");
+    if(!kickChannel) return message.channel.send("Canal de kick não encontrado.");
 
     message.guild.member(kUser).kick(kReason);
     kickChannel.send(kickEmbed);
@@ -1732,10 +1732,10 @@ bot.on("message", async message => {
   if(cmd === `${initcmd}ban`){
 
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!bUser) return message.channel.send("Não achei o fiato!");
+    if(!bUser) return message.channel.send("Usuário inválido!");
     let bReason = args.join(" ").slice(22);
-    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
-    if(bUser.hasPermission("BAN_MEMBERS")) return message.channel.send("você não pode kickar esse fiato! >:C");
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão!");
+    if(bUser.hasPermission("BAN_MEMBERS")) return message.channel.send("Não tenho permissão para banir essa pessoa!");
 
     let banEmbed = new Discord.RichEmbed()
     .setDescription("---Banido---")
@@ -1829,7 +1829,7 @@ bot.on("message", async message => {
 
 		setTimeout(function() {
 		member.removeRole(rankmute.id);
-		message.channel.send(`${member.user.tag} pode falar denovo fiatinho`);
+		message.channel.send(`${member.user.tag} foi desmutado`);
 	}, ms(time));
 
   }
@@ -1842,7 +1842,7 @@ bot.on("message", async message => {
 		//if(!isOwner (message)) return message.channel.send("Sem permissão fiato! >:C");
 		let params = message.content.split(" ").slice("1");
 		let time = params[1];
-		if(!time) return message.reply('Coloca um tempo fiato >:C');
+		if(!time) return message.reply('Tempo de mute inválido!');
         message.delete();
 		member.addRole(rankmute.id);
 
@@ -1872,7 +1872,7 @@ bot.on("message", async message => {
 
   if(cmd === `${initcmd}bater`){
     let mUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!mUser) return message.channel.send("Não achei o fiato!");
+    if(!mUser) return message.channel.send("Usuário inválido!");
       message.channel.send(`${mUser}`, {files: ["https://media.giphy.com/media/iWEIxgPiAq58c/giphy.gif"]});
     return;
   }
@@ -1889,7 +1889,7 @@ bot.on("message", async message => {
   let bReason = args.join(" ").slice(22);
 
   if(cmd === `${initcmd}chat`){
-	if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
+	if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send("Sem permissão");
 	bot.channels.get("445793368078024706").send(bReason)
     return;
   }
@@ -1900,14 +1900,14 @@ bot.on("message", async message => {
 
     if(cmd === `${initcmd}privado`){
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!bUser) return message.channel.send("Não achei o fiato!");
+    if(!bUser) return message.channel.send("Usuário inválido!");
       message.guild.member(bUser).sendMessage(bReason);
 	  message.delete();
     return;
   }
     if(cmd === `${initcmd}dick`){
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!bUser) return message.channel.send("Não achei o fiato!");
+    if(!bUser) return message.channel.send("Usuário inválido!");
       message.guild.member(bUser).sendMessage("https://cdn.boob.bot/penis/4A88.jpg");
 	  message.delete();
     return;
@@ -1917,7 +1917,7 @@ bot.on("message", async message => {
 
 bot.on('message', function(message) {
     if (message.content === "-msg") {
-    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão fiato! >:C");
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão");
         var interval = setInterval (function () {
            message.channel.send("https://media.discordapp.net/attachments/445793368078024706/719639321329664000/unknown.png?width=327&height=677")
            .catch(console.error); //

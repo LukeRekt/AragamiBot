@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
 
 
      if(!member) return message.reply(`O usuário não foi encontrado.`)
-     if(message.author.id === member.id) return message.reply("voce nao pode roubar vc mesmo");
+     if(message.author.id === member.id) return message.reply("você não pode roubar você mesmo");
 
     	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
     	    Money.findOne({serverID: message.guild.id, userID: member.id},(err,data) => {
@@ -25,11 +25,11 @@ module.exports.run = async (bot, message, args) => {
     	        if(!data){
     	            let errorMess = new Discord.RichEmbed()
     	            .setColor('RED')
-    	            .setDescription(`o User **${member.user.tag}** nao esta no banco de dados.`)
+    	            .setDescription(`O user **${member.user.tag}** não está no banco de dados.`)
     	            return message.channel.send(errorMess)
     	        }else{
 								if (talkedRecently.has(message.author.id)) {
-														message.channel.send(message.author + " Espere 30 segundos para roubar de novo");
+														message.channel.send(message.author + " Espere 10 segundos para roubar de novo!");
 										} else {
 
     	            if(data.money < 100) return message.reply(`a pessoa nao tem dinheiro para roubar.`)
@@ -55,7 +55,7 @@ module.exports.run = async (bot, message, args) => {
                 }
 								setTimeout(() => {
           talkedRecently.delete(message.author.id);
-        }, 30000);
+        }, 10000);
     }
 								}
 							})
