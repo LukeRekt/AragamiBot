@@ -1,8 +1,8 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 const mongoose = require("mongoose");
-const roubo = false;
-const ativo = false;
+var roubo = false;
+var ativo = false;
 mongoose.connect(process.env.mongosenha, {
 	useNewUrlParser: true
 });
