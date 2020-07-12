@@ -1991,8 +1991,16 @@ bot.on('ready', () => {
 	 if(ladroes == null) return;
 	 testeCanal.send(`o pauzudo <@${ganhadorRan}> ganhou`);
      let numeroaaroll = Math.floor(Math.random() * 300) + 1;
-	 Money.findOne({serverID: 445793368078024704, userID: 223207253522644992},(err,loc) => {
-		loc.money += Math.floor(parseInt(numeroaaroll));
+	 Money.findOne({serverID: cafezinho, userID: ganhadorRan},(err,data) => {
+		if(!data){
+			let errorMess = new Discord.RichEmbed()
+			.setColor('RED')
+			.setDescription(`o User **${message.author.id}** não esta no banco de dados.`)
+			return message.channel.send(errorMess)
+		}else{
+
+		data.money += Math.floor(parseInt(numeroaaroll));
+		}
 
 	})
 	 ladroes = [];
