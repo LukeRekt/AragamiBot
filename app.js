@@ -1995,7 +1995,7 @@ bot.on('ready', () => {
 		if(!data){
 			let errorMess = new Discord.RichEmbed()
 			.setColor('RED')
-			.setDescription(`o User **${message.author.id}** não esta no banco de dados.`)
+			.setDescription(`o User **<@${ganhadorRan}>** não esta no banco de dados.`)
 			return message.channel.send(errorMess)
 		}else{
 
