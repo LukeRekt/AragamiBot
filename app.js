@@ -1920,7 +1920,7 @@ bot.on("message", async message => {
 	    if(roubo === true){
 		message.reply('entrou no roubo')
 		ladroes.push(message.author.id);
-		message.reply(`<@${ladroes}>`)
+		message.reply(`<@${ladroes}> `)
 	     }else{
 		 message.reply('nenhum roubo acontecendo')
 	}
@@ -1989,6 +1989,10 @@ bot.on('ready', () => {
 	 const ganhadorRan = ladroes[Math.floor(Math.random() * ladroes.length)];
 	 if(ladroes == null) return;
 	 testeCanal.send(`o pauzudo <@${ganhadorRan}> ganhou`);
+	 Money.findOne({serverID: testeCanal.guild.id, userID: ganhadorRan},(err,loc) => {
+		loc.money += Math.floor(parseInt(200));
+
+	})
 	 ladroes = [];
 	 clearInterval(myInterval);
 	 
