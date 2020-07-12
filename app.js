@@ -2016,9 +2016,10 @@ bot.on('ready', () => {
 				return testeCanal.send(errorMess)
 			}else{
 	//por algum motivo ele nao encontra as informacoes
-			let numeroaaroll = Math.floor(Math.random() * 300) + 1;
-			testeCanal.send(`ganhou ${numeroaaroll}`)
-			data.money += Math.floor(parseInt(numeroaaroll));
+		//	let numeroaaroll = Math.floor(Math.random() * 300) + 1;
+			//testeCanal.send(`ganhou ${numeroaaroll}`)
+			data.money += Math.floor(parseInt(900));
+			data.save();
 			}
 	
 		})
