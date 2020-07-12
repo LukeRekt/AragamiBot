@@ -1907,13 +1907,6 @@ bot.on("message", async message => {
 	  message.delete();
     return;
   }
-  if(cmd === `${initcmd}privado`){
-    let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!bUser) return message.channel.send("Usuário inválido!");
-      message.guild.member(bUser).sendMessage(bReason);
-	  message.delete();
-    return;
-  }
     if(cmd === `${initcmd}dick`){
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Usuário inválido!");
@@ -1921,27 +1914,32 @@ bot.on("message", async message => {
 	  message.delete();
     return;
   }
+  if(cmd === `${initcmd}roubar`){
+	Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
+
+	    if(roubo === true){
+		message.reply('entrou no roubo')
+		ladroes.push(message.author.username);
+		message.reply(`${ladroes}`)
+	     }else{
+		 message.reply('nenhum roubo acontecendo')
+	}
+  
+	    
+	        })
+	    }
+  
 
 });
 
 bot.on('message', function(message) {
     if (message.content === "-msg") {
-		Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
-
-			if(main.roubo === true){
-			message.reply('entrou no roubo')
-			main.ladroes.push(message.author.username);
-			message.reply(`${main.ladroes}`)
-			 }else{
-			 message.reply('nenhum roubo acontecendo')
-		}
-	  
-			
-				})
-			}
-
-	
-    
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("Sem permissão");
+        var interval = setInterval (function () {
+           message.channel.send("https://media.discordapp.net/attachments/445793368078024706/719639321329664000/unknown.png?width=327&height=677")
+           .catch(console.error); //
+       }, 1 * 3000);
+    }
 });
 
 bot.on("message", async message => {
