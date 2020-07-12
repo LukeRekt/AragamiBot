@@ -42,7 +42,7 @@ module.exports.run = async (bot, message, args) => {
 	    if(roubo === true){
 		message.reply('entrou no roubo')
 		pugMembers.push(message.author.username);
-		message.reply(`${pugMembers}`)
+		message.reply(`${ladroes}`)
 	     }else{
 		 message.reply('nenhum roubo acontecendo')
 	}
