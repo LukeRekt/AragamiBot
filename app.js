@@ -1991,7 +1991,7 @@ bot.on('ready', () => {
 	 const ganhadorRan = ladroes[Math.floor(Math.random() * ladroes.length)];
 	 if(ladroes == null) return;
 	 testeCanal.send(`o user <@${ganhadorRan}> ganhou`);
-     let numeroaaroll = Math.floor(Math.random() * 300) + 1;
+     
      addMoney(cafezinho, ganhadorRan);
 	 ladroes = [];
 	 clearInterval(myInterval);
@@ -2016,6 +2016,8 @@ bot.on('ready', () => {
 				return testeCanal.send(errorMess)
 			}else{
 	//por algum motivo ele nao encontra as informacoes
+			let numeroaaroll = Math.floor(Math.random() * 300) + 1;
+			testeCanal.send(`ganhou ${numeroaaroll}`)
 			data.money += Math.floor(parseInt(numeroaaroll));
 			}
 	
