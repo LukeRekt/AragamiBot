@@ -2002,11 +2002,13 @@ bot.on('ready', () => {
 	});
 
 	function addMoney(serverId, ganhador){
-		Money.findOne({serverID: serverId, userID: ganhador},(err,data) => {
+		var iddd = parseInt(serverId);
+		var ganhaa = parseInt(ganhador);
+		Money.findOne({serverID: iddd, userID: ganhaa},(err,data) => {
 			if(!data){
 				let errorMess = new Discord.RichEmbed()
 				.setColor('RED')
-				.setDescription(`o User **<@${ganhadorRan}>** não esta no banco de dados.`)
+				.setDescription(`o User **<@${ganhaa}>** não esta no banco de dados.`)
 				return testeCanal.send(errorMess)
 			}else{
 	
