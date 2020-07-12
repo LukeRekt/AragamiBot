@@ -1919,7 +1919,7 @@ bot.on("message", async message => {
 
 	    if(roubo === true){
 		message.reply('entrou no roubo')
-		ladroes.push(message.author.username);
+		ladroes.push(message.author.id);
 		message.reply(`${ladroes}`)
 	     }else{
 		 message.reply('nenhum roubo acontecendo')
@@ -1988,7 +1988,8 @@ bot.on('ready', () => {
 	 testeCanal.send(`Debug: status do roubo : ${roubo}`);
 	 const ganhadorRan = ladroes[Math.floor(Math.random() * ladroes.length)];
 	 if(ladroes == null) return;
-	 testeCanal.send(`o pauzudo ${ganhadorRan} ganhou`);
+	 testeCanal.send(`o pauzudo <@${ganhadorRan}> ganhou`);
+	 ladroes = [];
 	 clearInterval(myInterval);
 	 
    }, 10000);
