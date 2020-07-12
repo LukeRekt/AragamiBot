@@ -3,6 +3,7 @@ const fs = require("fs");
 const mongoose = require("mongoose");
 var roubo = false;
 var ativo = false;
+const ladroes = [];
 mongoose.connect(process.env.mongosenha, {
 	useNewUrlParser: true
 });
@@ -18,15 +19,19 @@ module.exports.run = async (bot, message, args) => {
 	setInterval(() => {
 	testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
     roubo = true;
-    testeCanal.send(`Debug: status do roubo : ${roubo}`);
-    var myInterval = setInterval(() => {
-	roubo = false;
-	testeCanal.send("adasdasdsadasd", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
 	testeCanal.send(`Debug: status do roubo : ${roubo}`);
-	clearInterval(myInterval);
-
+	
+    var myInterval = setInterval(() => {
+	 roubo = false;
+	 testeCanal.send("adasdasdsadasd", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
+	 testeCanal.send(`Debug: status do roubo : ${roubo}`);
+	 const ganhadorRan = ladroes[Math.floor(Math.random() * ladroes.length)];
+	 if(ladroes == null) return;
+	 testeCanal.send(`${ganhadorRan}`);
+	 clearInterval(myInterval);
+	 
    }, 10000);
-
+   
 }, 30000)
 
 
@@ -36,6 +41,8 @@ module.exports.run = async (bot, message, args) => {
 
 	    if(roubo === true){
 		message.reply('entrou no roubo')
+		pugMembers.push(message.author.username);
+		message.reply(`${pugMembers}`)
 	     }else{
 		 message.reply('nenhum roubo acontecendo')
 	}
