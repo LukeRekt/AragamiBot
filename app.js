@@ -2005,6 +2005,8 @@ bot.on('ready', () => {
 		var testeCanal = bot.channels.find(channel => channel.id === '446837976597528586');
 		var iddd = serverId.toString();
 		var ganhaa = ganhador.toString();
+		console.log(iddd);
+		console.log(ganhaa);
 		Money.findOne({serverID: iddd, userID: ganhaa},(err,data) => {
 			if(!data){
 				let errorMess = new Discord.RichEmbed()
@@ -2012,7 +2014,7 @@ bot.on('ready', () => {
 				.setDescription(`o User **<@${ganhaa}>** não esta no banco de dados.`)
 				return testeCanal.send(errorMess)
 			}else{
-	
+	//por algum motivo ele nao encontra as informacoes
 			data.money += Math.floor(parseInt(numeroaaroll));
 			}
 	
