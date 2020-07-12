@@ -21,7 +21,7 @@ const modulesPath = path.join(__dirname, 'modules');
 const mongoose = require("mongoose");
 var roubo = false;
 var ativo = false;
-const ladroes = [];
+var ladroes = [];
 
 
 const prefix = '-'
@@ -1920,7 +1920,7 @@ bot.on("message", async message => {
 	    if(roubo === true){
 		message.reply('entrou no roubo')
 		ladroes.push(message.author.id);
-		message.reply(`${ladroes}`)
+		message.reply(`<@${ladroes}>`)
 	     }else{
 		 message.reply('nenhum roubo acontecendo')
 	}
