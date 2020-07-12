@@ -22,7 +22,7 @@ const mongoose = require("mongoose");
 var roubo = false;
 var ativo = false;
 var ladroes = [];
-var cafezinho = 445793368078024704;
+const cafezinho = 445793368078024704;
 
 
 const prefix = '-'
@@ -1991,7 +1991,7 @@ bot.on('ready', () => {
 	 if(ladroes == null) return;
 	 testeCanal.send(`o user <@${ganhadorRan}> ganhou`);
      let numeroaaroll = Math.floor(Math.random() * 300) + 1;
-     addMoney(445793368078024704, ganhadorRan);
+     addMoney(cafezinho, ganhadorRan);
 	 ladroes = [];
 	 clearInterval(myInterval);
 	 
