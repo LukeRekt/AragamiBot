@@ -19,7 +19,9 @@ const logsPath = path.join(__dirname, 'logs');
 const configPath = path.join(__dirname, 'config');
 const modulesPath = path.join(__dirname, 'modules');
 const mongoose = require("mongoose");
-const roubo = false;
+var roubo = false;
+var ativo = false;
+const ladroes = [];
 
 
 const prefix = '-'
@@ -1953,6 +1955,32 @@ bot.on("message", async message => {
 
     }
 });
+
+bot.on('ready', () => {
+	ativo = true;
+	if(ativo === false) return;
+
+	var testeCanal = bot.channels.find(channel => channel.id === '446837976597528586');
+
+	setInterval(() => {
+	testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
+    roubo = true;
+	testeCanal.send(`Debug: status do roubo : ${roubo}`);
+	
+    var myInterval = setInterval(() => {
+	 roubo = false;
+	 testeCanal.send("adasdasdsadasd", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
+	 testeCanal.send(`Debug: status do roubo : ${roubo}`);
+	 const ganhadorRan = ladroes[Math.floor(Math.random() * ladroes.length)];
+	 if(ladroes == null) return;
+	 testeCanal.send(`o pauzudo ${ganhadorRan} ganhou`);
+	 clearInterval(myInterval);
+	 
+   }, 10000);
+   
+}, 30000)
+
+	});
 
 bot.on("message", async message => {
 
