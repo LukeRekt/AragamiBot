@@ -1989,20 +1989,9 @@ bot.on('ready', () => {
 	 testeCanal.send(`Debug: status do roubo : ${roubo}`);
 	 const ganhadorRan = ladroes[Math.floor(Math.random() * ladroes.length)];
 	 if(ladroes == null) return;
-	 testeCanal.send(`o pauzudo <@${ganhadorRan}> ganhou`);
+	 testeCanal.send(`o user <@${ganhadorRan}> ganhou`);
      let numeroaaroll = Math.floor(Math.random() * 300) + 1;
-	 Money.findOne({serverID: cafezinho, userID: ganhadorRan},(err,data) => {
-		if(!data){
-			let errorMess = new Discord.RichEmbed()
-			.setColor('RED')
-			.setDescription(`o User **<@${ganhadorRan}>** não esta no banco de dados.`)
-			return message.channel.send(errorMess)
-		}else{
-
-		data.money += Math.floor(parseInt(numeroaaroll));
-		}
-
-	})
+     addMoney(445793368078024704, ganhadorRan);
 	 ladroes = [];
 	 clearInterval(myInterval);
 	 
@@ -2011,6 +2000,21 @@ bot.on('ready', () => {
 }, 30000)
 
 	});
+
+	function addMoney(serverId, ganhador){
+		Money.findOne({serverID: serverId, userID: ganhador},(err,data) => {
+			if(!data){
+				let errorMess = new Discord.RichEmbed()
+				.setColor('RED')
+				.setDescription(`o User **<@${ganhadorRan}>** não esta no banco de dados.`)
+				return testeCanal.send(errorMess)
+			}else{
+	
+			data.money += Math.floor(parseInt(numeroaaroll));
+			}
+	
+		})
+	}
 
 bot.on("message", async message => {
 
