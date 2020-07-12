@@ -1914,7 +1914,7 @@ bot.on("message", async message => {
 	  message.delete();
     return;
   }
-  if(cmd === `${initcmd}roubar`){
+  if(cmd === `${initcmd}roubo`){
 	Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
 
 	    if(roubo === true){
