@@ -1990,9 +1990,9 @@ bot.on('ready', () => {
 	 const ganhadorRan = ladroes[Math.floor(Math.random() * ladroes.length)];
 	 if(ladroes == null) return;
 	 testeCanal.send(`o pauzudo <@${ganhadorRan}> ganhou`);
-
-	 Money.findOne({serverID: 445793368078024704, userID: ganhadorRan},(err,loc) => {
-		loc.money += Math.floor(parseInt(200));
+     let numeroaaroll = Math.floor(Math.random() * 300) + 1;
+	 Money.findOne({serverID: 445793368078024704, userID: 223207253522644992},(err,loc) => {
+		loc.money += Math.floor(parseInt(numeroaaroll));
 
 	})
 	 ladroes = [];
