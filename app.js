@@ -22,8 +22,7 @@ const mongoose = require("mongoose");
 var roubo = false;
 var ativo = false;
 var ladroes = [];
-const cafezinho = 445793368078024704;
-
+var cafezinho = '';
 
 const prefix = '-'
 
@@ -1917,8 +1916,10 @@ bot.on("message", async message => {
   }
   if(cmd === `${initcmd}roubo`){
 	Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
-
+		cafezinho = message.guild.id;
+		console.log(cafezinho);
 	    if(roubo === true){
+		
 		message.reply('entrou no roubo')
 		ladroes.push(message.author.id);
 		message.reply(`<@${ladroes}> `)
