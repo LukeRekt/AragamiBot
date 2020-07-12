@@ -2002,8 +2002,9 @@ bot.on('ready', () => {
 	});
 
 	function addMoney(serverId, ganhador){
-		var iddd = parseInt(serverId);
-		var ganhaa = parseInt(ganhador);
+		var testeCanal = bot.channels.find(channel => channel.id === '446837976597528586');
+		var iddd = serverId.toString();
+		var ganhaa = ganhador.toString();
 		Money.findOne({serverID: iddd, userID: ganhaa},(err,data) => {
 			if(!data){
 				let errorMess = new Discord.RichEmbed()
