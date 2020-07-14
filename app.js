@@ -1978,10 +1978,10 @@ bot.on('ready', () => {
 	ativo = true;
 	if(ativo === false) return;
 
-	var testeCanal = bot.channels.find(channel => channel.id === '446837976597528586');
+	var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
 
 	setInterval(() => {
-	testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]})
+	testeCanal.send("*Você observa um banco no horizonte* **-roubo** *para tentar roubá-lo*", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]})
 	.then(msg => {
 		msg.delete(10000)
 	  })
@@ -1998,12 +1998,12 @@ bot.on('ready', () => {
 	 
    }, 10000);
    
-}, 30000)
+}, 1800000)
 
 	});
 
 	function addMoney(serverId, ganhador){
-		var testeCanal = bot.channels.find(channel => channel.id === '446837976597528586');
+		var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
 		var iddd = serverId.toString();
 		var ganhaa = ganhador.toString();
 		Money.findOne({serverID: iddd, userID: ganhaa},(err,data) => {
@@ -2017,7 +2017,7 @@ bot.on('ready', () => {
 			let numeroaaroll = Math.floor(Math.random() * 5000) + 1;
 			testeCanal.send(`<@${ganhador}> conseguiu assaltar o banco e levou ${numeroaaroll} moneys`)
 			.then(msg => {
-				msg.delete(10000)
+				msg.delete(20000)
 			  })
 			
 			data.money += Math.floor(parseInt(numeroaaroll));
