@@ -1980,9 +1980,12 @@ bot.on('ready', () => {
 	var testeCanal = bot.channels.find(channel => channel.id === '446837976597528586');
 
 	setInterval(() => {
-	testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]});
+	testeCanal.send("banco encontrado escreva **roubar**", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]})
+	.then(msg => {
+		msg.delete(10000)
+	  })
     roubo = true;
-	testeCanal.send(`Debug: status do roubo : ${roubo}`);
+	//testeCanal.send(`Debug: status do roubo : ${roubo}`);
 	
     var myInterval = setInterval(() => {
 	 roubo = false;
@@ -1990,7 +1993,7 @@ bot.on('ready', () => {
 	 testeCanal.send(`Debug: status do roubo : ${roubo}`);
 	 const ganhadorRan = ladroes[Math.floor(Math.random() * ladroes.length)];
 	 if(ladroes == null) return;
-	 testeCanal.send(`o user <@${ganhadorRan}> ganhou`);
+	 //testeCanal.send(`o user <@${ganhadorRan}> ganhou`);
      
      addMoney(cafezinho, ganhadorRan);
 	 ladroes = [];
@@ -2006,8 +2009,8 @@ bot.on('ready', () => {
 		var testeCanal = bot.channels.find(channel => channel.id === '446837976597528586');
 		var iddd = serverId.toString();
 		var ganhaa = ganhador.toString();
-		console.log(iddd);
-		console.log(ganhaa);
+		//console.log(iddd);
+		//console.log(ganhaa);
 		Money.findOne({serverID: iddd, userID: ganhaa},(err,data) => {
 			if(!data){
 				let errorMess = new Discord.RichEmbed()
@@ -2016,9 +2019,10 @@ bot.on('ready', () => {
 				return testeCanal.send(errorMess)
 			}else{
 	//por algum motivo ele nao encontra as informacoes
-		//	let numeroaaroll = Math.floor(Math.random() * 300) + 1;
-			//testeCanal.send(`ganhou ${numeroaaroll}`)
-			data.money += Math.floor(parseInt(900));
+			let numeroaaroll = Math.floor(Math.random() * 5000) + 1;
+			testeCanal.send(`<@${ganhador}> conseguiu assaltar o banco e levou ${numeroaaroll} moneys`)
+			
+			data.money += Math.floor(parseInt(numeroaaroll));
 			data.save();
 			}
 	
