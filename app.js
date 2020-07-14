@@ -1990,8 +1990,7 @@ bot.on('ready', () => {
     var myInterval = setInterval(() => {
 	 roubo = false;
 	 const ganhadorRan = ladroes[Math.floor(Math.random() * ladroes.length)];
-	 if(ladroes == null) return;
-     
+	 if(ladroes == null) return msg.delete(10000);
      addMoney(cafezinho, ganhadorRan);
 	 ladroes = [];
 	 clearInterval(myInterval);
