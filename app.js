@@ -1920,9 +1920,10 @@ bot.on("message", async message => {
 		console.log(cafezinho);
 	    if(roubo === true){
 		
-		message.reply('entrou no roubo')
+		message.react("💸")
+		message.delete(10000);
 		ladroes.push(message.author.id);
-		message.reply(`<@${ladroes}> `)
+
 	     }else{
 		 message.reply('nenhum roubo acontecendo')
 	}
@@ -1985,15 +1986,11 @@ bot.on('ready', () => {
 		msg.delete(10000)
 	  })
     roubo = true;
-	//testeCanal.send(`Debug: status do roubo : ${roubo}`);
 	
     var myInterval = setInterval(() => {
 	 roubo = false;
-	 testeCanal.send("acabou");
-	 testeCanal.send(`Debug: status do roubo : ${roubo}`);
 	 const ganhadorRan = ladroes[Math.floor(Math.random() * ladroes.length)];
 	 if(ladroes == null) return;
-	 //testeCanal.send(`o user <@${ganhadorRan}> ganhou`);
      
      addMoney(cafezinho, ganhadorRan);
 	 ladroes = [];
@@ -2009,8 +2006,6 @@ bot.on('ready', () => {
 		var testeCanal = bot.channels.find(channel => channel.id === '446837976597528586');
 		var iddd = serverId.toString();
 		var ganhaa = ganhador.toString();
-		//console.log(iddd);
-		//console.log(ganhaa);
 		Money.findOne({serverID: iddd, userID: ganhaa},(err,data) => {
 			if(!data){
 				let errorMess = new Discord.RichEmbed()
@@ -2018,9 +2013,12 @@ bot.on('ready', () => {
 				.setDescription(`o User **<@${ganhaa}>** não esta no banco de dados.`)
 				return testeCanal.send(errorMess)
 			}else{
-	//por algum motivo ele nao encontra as informacoes
+
 			let numeroaaroll = Math.floor(Math.random() * 5000) + 1;
 			testeCanal.send(`<@${ganhador}> conseguiu assaltar o banco e levou ${numeroaaroll} moneys`)
+			.then(msg => {
+				msg.delete(10000)
+			  })
 			
 			data.money += Math.floor(parseInt(numeroaaroll));
 			data.save();
