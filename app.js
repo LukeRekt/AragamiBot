@@ -1926,13 +1926,10 @@ bot.on("message", async message => {
 
 	     }else{
 		 message.reply('nenhum roubo acontecendo')
-	}
-  
-	    
-	        })
-	    }
-  
+            	}
 
+	       })
+	    }
 });
 
 bot.on('message', function(message) {
@@ -1952,8 +1949,6 @@ bot.on("message", async message => {
 			 cmd = args.shift().toLowerCase();
 			 let command;
 			 let commandfile = bot.commands.get(cmd.slice(prefix.length));
-
-
 
 			 if(commandfile) commandfile.run(bot, message, args);
 
@@ -1990,7 +1985,8 @@ bot.on('ready', () => {
     var myInterval = setInterval(() => {
 	 roubo = false;
 	 const ganhadorRan = ladroes[Math.floor(Math.random() * ladroes.length)];
-	 if(ladroes == null) return msg.delete(10000);
+	 var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
+	 if(ladroes == null) return testeCanal.send("*O Banco saiu ileso!");
      addMoney(cafezinho, ganhadorRan);
 	 ladroes = [];
 	 clearInterval(myInterval);
