@@ -2001,9 +2001,10 @@ bot.on("message", async message => {
 	//});
 	bot.on("message", async message => {
 	if(msgsRoubo === 10){
-
+        if(message.author.bot) return;
 		//ativo = true;
 		//if(ativo === false) return;
+		msgsRoubo = 0;
 	
 		var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
 		setInterval(() => {
