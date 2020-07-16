@@ -1946,7 +1946,7 @@ bot.on('message', function(message) {
 bot.on("message", async message => {
 	//if (!message.content.startsWith(prefix)) return;
 	msgsRoubo ++;
-	message.channel.send(`${msgsRoubo}`)
+	//message.channel.send(`${msgsRoubo}`)
        let args = message.content.slice(prefix.length).trim().split(/ +/g);
 			 let cmd;
 			 cmd = args.shift().toLowerCase();
