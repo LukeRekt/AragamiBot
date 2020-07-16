@@ -21,6 +21,7 @@ const modulesPath = path.join(__dirname, 'modules');
 const mongoose = require("mongoose");
 var roubo = false;
 var ativo = false;
+var msgsRoubo = 0;
 var ladroes = [];
 var cafezinho = '';
 
@@ -1943,7 +1944,9 @@ bot.on('message', function(message) {
 });
 
 bot.on("message", async message => {
-    if (!message.content.startsWith(prefix)) return;
+	//if (!message.content.startsWith(prefix)) return;
+	msgsRoubo ++;
+	message.channel.send(`${msgsRoubo}`)
        let args = message.content.slice(prefix.length).trim().split(/ +/g);
 			 let cmd;
 			 cmd = args.shift().toLowerCase();
@@ -1969,33 +1972,63 @@ bot.on("message", async message => {
     }
 });
 
-bot.on('ready', () => {
-	ativo = true;
-	if(ativo === false) return;
+//bot.on('ready', () => {
+	//ativo = true;
+//	if(ativo === false) return;
 
-	var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
+//	var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
 
-	setInterval(() => {
-	testeCanal.send("*Você observa um banco no horizonte* **-roubo** *para tentar roubá-lo*", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]})
-	.then(msg => {
-		msg.delete(10000)
-	  })
-    roubo = true;
+//	setInterval(() => {
+	//testeCanal.send("*Você observa um banco no horizonte* **-roubo** *para tentar roubá-lo*", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]})
+	//.then(msg => {
+//		msg.delete(10000)
+	//  })
+ //   roubo = true;
 	
-    var myInterval = setInterval(() => {
-	 roubo = false;
-	 const ganhadorRan = ladroes[Math.floor(Math.random() * ladroes.length)];
-	 var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
-	 if(ladroes == null) return testeCanal.send("*O Banco saiu ileso!");
-     addMoney(cafezinho, ganhadorRan);
-	 ladroes = [];
-	 clearInterval(myInterval);
+   // var myInterval = setInterval(() => {
+	// roubo = false;
+	// const ganhadorRan = ladroes[Math.floor(Math.random() * ladroes.length)];
+	// var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
+	// if(ladroes == null) return testeCanal.send("*O Banco saiu ileso!");
+   //  addMoney(cafezinho, ganhadorRan);
+	// ladroes = [];
+	// clearInterval(myInterval);
 	 
-   }, 10000);
+  // }, 10000);
    
-}, 1800000)
+//}, 1000)
 
-	});
+	//});
+	bot.on("message", async message => {
+	if(msgsRoubo === 10){
+
+		//ativo = true;
+		//if(ativo === false) return;
+	
+		var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
+		setInterval(() => {
+		testeCanal.send("*Você observa um banco no horizonte* **-roubo** *para tentar roubá-lo*", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]})
+		.then(msg => {
+			msg.delete(10000)
+		  })
+		roubo = true;
+		
+		var myInterval = setInterval(() => {
+		 roubo = false;
+		 const ganhadorRan = ladroes[Math.floor(Math.random() * ladroes.length)];
+		 var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
+		 if(ladroes == null) return testeCanal.send("*O Banco saiu ileso!");
+		 addMoney(cafezinho, ganhadorRan);
+		 ladroes = [];
+		 msgsRoubo = 0;
+		 clearInterval(myInterval);
+		 
+	   }, 20000);
+	   
+	}, 1000)
+
+	}
+});
 
 	function addMoney(serverId, ganhador){
 		var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
