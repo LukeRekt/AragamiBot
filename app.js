@@ -1945,7 +1945,8 @@ bot.on('message', function(message) {
 
 bot.on("message", async message => {
 	//if (!message.content.startsWith(prefix)) return;
-	msgsRoubo ++;
+
+	if(ativo === false) return msgsRoubo + 1;
 	//message.channel.send(`${msgsRoubo}`)
        let args = message.content.slice(prefix.length).trim().split(/ +/g);
 			 let cmd;
@@ -2000,10 +2001,10 @@ bot.on("message", async message => {
 
 	//});
 	bot.on("message", async message => {
-	if(msgsRoubo === 10){
+	if(msgsRoubo === 15){
         if(message.author.bot) return;
-		//ativo = true;
-		//if(ativo === false) return;
+		ativo = true;
+		if(ativo === false) return;
 		msgsRoubo = 0;
 	
 		var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
@@ -2022,6 +2023,7 @@ bot.on("message", async message => {
 		 addMoney(cafezinho, ganhadorRan);
 		 ladroes = [];
 		 msgsRoubo = 0;
+		 ativo = false;
 		 clearInterval(myInterval);
 		 
 	   }, 20000);
