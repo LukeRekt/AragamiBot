@@ -2003,7 +2003,7 @@ bot.on("message", async message => {
 
 	//});
 	bot.on("message", async message => {
-	if(msgsRoubo === 15){
+	if(msgsRoubo === 200){
 		msgsRoubo = 0;
         if(message.author.bot) return;
 		ativo = true;
@@ -2013,7 +2013,7 @@ bot.on("message", async message => {
 	
 		testeCanal.send("*Você observa um banco no horizonte* **-roubo** *para tentar roubá-lo*", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]})
 		.then(msg => {
-			msg.delete(10000)
+			msg.delete(19000)
 		  })
 		roubo = true;
 		
@@ -2028,7 +2028,7 @@ bot.on("message", async message => {
 		 ativo = false;
 		 clearInterval(myInterval);
 		 
-	   }, 20000);
+	   }, 19000);
 
 	}
 });
@@ -2045,10 +2045,10 @@ bot.on("message", async message => {
 				return testeCanal.send(errorMess)
 			}else{
 
-			let numeroaaroll = Math.floor(Math.random() * 5000) + 1;
+			let numeroaaroll = Math.floor(Math.random() * 10000) + 1;
 			testeCanal.send(`<@${ganhador}> conseguiu assaltar o banco e levou ${numeroaaroll} moneys`)
 			.then(msg => {
-				msg.delete(20000)
+				msg.delete(19000)
 			  })
 			
 			data.money += Math.floor(parseInt(numeroaaroll));
