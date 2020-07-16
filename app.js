@@ -2010,7 +2010,7 @@ bot.on("message", async message => {
 		if(ativo === false) return;
 	
 		var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
-		setInterval(() => {
+	
 		testeCanal.send("*Você observa um banco no horizonte* **-roubo** *para tentar roubá-lo*", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]})
 		.then(msg => {
 			msg.delete(10000)
@@ -2029,8 +2029,6 @@ bot.on("message", async message => {
 		 clearInterval(myInterval);
 		 
 	   }, 20000);
-	   
-	}, 1000)
 
 	}
 });
