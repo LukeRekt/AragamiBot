@@ -2004,6 +2004,7 @@ bot.on("message", async message => {
 	//});
 	bot.on("message", async message => {
 	if(msgsRoubo === 15){
+		msgsRoubo = 0;
         if(message.author.bot) return;
 		ativo = true;
 		if(ativo === false) return;
@@ -2023,7 +2024,7 @@ bot.on("message", async message => {
 		 if(ladroes == null) return testeCanal.send("*O Banco saiu ileso!");
 		 addMoney(cafezinho, ganhadorRan);
 		 ladroes = [];
-		 msgsRoubo = 0;
+		 
 		 ativo = false;
 		 clearInterval(myInterval);
 		 
