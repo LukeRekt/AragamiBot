@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
      let numeroroll = Math.floor(Math.random() * 10) + 1;
      let numeroroub = Math.floor(Math.random() * 100) + 1;
      let member = message.guild.member(message.mentions.users.first())
-
+     message.delete(1000);
 
 
 
@@ -45,13 +45,13 @@ module.exports.run = async (bot, message, args) => {
     	            loc.money += Math.floor(parseInt(numeroroub));
     	            data.money -= Math.floor(parseInt(numeroroub));
     	            loc.save(); data.save()
-    	            message.channel.send(embed)
+    	            message.channel.send(embed).then(msg => {msg.delete(5000)});
                 }else {
 									talkedRecently.add(message.author.id);
 									let embed = new Discord.RichEmbed()
 									.setColor('RED')
 									.setDescription(`**${message.author.username}** não conseguiu roubar de ${member}`)
-									message.channel.send(embed)
+									message.channel.send(embed).then(msg => {msg.delete(5000)});
                 }
 								setTimeout(() => {
           talkedRecently.delete(message.author.id);

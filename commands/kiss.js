@@ -2,7 +2,7 @@
 const superagent = require("superagent");
 const Discord = require('discord.js');
 module.exports.run = async (bot, message, args) => {
-
+    await message.delete();
     let User = message.guild.members.get(args[0]) || message.mentions.members.first();
     if (!User) return message.channel.send("Mencione alguém para da um tapa.");
     if (User.id == message.author.id) return message.reply("você não pode dar um tapa em si mesmo.")

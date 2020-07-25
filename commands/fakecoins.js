@@ -28,11 +28,11 @@ Money.findOne({
 	if(!money){
 		embed.addField("Mão✋", "0", true);
 		embed.addField("Banco🏦", "0", true);
-		return message.channel.send(embed);
+		return message.channel.send(embed).then(msg => {msg.delete(5000)});
 	}else {
 		embed.addField("Mão✋", money.money, true);
 		embed.addField("Banco🏦", money.banco, true);
-		return message.channel.send(embed)
+		return message.channel.send(embed).then(msg => {msg.delete(5000)});
 	}
 })
 }

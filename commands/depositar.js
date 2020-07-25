@@ -11,6 +11,7 @@ module.exports.run = async (bot, message, args) => {
 //todo
 //checar money da pessoa
 //enviar para o alvo e remover do sender
+message.delete(1000);
 	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
 	        if(!loc){
 	            let errorMess = new Discord.RichEmbed()
@@ -28,7 +29,7 @@ module.exports.run = async (bot, message, args) => {
               loc.money -= Math.floor(parseInt(oldmoney));
 
 	            loc.save();
-	            message.channel.send(embed)
+	            message.channel.send(embed).then(msg => {msg.delete(5000)});
 	                }
 	        })
 	    }

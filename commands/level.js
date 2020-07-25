@@ -31,13 +31,12 @@ Money.findOne({
 		return message.channel.send(embed);
 	}else {
         let atuxp = money.xp;
-		let atulvl = money.level;
 		let prolvl = money.level * 300;
         let diferenca = prolvl - atuxp;
-		embed.addField("Level", atulvl, true);
-        embed.addField("XP", atuxp, true);
+		embed.addField("Level", money.level, true);
+        embed.addField("XP", money.xp, true);
         embed.setFooter(`${diferenca}XP restando para upar`)
-		return message.channel.send(embed)
+		return message.channel.send(embed).then(msg => {msg.delete(5000)});
 	}
 })
 }

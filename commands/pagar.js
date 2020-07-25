@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
 //checar money da pessoa
 //enviar para o alvo e remover do sender
  let member = message.guild.member(message.mentions.users.first())
-
+ message.delete(1000);
  if(!member) return message.reply(`O usuário não foi encontrado.`)
 
   if(args[1] == null) return message.reply("quantidade pfv");
@@ -40,7 +40,7 @@ module.exports.run = async (bot, message, args) => {
 	            loc.money -= Math.floor(parseInt(args[1]));
 	            data.money += Math.floor(parseInt(args[1]));
 	            loc.save(); data.save();
-	            message.channel.send(embed)
+	            message.channel.send(embed).then(msg => {msg.delete(5000)});
 	                }
 	            })
 	        })
