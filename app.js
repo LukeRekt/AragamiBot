@@ -2102,6 +2102,7 @@ if(!money){
 		let prolvl = money.level * 300;
 		if(prolvl <= money.xp){
 			money.level += Math.floor(parseInt(1));
+			message.channel.send(`<@${message.author.id}> upou para o lvl ${atulvl}`)
 		}
    setTimeout(() => {
 	moedasRecentes.delete(message.author.id);
