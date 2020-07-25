@@ -19,6 +19,7 @@ const logsPath = path.join(__dirname, 'logs');
 const configPath = path.join(__dirname, 'config');
 const modulesPath = path.join(__dirname, 'modules');
 const mongoose = require("mongoose");
+const moedasRecentes = new Set();
 var roubo = false;
 var ativo = false;
 var msgsRoubo = 0;
@@ -2064,7 +2065,11 @@ if(message.author.bot) return;
 if(message.channel.type === "dm") return;
 //if(bot.channels.get === "446570179258744842") return;
 
-let coinstoadd = Math.ceil(Math.random() * 40);
+if (moedasRecentes.has(message.author.id)) {
+	return;
+} else {
+	
+let coinstoadd = Math.ceil(Math.random() * 10);
 console.log(coinstoadd + " coins");
 Money.findOne({
 	userID: message.author.id,
@@ -2085,9 +2090,13 @@ if(!money){
 		if (message.content.startsWith(prefix)) return;
 money.money = money.money + coinstoadd;
 money.save().catch(err => console.log(err));
+moedasRecentes.add(message.author.id);
+setTimeout(() => {
+	moedasRecentes.delete(message.author.id);
+  }, 10000);
 }
 })
-
+}
 });
 
 //ping
