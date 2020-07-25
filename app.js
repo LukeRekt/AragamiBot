@@ -2095,7 +2095,7 @@ if(!money){
 		money.money = money.money + coinstoadd;
         money.save().catch(err => console.log(err));
 		moedasRecentes.add(message.author.id);
-		money.xp += Math.floor(parseInt(xptoadd));
+		money.xp += Math.floor(parseInt(50));
 		let atuxp = money.xp;
 		let atulvl = money.level;
 		let prolvl = money.level * 300;
