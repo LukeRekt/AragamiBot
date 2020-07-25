@@ -5,7 +5,9 @@ userID: String,
 serverID: String,
 username: String,
 money: Number,
-banco: Number
+banco: Number,
+xp: Number,
+level: Number
 
 
 })

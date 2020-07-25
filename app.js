@@ -2070,6 +2070,7 @@ if (moedasRecentes.has(message.author.id)) {
 } else {
 	
 let coinstoadd = Math.ceil(Math.random() * 10);
+let xptoadd = Math.ceil(Math.random() * 10);
 console.log(coinstoadd + " coins");
 Money.findOne({
 	userID: message.author.id,
@@ -2082,16 +2083,26 @@ if(!money){
 		username: message.author.tag,
 		serverID: message.guild.id,
 		money: coinstoadd,
-		banco: 0
+		banco: 0,
+		xp: 0,
+		level: 1
 	})
 
 	newMoney.save().catch(err => console.console.log(err));
   }else {
 		if (message.content.startsWith(prefix)) return;
-money.money = money.money + coinstoadd;
-money.save().catch(err => console.log(err));
-moedasRecentes.add(message.author.id);
-setTimeout(() => {
+
+		money.money = money.money + coinstoadd;
+        money.save().catch(err => console.log(err));
+		moedasRecentes.add(message.author.id);
+		money.xp += Math.floor(parseInt(xptoadd));
+		let atuxp = money.xp;
+		let atulvl = money.level;
+		let prolvl = money.level * 300;
+		if(prolvl <= money.xp){
+			money.level += Math.floor(parseInt(1));
+		}
+   setTimeout(() => {
 	moedasRecentes.delete(message.author.id);
   }, 10000);
 }
