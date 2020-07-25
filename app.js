@@ -2063,7 +2063,7 @@ bot.on("message", async message => {
 
 if(message.author.bot) return;
 if(message.channel.type === "dm") return;
-if(message.author.id !== "223207253522644992")
+if(message.author.id !== "223207253522644992") return;
 //if(bot.channels.get === "446570179258744842") return;
 
 if (moedasRecentes.has(message.author.id)) {
