@@ -87,7 +87,7 @@ catch(err){
 
 var adminRoles = botPreference.admingroups;
 var initcmd = botPreference.initcmd;
-var defualtGame = "Comandos -ajuda";
+var defualtGame = "Beta(0.8)";
 
 // The object voice channel the bot is in
 var currentVoiceChannel = null;
@@ -2063,7 +2063,6 @@ bot.on("message", async message => {
 
 if(message.author.bot) return;
 if(message.channel.type === "dm") return;
-if(message.author.id !== "223207253522644992") return;
 //if(bot.channels.get === "446570179258744842") return;
 
 if (moedasRecentes.has(message.author.id)) {
