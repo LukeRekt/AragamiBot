@@ -10,7 +10,6 @@ var express = require("express");
 var app = express();
 var port = process.env.PORT || 3000;
 
-const tempFilesPath = path.join(__dirname, 'tempFiles');
 const logsPath = path.join(__dirname, 'logs');
 const configPath = path.join(__dirname, 'config');
 const mongoose = require("mongoose");
@@ -231,7 +230,7 @@ bot.on('ready', () => {
 		console.log();
 	}
 
-	clearTemp();
+
 });
 
 bot.on('disconnect', (event) =>{
@@ -239,7 +238,6 @@ bot.on('disconnect', (event) =>{
 	if(event.reason)
 		console.log("Reason: " + event.reason);
 
-	removeTempFiles();
 	process.exit(0);
 });
 
