@@ -205,21 +205,6 @@ function getInvite(callback){
 	});
 }
 
-function clearTemp(){
-	fs.readdir(tempFilesPath, (error, files) =>{
-		if(files.length > 0){
-			async.each(files, (file, callback) =>{
-				fs.unlinkSync(path.join(tempFilesPath, file));
-				callback();
-			}, ()=>{
-				console.log("Temp Folder cleared");
-			});
-		}
-	});
-
-}
-
-
 bot.on('ready', () => {
 	console.log("Aragami V" + botVersion)
 	console.log(bot.user.username + " (" + bot.user.id + ")");
