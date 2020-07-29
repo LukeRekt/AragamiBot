@@ -274,7 +274,7 @@ bot.on('message', message => {
 			});
 		}
 	}
-
+ 
 	// Command to add a certain group to use admin access
 	if(isCommand(message.content, 'addgrupo')){
 		if(isOwner(message) || isAdmin(message)){
@@ -320,6 +320,7 @@ bot.on('message', message => {
 			}
 		} else message.channel.send("Você não tem permissão batola.");
 	}
+
 
 	// Remove a group from admin access
 	if(isCommand(message.content, 'remgrupo')){
@@ -702,7 +703,8 @@ bot.on('message', message => {
   			} else
   			  	message.channel.send("vc não encontrado");
   		}
-  	}
+	  }
+	});
 
 
 bot.on("message", async message => {
@@ -915,7 +917,7 @@ setInterval(function() {
     http.get("http://quiet-wave-83938.herokuapp.com");
 }, 300000);
 
-
+ 
 
 bot.login(process.env.token);
-app.listen(port);
+app.listen(port); 
