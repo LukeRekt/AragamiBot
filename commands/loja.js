@@ -20,7 +20,6 @@ module.exports.run = async (bot, message, args) => {
 			const d = message.guild.roles.get('726227857025794128');
 			const e = message.guild.roles.get('726215603538624594');
 			const f = message.guild.roles.get('726215576988418159');
-	    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
       const filter = (reaction, user) => ['🇦', '🇧', '🇨', '🇩', '🇪', '🇫'].includes(reaction.emoji.name) && user.id === message.author.id;
           let embed = new Discord.RichEmbed()
           .setTitle('Loja')
@@ -61,12 +60,14 @@ module.exports.run = async (bot, message, args) => {
 
                 switch (reaction.emoji.name) {
                   case '🇦':
+                    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
                   message.member.addRole(a);
                   if(money.banco < 10000) return message.channel.send("você não tem dinheiro suficiente!")
                   money.banco -= Math.floor(parseInt(10000));
                   loc.save();
                   message.channel.send(money.banco)
                     msg.delete();
+                     })
                     break;
                   case '🇧':
                   message.member.addRole(b);
@@ -111,7 +112,6 @@ module.exports.run = async (bot, message, args) => {
                 return msg.delete();
               })
             });
-	        })
 	    }
 
 module.exports.help = {
