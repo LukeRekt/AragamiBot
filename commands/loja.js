@@ -64,7 +64,7 @@ module.exports.run = async (bot, message, args) => {
                   message.member.addRole(a);
                   if(money.banco < 10000) return message.channel.send("você não tem dinheiro suficiente!")
                   money.banco -= Math.floor(parseInt(10000));
-                  loc.save();
+                  money.save();
                     msg.delete();
                      
                     break;
