@@ -6,7 +6,6 @@ mongoose.connect(process.env.mongosenha, {
 });
 
 const Money = require("../models/money.js");
-const money = require("../models/money.js");
 
 module.exports.run = async (bot, message, args) => {
 //todo
