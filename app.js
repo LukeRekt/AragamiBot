@@ -3,7 +3,6 @@ const Discord = require('discord.js');
 const jimp =require("jimp");
 const fs = require('fs');
 const path = require('path');
-const ms = require('ms');
 const async = require('async');
 const bot = new Discord.Client();
 var express = require("express");
@@ -884,7 +883,7 @@ if(!money){
 		let prolvl = money.level * 300;
 		if(prolvl <= money.xp){
 			money.level += Math.floor(parseInt(1));
-			message.channel.send(`<@${message.author.id}> upou para o lvl ${money.level}`)
+			message.channel.send(`<@${message.author.id}> upou para o lvl ${money.level}`).then(msg => {msg.delete(5000)});
 		}
    setTimeout(() => {
 	moedasRecentes.delete(message.author.id);

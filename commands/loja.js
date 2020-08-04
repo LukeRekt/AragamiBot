@@ -5,7 +5,8 @@ mongoose.connect(process.env.mongosenha, {
 	useNewUrlParser: true
 });
 
-const Money = require("../models/money.js")
+const Money = require("../models/money.js");
+const money = require("../models/money.js");
 
 module.exports.run = async (bot, message, args) => {
 //todo
@@ -25,16 +26,22 @@ module.exports.run = async (bot, message, args) => {
           .setTitle('Loja')
           .setDescription(`
 
-            🇦 ${a.toString()}
-            🇧 ${b.toString()}
-            🇨 ${c.toString()}
-						🇩 ${d.toString()}
-						🇪 ${e.toString()}
-						🇫 ${f.toString()}
+            🇦 ${a.toString()} 
+            💸 10000$
+            🇧 ${b.toString()} 
+            💸 20000$
+            🇨 ${c.toString()} 
+            💸 30000$
+            🇩 ${d.toString()} 
+            💸 40000$
+            🇪 ${e.toString()} 
+            💸 50000$
+            🇫 ${f.toString()} 
+            💸 60000$
 
             `)
             .setColor(0xdd9323)
-            .setFooter(`ID: ${message.author.id}`);
+            .setFooter(`ID: mais itens em breve`);
 
             message.channel.send(embed).then(async msg => {
               await msg.react('🇦');
@@ -54,27 +61,39 @@ module.exports.run = async (bot, message, args) => {
 
                 switch (reaction.emoji.name) {
                   case '🇦':
-									message.member.addRole(a);
+                  message.member.addRole(a);
+                  if(money.money < 10000) return message.channel.send("você não tem dinheiro suficiente!")
+                  money.money -= Math.floor(parseInt(10000));
                     msg.delete();
                     break;
                   case '🇧':
-									message.member.addRole(b);
+                  message.member.addRole(b);
+                  if(money.money < 10000) return message.channel.send("você não tem dinheiro suficiente!")
+                  money.money -= Math.floor(parseInt(20000));
                       msg.delete();
                     break;
                   case '🇨':
-								  message.member.addRole(c);
+                  message.member.addRole(c);
+                  if(money.money < 10000) return message.channel.send("você não tem dinheiro suficiente!")
+                  money.money -= Math.floor(parseInt(30000));
                       msg.delete();
                     break;
 									case '🇩':
-								  message.member.addRole(d);
+                  message.member.addRole(d);
+                  if(money.money < 10000) return message.channel.send("você não tem dinheiro suficiente!")
+                  money.money -= Math.floor(parseInt(40000));
 										  msg.delete();
 									  break;
 									case '🇪':
-								  message.member.addRole(e);
+                  message.member.addRole(e);
+                  if(money.money < 10000) return message.channel.send("você não tem dinheiro suficiente!")
+                  money.money -= Math.floor(parseInt(50000));
 										  msg.delete();
 									  break;
 									case '🇫':
-									message.member.addRole(f);
+                  message.member.addRole(f);
+                  if(money.money < 10000) return message.channel.send("você não tem dinheiro suficiente!")
+                  money.money -= Math.floor(parseInt(60000));
 										msg.delete();
 										break;
                   default:
@@ -82,7 +101,7 @@ module.exports.run = async (bot, message, args) => {
                 }
 
               }).catch(colleted => {
-                return message.channel.send('nao foi')
+                return msg.delete();
               })
             });
 	        })
