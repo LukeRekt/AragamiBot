@@ -13,6 +13,7 @@ module.exports.run = async (bot, message, args) => {
 //enviar para o alvo e remover do sender
 //sim
   //if(sCoins < args[1]) return message.reply("quantidade de moedas indisponivel");
+  Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,money) => {
   const a = message.guild.roles.get('726215603563528403');
     const b = message.guild.roles.get('726215588850171951');
       const c = message.guild.roles.get('726227853376749570');
@@ -59,14 +60,13 @@ module.exports.run = async (bot, message, args) => {
 
                 switch (reaction.emoji.name) {
                   case '🇦':
-                    Money.findOne({serverID: message.guild.id, userID: message.author.id},(err,loc) => {
+                   
                   message.member.addRole(a);
                   if(money.banco < 10000) return message.channel.send("você não tem dinheiro suficiente!")
                   money.banco -= Math.floor(parseInt(10000));
                   loc.save();
-                  message.channel.send(money.banco)
                     msg.delete();
-                     })
+                     
                     break;
                   case '🇧':
                   message.member.addRole(b);
@@ -111,6 +111,7 @@ module.exports.run = async (bot, message, args) => {
                 return msg.delete();
               })
             });
+          })
 	    }
 
 module.exports.help = {
