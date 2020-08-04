@@ -65,6 +65,7 @@ module.exports.run = async (bot, message, args) => {
                   if(money.banco < 10000) return message.channel.send("você não tem dinheiro suficiente!")
                   money.banco -= Math.floor(parseInt(10000));
                   loc.save();
+                  message.channel.send(money.banco)
                     msg.delete();
                     break;
                   case '🇧':
