@@ -41,7 +41,7 @@ module.exports.run = async (bot, message, args) => {
 
             `)
             .setColor(0xdd9323)
-            .setFooter(`ID: mais itens em breve`);
+            .setFooter(` mais itens em breve`);
 
             message.channel.send(embed).then(async msg => {
               await msg.react('🇦');
@@ -62,38 +62,44 @@ module.exports.run = async (bot, message, args) => {
                 switch (reaction.emoji.name) {
                   case '🇦':
                   message.member.addRole(a);
-                  if(money.money < 10000) return message.channel.send("você não tem dinheiro suficiente!")
-                  money.money -= Math.floor(parseInt(10000));
+                  if(money.banco < 10000) return message.channel.send("você não tem dinheiro suficiente!")
+                  money.banco -= Math.floor(parseInt(10000));
+                  loc.save();
                     msg.delete();
                     break;
                   case '🇧':
                   message.member.addRole(b);
-                  if(money.money < 10000) return message.channel.send("você não tem dinheiro suficiente!")
-                  money.money -= Math.floor(parseInt(20000));
+                  if(money.banco < 20000) return message.channel.send("você não tem dinheiro suficiente!")
+                  money.banco -= Math.floor(parseInt(20000));
+                  loc.save();
                       msg.delete();
                     break;
                   case '🇨':
                   message.member.addRole(c);
-                  if(money.money < 10000) return message.channel.send("você não tem dinheiro suficiente!")
-                  money.money -= Math.floor(parseInt(30000));
+                  if(money.banco < 30000) return message.channel.send("você não tem dinheiro suficiente!")
+                  money.banco -= Math.floor(parseInt(30000));
+                  loc.save();
                       msg.delete();
                     break;
 									case '🇩':
                   message.member.addRole(d);
-                  if(money.money < 10000) return message.channel.send("você não tem dinheiro suficiente!")
-                  money.money -= Math.floor(parseInt(40000));
+                  if(money.banco < 40000) return message.channel.send("você não tem dinheiro suficiente!")
+                  money.banco -= Math.floor(parseInt(40000));
+                  loc.save();
 										  msg.delete();
 									  break;
 									case '🇪':
                   message.member.addRole(e);
-                  if(money.money < 10000) return message.channel.send("você não tem dinheiro suficiente!")
-                  money.money -= Math.floor(parseInt(50000));
+                  if(money.banco < 50000) return message.channel.send("você não tem dinheiro suficiente!")
+                  money.banco -= Math.floor(parseInt(50000));
+                  loc.save();
 										  msg.delete();
 									  break;
 									case '🇫':
                   message.member.addRole(f);
-                  if(money.money < 10000) return message.channel.send("você não tem dinheiro suficiente!")
-                  money.money -= Math.floor(parseInt(60000));
+                  if(money.banco < 60000) return message.channel.send("você não tem dinheiro suficiente!")
+                  money.banco -= Math.floor(parseInt(60000));
+                  loc.save();
 										msg.delete();
 										break;
                   default:
