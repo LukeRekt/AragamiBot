@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
     let bReason = args[0];
 
     let banEmbed = new Discord.RichEmbed()
-    .setDescription("---Sugestão---")
+    .setDescription("**---Sugestão---**")
     .setColor("#bc0000")
     .addField("por", `<@${message.author.id}>`)
 	.addField("Hora", message.createdAt)
