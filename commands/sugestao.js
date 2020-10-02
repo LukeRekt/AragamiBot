@@ -1,8 +1,7 @@
 
 const Discord = require('discord.js');
 module.exports.run = async (bot, message, args) => {
-    let bReason = args[0];
-    let bReason = args.join(" ").slice(22);
+    let bReason = args.splice(1).join(" ");
 
     let banEmbed = new Discord.RichEmbed()
     .setDescription("**---Sugestão---**")
