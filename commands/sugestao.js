@@ -1,12 +1,12 @@
 
 const Discord = require('discord.js');
 module.exports.run = async (bot, message, args) => {
-    let bReason = args.join(" ").slice(22);
+    let bReason = args[0];
 
     let banEmbed = new Discord.RichEmbed()
-    .setDescription("---Banido---")
+    .setDescription("---Sugestão---")
     .setColor("#bc0000")
-    .addField("Banido por", `<@${message.author.id}>`)
+    .addField("por", `<@${message.author.id}>`)
 	.addField("Hora", message.createdAt)
     .addField("Sugestão: ", bReason);
     let incidentchannel = message.guild.channels.find(`name`, "sugestoes");
