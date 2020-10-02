@@ -794,7 +794,7 @@ bot.on("message", async message => {
 	
 		//var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
 	
-		testeCanal = message.channel.get();
+		testeCanal = message.channels.get();
 		testeCanal.send("*Você observa um banco no horizonte* **-roubo** *para tentar roubá-lo*", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]})
 		.then(msg => {
 			msg.delete(19000)
