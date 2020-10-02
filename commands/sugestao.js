@@ -6,8 +6,7 @@ module.exports.run = async (bot, message, args) => {
     let banEmbed = new Discord.RichEmbed()
     .setDescription("**---Sugestão---**")
     .setColor("#bc0000")
-    .addField("por", `<@${message.author.id}>`)
-	.addField("Hora", message.createdAt)
+    .addField("Por", `<@${message.author.id}>`)
     .addField("Sugestão: ", bReason);
     let incidentchannel = message.guild.channels.find(`name`, "sugestoes");
     if(!incidentchannel) return message.channel.send("não achei o canal ;-;.");

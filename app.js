@@ -786,14 +786,15 @@ bot.on("message", async message => {
 });
 
 	bot.on("message", async message => {
-	if(msgsRoubo === 200){
+	if(msgsRoubo === 10){
 		msgsRoubo = 0;
         if(message.author.bot) return;
 		ativo = true;
 		if(ativo === false) return;
 	
-		var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
+		//var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
 	
+		testeCanal = message.channel.get();
 		testeCanal.send("*Você observa um banco no horizonte* **-roubo** *para tentar roubá-lo*", {files: ["https://cdn1.iconfinder.com/data/icons/ecommerce-and-business-icon-set/256/bank.png"]})
 		.then(msg => {
 			msg.delete(19000)
@@ -805,7 +806,7 @@ bot.on("message", async message => {
 		 const ganhadorRan = ladroes[Math.floor(Math.random() * ladroes.length)];
 		 var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
 		 if(ladroes == null) return testeCanal.send("*O Banco saiu ileso!");
-		 addMoney(cafezinho, ganhadorRan);
+		 addMoney(cafezinho, ganhadorRan, testeCanal);
 		 ladroes = [];
 		 
 		 ativo = false;
@@ -816,8 +817,8 @@ bot.on("message", async message => {
 	}
 });
 
-	function addMoney(serverId, ganhador){
-		var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
+	function addMoney(serverId, ganhador, testeCanal){
+		//var testeCanal = bot.channels.find(channel => channel.id === '445793368078024706');
 		var iddd = serverId.toString();
 		var ganhaa = ganhador.toString();
 		Money.findOne({serverID: iddd, userID: ganhaa},(err,data) => {
